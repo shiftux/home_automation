@@ -2,7 +2,7 @@
 require 'sinatra/base'
 require './spotify.rb'
 
-class homeAutomationServer < Sinatra::Base
+class HomeAutomationServer < Sinatra::Base
 
 # Spotify
 get '/spotify_play' do
