@@ -4,7 +4,8 @@ module Spotify
   defaultPlayer = "b8:27:eb:12:7c:b1"
   
   def self.play
-      %x( curl -X GET -H "Content-Type: application/json" -d '{"id":1,"method":"slim.request","params":[defaultPlayer,["play"]]}'     spotifyServer/jsonrpc.js )
+    puts spotifyServer
+    %x( curl -X GET -H "Content-Type: application/json" -d '{"id":1,"method":"slim.request","params":[defaultPlayer,["play"]]}'     spotifyServer/jsonrpc.js )
   end
 
 end
