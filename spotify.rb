@@ -5,7 +5,7 @@ module Spotify
   
   def self.play
     puts @@spotifyServer
-    %x( curl -X GET -H "Content-Type: application/json" -d '{"id":1,"method":"slim.request","params":[@@defaultPlayer,["play"]]}'     @@spotifyServer/jsonrpc.js )
+    %x( curl -X GET -H "Content-Type: application/json" -d '{"id":1,"method":"slim.request","params":[#{@@defaultPlayer},["play"]]}'     #{@@spotifyServer}/jsonrpc.js )
   end
 
 end
