@@ -1,12 +1,10 @@
 # my home automation server
-require 'sinatra'
+require 'sinatra/base'
 require './spotify.rb'
 
-def initialize
-  spotify = Spotify.new
-end
+class homeAutomationServer < Sinatra::Base
 
 # Spotify
 get '/spotify_play' do
-  spotify.play
+  Spotify.play
 end
