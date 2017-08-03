@@ -23,7 +23,7 @@ module Spotify
     response = connection.post do |req|
         req.url '/jsonrpc.js'
         req.headers['Content-Type'] = 'application/json'
-        req.body = '{"jsonrpc": "2.0", "id": 1,"method": "slim.request", "params": ["#{@@defaultPlayer}", ["#{playerCommand}"]]}'
+        req.body = '{"id": 1,"method": "slim.request", "params": ["#{@@defaultPlayer}", ["#{playerCommand}"]]}'
     end
   end
 
