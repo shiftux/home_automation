@@ -15,16 +15,28 @@ module Spotify
 
   def self.play
     playerCommand = "play"
-    connection = Faraday.new(:url => @@spotifyServer) do |faraday|
-      faraday.response :logger
-      faraday.adapter Faraday.default_adapter    # make requests with Net::HTTP
-    end
-
-    response = connection.post do |req|
-        req.url '/jsonrpc.js'
-        req.headers['Content-Type'] = 'application/json'
-        req.body = '{"id": 1,"method": "slim.request", "params": ["#{@@defaultPlayer}", ["#{playerCommand}"]]}'
-    end
+    payload = {"id" => 1,"method" => "slim.request", "params" => ["#{@@defaultPlayer}", ["#{playerCommand}"]]}
+    RestClient::Request.new(
+      :method => :post,
+      :url => "#{@@spotifyServer}/jsonrpc.js",
+      :payload => payload,
+      :headers => {:content_type => "application/json"},
+      :verify_ssl => OpenSSL::SSL::VERIFY_NONE
+    ).execute {|resp|
+      return resp
+    }
   end
+
+  # def self.rest_request(destination_cmdb, path, method, payload = '')
+  #   RestClient::Request.new(
+  #     :method => method,
+  #     :url => "#{destination_cmdb}:#{@@port}/#{path}",
+  #     :payload => payload,
+  #     :headers => {:content_type => "application/xml" , "Access-Token" => @@access_token},
+  #     :verify_ssl => OpenSSL::SSL::VERIFY_NONE
+  #   ).execute {|resp|
+  #     return resp
+  #   }
+  # end
 
 end
