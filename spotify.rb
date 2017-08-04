@@ -5,14 +5,6 @@ module Spotify
 
   @@spotifyServer = 'http://192.168.1.125:9000'
   @@defaultPlayer = "b8:27:eb:12:7c:b1"
-  
-  # def self.play
-  #   payload = {"id": 1,"method": "slim.request", "params": [@@defaultPlayer, ["play"]]}
-  #   command = "curl -X GET -H \"Content-Type: application/json\" -d "
-  #   hostaddress = "#{@@spotifyServer}/jsonrpc.js"
-  #   %x( "#{command} #{hostaddress}" )
-  #   RestClient.get(hostaddress, payload.to_json, content_type: :json)
-  # end
 
   def self.play
     playerCommand = "play"
