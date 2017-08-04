@@ -1,4 +1,4 @@
-require 'faraday'
+require 'rest-client'
 
 module Spotify
 
