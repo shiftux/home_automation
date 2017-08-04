@@ -1,4 +1,5 @@
 require 'rest-client'
+require 'json'
 
 module Spotify
 
@@ -19,7 +20,7 @@ module Spotify
     RestClient::Request.new(
       :method => :post,
       :url => "#{@@spotifyServer}/jsonrpc.js",
-      :payload => payload,
+      :payload => payload.to_json,
       :headers => {:content_type => "application/json"},
       :verify_ssl => OpenSSL::SSL::VERIFY_NONE
     ).execute {|resp|
