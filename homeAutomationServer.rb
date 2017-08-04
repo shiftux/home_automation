@@ -1,12 +1,64 @@
 # my home automation server
 require 'sinatra/base'
 require './spotify.rb'
+require './infrared.rb'
 
 class HomeAutomationServer < Sinatra::Base
 
+  # use Rack::Auth::Basic, "Authentication" do |username, password|
+  #    username == 'user' && password == 'pass'
+  # end
+
+  #######################################################
   # Spotify
+  #######################################################
   get '/spotify_play' do
+    IR.nad_power_on
+    IR.arcam_music_input
     Spotify.play
+  end
+
+  get '/spotify_stop' do
+    Spotify.stop
+  end
+
+  get '/spotify_next_song' do
+    Spotify.next_song
+  end
+
+  get '/spotify_play_playlist/:playlist_name' do
+    Spotify.play_playlist(params['playlist_name'])
+  end
+
+  #######################################################
+  # Infrared
+  #######################################################
+  get '/toggle_samsung_power' do
+    IR.toggle_samsung_power
+  end
+
+  get '/nad_lower_volume' do
+    IR.nad_lower_volume
+  end
+
+  get '/nad_increase_volume' do
+    IR.nad_increase_volume
+  end
+
+  get '/nad_power_off' do
+    IR.nad_power_off
+  end
+
+  get '/nad_power_on' do
+    IR.nad_power_on
+  end
+
+  get '/arcam_music_input' do
+    IR.arcam_music_input
+  end
+
+  get '/arcam_tv_input' do
+    IR.arcam_tv_input
   end
 
 end

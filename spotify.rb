@@ -1,35 +1,36 @@
-require 'rest-client'
-require 'json'
+require './rest_request.rb'
 
 module Spotify
 
   @@spotifyServer = 'http://192.168.1.125:9000'
   @@defaultPlayer = "b8:27:eb:12:7c:b1"
+  @@playlists = {
+    discover_weekly => "spotify:user:spotify:playlist:37i9dQZEVXcSlMQNVajogn"
+    discover_weekly_saves => "spotify:user:shiftux:playlist:3jsoStJkZ2N97oh1bJBCdF"
+    easy_on_the_ears => "spotify:user:shiftux:playlist:7r0UpOkMuDWIMobO1HDEjh"
+    starred => "spotify:user:shiftux:playlist:3yCTHjJl9xBLqukdvQqYon"
+  }
 
   def self.play
-    playerCommand = "play"
-    payload = {"id" => 1,"method" => "slim.request", "params" => ["#{@@defaultPlayer}", ["#{playerCommand}"]]}
-    RestClient::Request.new(
-      :method => :post,
-      :url => "#{@@spotifyServer}/jsonrpc.js",
-      :payload => payload.to_json,
-      :headers => {:content_type => "application/json"},
-      :verify_ssl => OpenSSL::SSL::VERIFY_NONE
-    ).execute {|resp|
-      return resp
-    }
+    spotifyRequest(["play"])
   end
 
-  # def self.rest_request(destination_cmdb, path, method, payload = '')
-  #   RestClient::Request.new(
-  #     :method => method,
-  #     :url => "#{destination_cmdb}:#{@@port}/#{path}",
-  #     :payload => payload,
-  #     :headers => {:content_type => "application/xml" , "Access-Token" => @@access_token},
-  #     :verify_ssl => OpenSSL::SSL::VERIFY_NONE
-  #   ).execute {|resp|
-  #     return resp
-  #   }
-  # end
+  def self.stop
+    spotifyRequest(["pause", "1"])
+  end
+
+  def self.next_song
+    spotifyRequest(["playlist","jump","1"])
+  end
+
+  def self.play_playlist(playlist_name)
+    playlist = playlist_name.downcase.tr(" ", "_")
+    spotifyRequest(["playlist","play",@@playlists[playlist]])
+  end
+
+  def self.spotifyRequest(playerCommand)
+    payload = {"id" => 1,"method" => "slim.request", "params" => ["#{@@defaultPlayer}", playerCommand]}
+    RestRequest.rest_request(@@spotifyServer, 'jsonrpc.js', :post, payload)
+  end
 
 end
