@@ -63,4 +63,8 @@ class HomeAutomationServer < Sinatra::Base
     IR.arcam_tv_input
   end
 
+  get '/samsung_toggle_power' do
+    IR.samsung_toggle_power
+  end
+
 end

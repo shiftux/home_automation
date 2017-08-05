@@ -9,6 +9,8 @@
 # Description:       Enable service provided by daemon.
 ### END INIT INFO
 
+# from : https://github.com/fhd/init-script-template
+
 dir="/opt/home_automation/"
 cmd="rackup -o 0.0.0.0"
 user="pi"

@@ -6,9 +6,11 @@ module IR
 
   def self.nad_lower_volume
       irRequest('nad', 'KEY_VOLUMEDOWN' )
+      irRequest('nad', 'KEY_VOLUMEUP' )
   end
 
   def self.nad_increase_volume
+      irRequest('nad', 'KEY_VOLUMEUP' )
       irRequest('nad', 'KEY_VOLUMEUP' )
   end
 
@@ -26,6 +28,10 @@ module IR
 
   def self.arcam_tv_input
       irRequest('arcam', 'KEY_NUMERIC_2' )
+  end
+
+  def self.samsung_toggle_power
+      irRequest('samsung', 'KEY_POWER' )
   end
 
   def self.irRequest(device, key)
