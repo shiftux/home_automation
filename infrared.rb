@@ -30,7 +30,7 @@ module IR
 
   def self.irRequest(device, key)
     command = "irsend SEND_ONCE #{device} #{key}"
-    %x( "#{command}" )
+    %x( eval "#{command}" )
   end
 
 end
