@@ -6,7 +6,7 @@ module IR
 
   def self.nad_lower_volume
       irRequest('nad', 'KEY_VOLUMEDOWN' )
-      irRequest('nad', 'KEY_VOLUMEUP' )
+      irRequest('nad', 'KEY_VOLUMEDOWN' )
   end
 
   def self.nad_increase_volume

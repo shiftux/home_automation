@@ -10,6 +10,7 @@
 ### END INIT INFO
 
 # from : https://github.com/fhd/init-script-template
+# via: https://stackoverflow.com/questions/7221757/run-automatically-program-on-startup-under-linux-ubuntu
 
 dir="/opt/home_automation/"
 cmd="rackup -o 0.0.0.0"
