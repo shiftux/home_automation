@@ -9,6 +9,8 @@ module Spotify
     "discover_weekly_saves" => "spotify:user:shiftux:playlist:3jsoStJkZ2N97oh1bJBCdF",
     "easy_on_the_ears" => "spotify:user:shiftux:playlist:7r0UpOkMuDWIMobO1HDEjh",
     "starred" => "spotify:user:shiftux:playlist:3yCTHjJl9xBLqukdvQqYon",
+    "great_ballads" => "spotify:user:shiftux:playlist:1T5H1xkw9xP1nG9oFG276S",
+    "funky" => "spotify:user:shiftux:playlist:38vMaIdHyEKUllTPqC2lzu",
   }
 
   def self.play
