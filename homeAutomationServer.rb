@@ -76,6 +76,7 @@ class HomeAutomationServer < Sinatra::Base
   end
 
   get '/watch_tv' do
+    IR.nad_power_on
     Spotify.stop
     IR.arcam_tv_input
     IR.samsung_toggle_power unless Ping.tv_up
