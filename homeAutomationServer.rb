@@ -2,6 +2,7 @@
 require 'sinatra/base'
 require './spotify.rb'
 require './infrared.rb'
+require './ping.rb'
 
 class HomeAutomationServer < Sinatra::Base
 
@@ -65,6 +66,12 @@ class HomeAutomationServer < Sinatra::Base
 
   get '/samsung_toggle_power' do
     IR.samsung_toggle_power
+  end
+
+  get '/turn_off_media' do
+    Spotify.spotify_stop
+    IR.nad_power_off
+    IR.samsung_toggle_power if Ping.tv_up
   end
 
 end
