@@ -16,6 +16,7 @@ class HomeAutomationServer < Sinatra::Base
   get '/spotify_play' do
     IR.nad_power_on
     IR.arcam_music_input
+    IR.samsung_toggle_power if Ping.tv_up
     Spotify.play
   end
 
@@ -69,8 +70,8 @@ class HomeAutomationServer < Sinatra::Base
   end
 
   get '/turn_off_media' do
-    Spotify.stop
     IR.nad_power_off
+    Spotify.stop
     IR.samsung_toggle_power if Ping.tv_up
   end
 
