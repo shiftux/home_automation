@@ -69,7 +69,7 @@ class HomeAutomationServer < Sinatra::Base
   end
 
   get '/turn_off_media' do
-    Spotify.spotify_stop
+    Spotify.stop
     IR.nad_power_off
     IR.samsung_toggle_power if Ping.tv_up
   end
