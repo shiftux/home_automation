@@ -1,4 +1,6 @@
 require './rest_request.rb'
+require 'rubygems'
+require 'json'
 
 module Spotify
 
@@ -11,6 +13,7 @@ module Spotify
     "starred" => "spotify:user:shiftux:playlist:3yCTHjJl9xBLqukdvQqYon",
     "great_ballads" => "spotify:user:shiftux:playlist:1T5H1xkw9xP1nG9oFG276S",
     "funky" => "spotify:user:shiftux:playlist:38vMaIdHyEKUllTPqC2lzu",
+    "no_isi" => "spotify:user:shiftux:playlist:7Mm1cpwJTIYEcZnnOA9ONa",
   }
 
   def self.play
@@ -22,12 +25,18 @@ module Spotify
   end
 
   def self.next_song
-    spotifyRequest(["playlist","jump","1"])
+    next_index = get_current_song_index + 1
+    spotifyRequest(["playlist","jump","#{next_index}"])
   end
 
   def self.play_playlist(playlist_name)
     playlist = playlist_name.downcase.tr(" ", "_")
     spotifyRequest(["playlist","play",@@playlists[playlist]])
+  end
+
+  def self.get_current_song_index
+    reply = JSON.parse(spotifyRequest(["status"]))
+    reply["result"]["playlist_cur_index"].to_i
   end
 
   def self.spotifyRequest(playerCommand)
