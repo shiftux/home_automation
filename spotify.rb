@@ -34,8 +34,12 @@ module Spotify
     spotifyRequest(["playlist","play",@@playlists[playlist]])
   end
 
+  def self.get_status
+    JSON.parse(spotifyRequest(["status"]))
+  end
+
   def self.get_current_song_index
-    reply = JSON.parse(spotifyRequest(["status"]))
+    reply = get_status
     reply["result"]["playlist_cur_index"].to_i
   end
 

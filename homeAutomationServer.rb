@@ -28,6 +28,10 @@ class HomeAutomationServer < Sinatra::Base
     Spotify.next_song
   end
 
+  get '/get_status' do
+    Spotify.next_song
+  end
+
   get '/spotify_play_playlist/:playlist_name' do
     IR.nad_power_on
     IR.arcam_music_input
