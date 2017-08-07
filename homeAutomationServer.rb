@@ -28,7 +28,7 @@ class HomeAutomationServer < Sinatra::Base
     Spotify.next_song
   end
 
-  get '/get_status' do
+  get '/spotify_get_status' do
     Spotify.next_song
   end
 
