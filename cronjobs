@@ -1,0 +1,1 @@
+*/5 * * * * /usr/bin/curl http://shiftux.ddns.net:9292/spotify_get_status >> /opt/home_automation/cronjob.log 2>&1

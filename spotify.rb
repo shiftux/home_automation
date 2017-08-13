@@ -14,6 +14,7 @@ module Spotify
     "great_ballads" => "spotify:user:shiftux:playlist:1T5H1xkw9xP1nG9oFG276S",
     "funky" => "spotify:user:shiftux:playlist:38vMaIdHyEKUllTPqC2lzu",
     "no_isi" => "spotify:user:shiftux:playlist:7Mm1cpwJTIYEcZnnOA9ONa",
+    "rock_this" => "spotify:user:spotify:playlist:37i9dQZF1DXcF6B6QPhFDv",
   }
 
   def self.play
