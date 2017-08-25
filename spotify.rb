@@ -15,6 +15,7 @@ module Spotify
     "funky" => "spotify:user:shiftux:playlist:38vMaIdHyEKUllTPqC2lzu",
     "no_isi" => "spotify:user:shiftux:playlist:7Mm1cpwJTIYEcZnnOA9ONa",
     "rock_this" => "spotify:user:spotify:playlist:37i9dQZF1DXcF6B6QPhFDv",
+    "classic_rock" => "spotify:user:shiftux:playlist:41AMKtHMrxkYVcb6tq91Tb",
   }
 
   def self.play
