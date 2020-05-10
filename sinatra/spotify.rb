@@ -4,7 +4,7 @@ require 'json'
 
 module Spotify
 
-  @@spotifyServer = 'http://192.168.1.125:9000'
+  @@spotifyServer = 'http://192.168.0.17:9000'
   @@defaultPlayer = "b8:27:eb:12:7c:b1"
   @@playlists = {
     "discover_weekly" => "spotify:user:spotify:playlist:37i9dQZEVXcSlMQNVajogn",
@@ -16,6 +16,7 @@ module Spotify
     "no_isi" => "spotify:user:shiftux:playlist:7Mm1cpwJTIYEcZnnOA9ONa",
     "rock_this" => "spotify:user:spotify:playlist:37i9dQZF1DXcF6B6QPhFDv",
     "classic_rock" => "spotify:user:shiftux:playlist:41AMKtHMrxkYVcb6tq91Tb",
+    # "morning_news" => "spotify:show:2yltdfmAGQsU8UnsTBjWwV", not working
   }
 
   def self.play

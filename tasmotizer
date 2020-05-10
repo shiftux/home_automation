@@ -1,0 +1,6 @@
+tasmotizer is the tasmota flashing tool to flash the sonoffs
+
+https://github.com/tasmota/tasmotizer
+
+installed in 
+/usr/local/bin/tasmotizer.py

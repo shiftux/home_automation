@@ -2,7 +2,7 @@ require 'net/ping'
 
 module Ping
 
-  @@TV_IP = '192.168.1.109'
+  @@TV_IP = '192.168.0.14'
 
   def self.tv_up
     up?(@@TV_IP)
