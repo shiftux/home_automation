@@ -1,6 +1,13 @@
-
-# Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
+
+homeassistant:
+  # Name of the location where HA is running
+  name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  unit_system: metric
+  time_zone: !secret time_zone
+  elevation: !secret elevation 
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 # http:
@@ -22,3 +29,5 @@ sensor transport: !include sensor_transport.yaml
 sensor river: !include sensor_river.yaml
 #remote: !include remote.yaml
 switch: !include switch.yaml
+binary_sensor: !include tv_sensor.yaml
+python_script:

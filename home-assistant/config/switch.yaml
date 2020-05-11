@@ -8,3 +8,78 @@
         friendly_name: "Samsung Tv Power"
         command_on: 'JgCMAJSSEzYUNhM1FBETERQRExEUERQ1FDUUNRQRExEUERMRFBEUEBQ2ExEUERMRFBETERQREzYUEBQ2EzYTNhM2EzYUNRQABf2VkRQ2EzYTNhMRFBEUEBQRFBETNhM2EzYTERQRFBETERQRExEUNRQRExEUERMRFBEUERM2ExEUNRQ1FDUUNhM2EzYTAA0FAAAAAAAAAAAAAAAA'
         command_off: 'JgCMAJSSEzYUNhM1FBETERQRExEUERQ1FDUUNRQRExEUERMRFBEUEBQ2ExEUERMRFBETERQREzYUEBQ2EzYTNhM2EzYUNRQABf2VkRQ2EzYTNhMRFBEUEBQRFBETNhM2EzYTERQRFBETERQRExEUNRQRExEUERMRFBEUERM2ExEUNRQ1FDUUNhM2EzYTAA0FAAAAAAAAAAAAAAAA'
+
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: !secret broadlink_mac
+    timeout: 15
+    retry: 5
+    switches:
+      nad_receiver_power:
+        friendly_name: "NAD Receiver"
+        command_on: 'JgBIAAABKI4XNhQ1FDYTEhMSFBEUERQ1FBEUEhM2FDUUNRQ2FDUUERQ2ExITNhQRFBEUNhMSExIUERQ1FBEUNhM2FBEUNRQ2EwANBQ=='
+        command_off: 'JgBQAAABKJEUNhQ1FDUUEhMSExIUERQ1FBEUERQ2FDUUNRQ2FDUUERQRFBEUERQ2FBEUERQ1FDYTNhQ1FDYTEhQ1FDUUERQSEwAE9QABKEgUAA0FAAAAAAAAAAA='
+
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: !secret broadlink_mac
+    timeout: 15
+    retry: 5
+    switches:
+      nad_receiver_vol_up:
+        friendly_name: "NAD Receiver Volume Up"
+        command_on: 'JgBQAAABKJIUNRQ1FDYUERQRFBEUERQ1FBITEhQ1FDUUNhQ1FDUUEhMSExITEhQ1FBEUERQRFDYUNRQ1FDYUERQ1FDUUNhQRFAAE8wABKEgUAA0FAAAAAAAAAAA='
+        command_on: 'JgBQAAABKJIUNRQ1FDYUERQRFBEUERQ1FBITEhQ1FDUUNhQ1FDUUEhMSExITEhQ1FBEUERQRFDYUNRQ1FDYUERQ1FDUUNhQRFAAE8wABKEgUAA0FAAAAAAAAAAA='        
+
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: !secret broadlink_mac
+    timeout: 15
+    retry: 5
+    switches:
+      nad_receiver_vol_down:
+        friendly_name: "NAD Receiver Volume Down"
+        command_on: 'JgBIAAABKJIUNRQ1FDYUERQRFBEUERQ1FBITEhM2FDUUNhM2FDUUERQRFBITNhQ1FBEUERQSEzYUNRQ1FBITEhQ1FDUUNhQRFAANBQ=='
+        command_off: 'JgBIAAABKJIUNRQ1FDYUERQRFBEUERQ1FBITEhM2FDUUNhM2FDUUERQRFBITNhQ1FBEUERQSEzYUNRQ1FBITEhQ1FDUUNhQRFAANBQ=='
+
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: !secret broadlink_mac
+    timeout: 15
+    retry: 5
+    switches:
+      nad_receiver_select_opt1:
+        friendly_name: "NAD Receiver Select Music"
+        command_on: 'JgAwAB4cPDkeHTs5Hh07HR0dHhweHR4cHgALph0dOzoeHTs5Hh07HB4dHhweHR4cHgANBQAAAAAAAAAA'
+        command_off: 'JgAwAB4cPDkeHTs5Hh07HR0dHhweHR4cHgALph0dOzoeHTs5Hh07HB4dHhweHR4cHgANBQAAAAAAAAAA'
+
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: !secret broadlink_mac
+    timeout: 15
+    retry: 5
+    switches:
+      nad_receiver_select_opt2:
+        friendly_name: "NAD Receiver Select TV"
+        command_on: 'JgAYAB4dHR0eHB4dOzodHTsdHhweHR06OwANBQ=='
+        command_off: 'JgAYAB4dHR0eHB4dOzodHTsdHhweHR06OwANBQ=='
+
+  - platform: template
+    switches:
+      tv_samsung_toggle_button:
+        friendly_name: "Samsung Tv Power"
+        value_template: "{{ is_state('binary_sensor.tv_status', 'on') }}"
+        turn_on:
+          service: switch.turn_on
+          data:
+            entity_id: switch.tv_samsung
+        turn_off:
+          service: switch.turn_off
+          data:
+            entity_id: switch.tv_samsung
+        icon_template: >-
+          {% if is_state('binary_sensor.tv_status', 'on') %}
+            mdi:television
+          {% else %}
+            mdi:television-off
+          {% endif %}

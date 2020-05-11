@@ -6,3 +6,6 @@ deps/*
 .storage/*
 tts/*
 secrets.yaml
+*.swp
+*.db-shm
+*.db-wal
