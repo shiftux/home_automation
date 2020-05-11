@@ -19,13 +19,31 @@ services:
     image: eclipse-mosquitto
     container_name: mosquitto
     volumes:
-      - /Users/tgdmosaa/development/home_automation/mosquitto/config/:/mosquitto/config/
-      - /Users/tgdmosaa/development/home_automation/mosquitto/log:/mosquitto/log
-      - /Users/tgdmosaa/development/home_automation/mosquitto/data:/mosquitto/data
+      - /opt/home_automation/mosquitto/config/:/mosquitto/config/
+      - /opt/home_automation/mosquitto/log:/mosquitto/log
+      - /opt/home_automation/mosquitto/data:/mosquitto/data
     restart: unless-stopped
     ports:
       - "1883:1883"
       - "9001:9001"
+
+  home-assistant:
+    image: homeassistant/raspberrypi4-64-homeassistant
+    container_name: home-assistant
+    environment:
+      - TZ=Europe/Zurich
+    volumes: 
+      - /opt/home_automation/home-assistant/config/:/config/
+    ports:
+      - "8123:8123"
+    restart: unless-stopped
+    depends_on:
+      - mosquitto
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8123"]
+      interval: 30s
+      timeout: 10s
+      retries: 6
 
 # networks:
 #   docker-network:

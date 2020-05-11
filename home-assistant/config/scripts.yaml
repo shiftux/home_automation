@@ -1,0 +1,9 @@
+learn_tv_power_button:
+  alias: learn_tv_power_button
+  sequence:
+  - data:
+      alternative: true
+      command: power
+      device: switch.tv_samsung
+    entity_id: remote.ir_blaster
+    service: remote.learn_command

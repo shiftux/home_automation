@@ -1,0 +1,3 @@
+  platform: swiss_public_transport
+  from: !secret transport_from
+  to: !secret transport_to

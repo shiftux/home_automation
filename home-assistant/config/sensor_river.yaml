@@ -1,0 +1,6 @@
+  platform: swiss_hydrological_data
+  station: !secret river_station
+  monitored_conditions:
+    - temperature
+    - level
+    - discharge

@@ -1,0 +1,4 @@
+# https://github.com/websylv/homeassistant-meteoswiss
+  - platform: meteo-swiss
+    name: !secret my_city
+    postcode: !secret plz

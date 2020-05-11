@@ -1,0 +1,6 @@
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: !secret broadlink_mac
+    type: rm_mini
+    timeout: 15
+    name: "IR Blaster"

@@ -1,0 +1,2 @@
+  - platform: squeezebox
+    host: !secret squeezebox_ip

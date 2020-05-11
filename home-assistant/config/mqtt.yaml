@@ -1,0 +1,5 @@
+  broker: mosquitto
+  port: 1883
+  client_id: hass
+  username: !secret mqtt_user
+  password: !secret mqtt_pw
