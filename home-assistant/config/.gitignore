@@ -9,4 +9,4 @@ secrets.yaml
 *.swp
 *.db-shm
 *.db-wal
-*/__pycache__/*
+**/__pycache__/**

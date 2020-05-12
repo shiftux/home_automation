@@ -1,3 +1,4 @@
+# https://www.home-assistant.io/integrations/swiss_hydrological_data/  
   platform: swiss_hydrological_data
   station: !secret river_station
   monitored_conditions:

@@ -1,33 +1,32 @@
 default_config:
 
-homeassistant:
-  # Name of the location where HA is running
-  name: Home
-  latitude: !secret latitude
-  longitude: !secret longitude
-  unit_system: metric
-  time_zone: !secret time_zone
-  elevation: !secret elevation 
-
-# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-# http:
-#   base_url: example.duckdns.org:8123
-
 # Text to speech
 tts:
   - platform: google_translate
 
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
-mqtt: !include mqtt.yaml
-light: !include light.yaml
-media_player: !include media_player.yaml
-weather: !include weather.yaml
-sensor transport: !include sensor_transport.yaml
-sensor river: !include sensor_river.yaml
-#remote: !include remote.yaml
-switch: !include switch.yaml
-binary_sensor: !include tv_sensor.yaml
+# http: !include config_files/http.yaml
+homeassistant: !include config_files/homeassistant.yaml
+group: !include config_files/groups.yaml
+automation: !include config_files/automations.yaml
+script: !include config_files/scripts.yaml
+scene: !include config_files/scenes.yaml
+mqtt: !include config_files/mqtt.yaml
+light: !include config_files/light.yaml
+media_player: !include config_files/media_player.yaml
+weather: !include config_files/weather.yaml
+sensor transport: !include config_files/sensor_transport.yaml
+sensor river: !include config_files/sensor_river.yaml
+#remote: !include config_files/remote.yaml
+switch: !include config_files/switch.yaml
+binary_sensor: !include config_files/tv_sensor.yaml
+logger: !include config_files/logger.yaml
+
 python_script:
+
+api:
+
+alexa:
+  smart_home:
+    filter:
+      exclude_domains:
+        - media_player

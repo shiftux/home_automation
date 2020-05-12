@@ -1,0 +1,9 @@
+#logger:
+  default: warning
+  logs:
+    homeassistant.components.mqtt: info
+    homeassistant.components.python_script: info
+    custom_components.meteo-swiss.meteoswiss: error
+    homeassistant.components.http: info
+    homeassistant.components.alexa: info
+    homeassistant.components.squeezebox: info

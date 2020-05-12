@@ -1,5 +1,5 @@
   - platform: mqtt
-    name: "test-dual-red"
+    name: "Dual Red"
     command_topic: "test/sonoff-dual/cmnd/POWER2"
     state_topic: "test/sonoff-dual/tele/STATE"
     state_value_template: "{{value_json.POWER2}}"
@@ -11,7 +11,7 @@
     qos: 1
     retain: true
   - platform: mqtt
-    name: "test-dual-white"
+    name: "Dual White"
     command_topic: "test/sonoff-dual/cmnd/POWER1"
     state_topic: "test/sonoff-dual/tele/STATE"
     state_value_template: "{{value_json.POWER1}}"
@@ -23,7 +23,7 @@
     qos: 1
     retain: true
   - platform: mqtt
-    name: "test-basic"
+    name: "Basic"
     command_topic: "test/sonoff-basic/cmnd/POWER"
     state_topic: "test/sonoff-basic/tele/STATE"
     state_value_template: "{{value_json.POWER}}"
