@@ -14,6 +14,7 @@ services:
       - /opt/nginx-certbot/dh-param/:/etc/ssl/certs/
       - /opt/nginx-certbot/docker-volumes/etc/letsencrypt/live/hass.shiftux.org-0001/fullchain.pem:/etc/letsencrypt/live/hass.shiftux.org/fullchain.pem
       - /opt/nginx-certbot/docker-volumes/etc/letsencrypt/live/hass.shiftux.org-0001/privkey.pem:/etc/letsencrypt/live/hass.shiftux.org/privkey.pem
+    restart: unless-stopped
     networks:
       - docker-network
 

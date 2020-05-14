@@ -1,1 +1,56 @@
-{}
+#script:
+  turn_tv_off:
+    sequence: 
+      - condition: state
+        entity_id: binary_sensor.tv_status
+        state: 'on'
+      - service: homeassistant.turn_off
+        data:
+          entity_id: switch.tv_samsung
+  turn_tv_on:
+    sequence: 
+      - condition: state
+        entity_id: binary_sensor.tv_status
+        state: 'off'
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.tv_samsung
+  watch_tv:
+    sequence:
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.nad_receiver_power
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.nad_receiver_select_opt2
+      - service: script.turn_on
+        data:
+          entity_id: script.turn_tv_on
+      - service: media_player.media_pause
+        data:
+          entity_id: media_player.picorelivingroom
+  listen_music:
+    sequence:
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.nad_receiver_power
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.nad_receiver_select_opt1
+      - service: script.turn_on
+        data:
+          entity_id: script.turn_tv_off
+      - service: media_player.media_play
+        data:
+          entity_id: media_player.picorelivingroom
+  media:
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id: switch.nad_receiver_power
+      - service: script.turn_on
+        data:
+          entity_id: script.turn_tv_off
+      - service: media_player.media_pause
+        data:
+          entity_id: media_player.picorelivingroom
