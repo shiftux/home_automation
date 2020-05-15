@@ -216,6 +216,23 @@ var CONFIG = {
          title: 'Second page',
          bg: 'images/bg2.png',
          icon: 'mdi-weather-partly-cloudy',
+	 header: {
+   	   styles: {
+      	     padding: '10px 130px 0',
+      	     fontSize: '28px'
+           },
+   	   left: [
+      	     {
+               type: HEADER_ITEMS.TIME
+             }
+           ],
+     	   right: [
+	     {
+	       type: type: HEADER_ITEMS.DATE,
+               format: 'EEEE, d. MMMM'
+	     }
+	   ]
+	 },
          groups: [
             {
                title: 'Forecast Bern',
@@ -226,7 +243,7 @@ var CONFIG = {
                      position: [0, 0],
                      width: 3,
 		     height: 2,
-		     refresh: 100000,
+		     refresh: 1000000,
                      title: '',
                      type: TYPES.IFRAME,
                      id: {}, // using empty object for an unknown id
@@ -236,7 +253,7 @@ var CONFIG = {
                      position: [0, 2],
                      width: 3,
 		     height: 2,
-		     refresh: 100000,
+		     refresh: 1000000,
                      title: 'Daily Graph',
                      type: TYPES.IFRAME,
                      id: {}, // using empty object for an unknown id
@@ -253,7 +270,7 @@ var CONFIG = {
                      position: [0, 0],
                      width: 3,
 		     height: 3,
-		     refresh: 100000,
+		     refresh: 1000000,
                      title: 'Radar',
                      type: TYPES.IFRAME,
                      id: {}, // using empty object for an unknown id
@@ -262,7 +279,7 @@ var CONFIG = {
                   {
                      position: [0, 3],
 		        type: TYPES.SENSOR,
-   			title: 'Aare Temp',
+   			title: 'Aare Temperature',
    			id: 'sensor.aare_temperature',
    			unit: 'C', // override default entity unit
    			state: false, // hidding state
