@@ -31,14 +31,18 @@ var CONFIG = {
 
    header: { // https://github.com/resoai/TileBoard/wiki/Header-configuration
       styles: {
-         padding: '30px 130px 0',
+         padding: '10px 130px 0',
          fontSize: '28px'
       },
-      right: [],
       left: [
          {
-            type: HEADER_ITEMS.DATETIME,
-            dateFormat: 'EEEE, LLLL dd', //https://docs.angularjs.org/api/ng/filter/date
+            type: HEADER_ITEMS.TIME
+         }
+      ],
+      right: [
+         {
+            type: HEADER_ITEMS.DATE,
+            format: 'EEEE, d. MMMM'
          }
       ]
    },
@@ -216,23 +220,6 @@ var CONFIG = {
          title: 'Second page',
          bg: 'images/bg2.png',
          icon: 'mdi-weather-partly-cloudy',
-	 header: {
-   	   styles: {
-      	     padding: '10px 130px 0',
-      	     fontSize: '28px'
-           },
-   	   left: [
-      	     {
-               type: HEADER_ITEMS.TIME
-             }
-           ],
-     	   right: [
-	     {
-	       type: type: HEADER_ITEMS.DATE,
-               format: 'EEEE, d. MMMM'
-	     }
-	   ]
-	 },
          groups: [
             {
                title: 'Forecast Bern',
