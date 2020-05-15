@@ -52,6 +52,36 @@ services:
     networks:
       - docker-network
 
+  weather-forecast:
+    image: nginx:latest
+    container_name: weather-forecast
+    volumes: 
+      - /opt/home_automation/local-weather-sites/forecast:/usr/share/nginx/html
+      - /opt/home_automation/local-weather-sites/forecast/config:/etc/nginx/conf.d 
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+  
+  weather-radar:
+    image: nginx:latest
+    container_name: weather-radar
+    volumes: 
+      - /opt/home_automation/local-weather-sites/radar:/usr/share/nginx/html
+      - /opt/home_automation/local-weather-sites/radar/config:/etc/nginx/conf.d 
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+
+  weather-daily:
+    image: nginx:latest
+    container_name: weather-daily
+    volumes: 
+      - /opt/home_automation/local-weather-sites/daily:/usr/share/nginx/html
+      - /opt/home_automation/local-weather-sites/daily/config:/etc/nginx/conf.d 
+    ports:
+      - "8082:80"
+    restart: unless-stopped
+
 networks:
   docker-network:
     driver: bridge
