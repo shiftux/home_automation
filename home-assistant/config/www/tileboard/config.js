@@ -84,19 +84,21 @@ var CONFIG = {
                      width: 3,
                      height: 2,
                      refresh: 1000000,
-                     title: '',
+                     title: 'Weather Bern',
                      type: TYPES.IFRAME,
                      id: {}, // using empty object for an unknown id
                      url: "http://192.168.0.28:8080/"
                   },
                   {
                      position: [0, 2],
-                     id: 'media_player.piCoreLivingRoom',
+                     width: 3,
+                     height: 2,
+                     id: 'media_player.picorelivingroom',
                      type: TYPES.MEDIA_PLAYER,
                      hideSource: false,
                      hideMuteButton: false,
                      // state: false,
-                     state: '@attributes.media_title',
+                     title: '@attributes.media_title',
                      subtitle: '@attributes.media_artist',
                      bgSuffix: '@attributes.entity_picture',
                   },
@@ -193,7 +195,7 @@ var CONFIG = {
                      state: false
                   },
                   {
-                     position: [0, 4],
+                     position: [0, 3],
                      type: TYPES.SCRIPT,
                      id: 'script.media',
                      title: 'Media Off',
