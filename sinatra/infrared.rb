@@ -37,7 +37,7 @@ module IR
   end
 
   def self.irRequest(command)
-    command = "python ../BlackBeanControl/BlackBeanControl.py -c #{command}"
+    command = "python /opt/BlackBeanControl/BlackBeanControl.py -c #{command}"
     %x( eval "#{command}" )
   end
 
