@@ -102,6 +102,34 @@ var CONFIG = {
                      subtitle: '@attributes.media_artist',
                      bgSuffix: '@attributes.entity_picture',
                   },
+                  {
+                     position: [3, 2],
+                     type: TYPES.SWITCH,
+                     id: 'switch.switch.nad_receiver_vol_up',
+                     title: '',
+                     states: {
+                        on: "On",
+                        off: "Off"
+                     },
+                     icons: {
+                        on: "mdi-volume-plus",
+                        off: "mdi-volume-plus",
+                     }
+                  },
+                  {
+                     position: [3, 3],
+                     type: TYPES.SWITCH,
+                     id: 'switch.switch.nad_receiver_vol_down',
+                     title: '',
+                     states: {
+                        on: "On",
+                        off: "Off"
+                     },
+                     icons: {
+                        on: "mdi-volume-minus",
+                        off: "mdi-volume-minus",
+                     }
+                  }
                ]
             },
             {
