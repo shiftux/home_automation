@@ -233,7 +233,7 @@ var CONFIG = {
 		     refresh: 1000000,
                      title: '',
                      type: TYPES.IFRAME,
-                     id: {weather-forecast}, // using empty object for an unknown id
+                     id: "weather-forecast", // using empty object for an unknown id
 		     url: "http://192.168.0.28:8080/"
                    },
                   {
@@ -243,7 +243,7 @@ var CONFIG = {
 		     refresh: 1000000,
                      title: 'Daily Graph',
                      type: TYPES.IFRAME,
-                     id: {weather-daily}, // using empty object for an unknown id
+                     id: "weather-daily", // using empty object for an unknown id
 		     url: "http://192.168.0.28:8080/"
                    }
                 ]
@@ -260,7 +260,7 @@ var CONFIG = {
 		     refresh: 1000000,
                      title: 'Radar',
                      type: TYPES.IFRAME,
-                     id: {weather-radar}, // using empty object for an unknown id
+                     id: "weather-radar", // using empty object for an unknown id
 		     url: "http://192.168.0.28:8080/"
                    },
                   {
