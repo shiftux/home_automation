@@ -11,8 +11,8 @@ var CONFIG = {
    customTheme: null, // CUSTOM_THEMES.TRANSPARENT, CUSTOM_THEMES.MATERIAL, CUSTOM_THEMES.MOBILE, CUSTOM_THEMES.COMPACT, CUSTOM_THEMES.HOMEKIT, CUSTOM_THEMES.WINPHONE, CUSTOM_THEMES.WIN95
    transition: TRANSITIONS.ANIMATED_GPU, //ANIMATED or SIMPLE (better perfomance)
    entitySize: ENTITY_SIZES.NORMAL, //SMALL, BIG are available
-   tileSize: 130,
-   tileMargin: 6,
+   tileSize: 150,
+   tileMargin: 4,
    serverUrl: 'http://' + location.hostname + ':8123',
    wsUrl: 'ws://' + location.hostname + ':8123/api/websocket',
    authToken: null, // optional long-lived token (CAUTION: only if TileBoard is not exposed to the internet)
@@ -31,7 +31,7 @@ var CONFIG = {
 
    header: { // https://github.com/resoai/TileBoard/wiki/Header-configuration
       styles: {
-         padding: '10px 130px 50px 0px',
+         padding: '40px 130px 50px 50px',
          fontSize: '28px'
       },
       left: [
@@ -104,7 +104,7 @@ var CONFIG = {
             },
             {
                title: 'Second group',
-               width: 4,
+               width: 3,
                height: 4,
                items: [
                   {
@@ -125,7 +125,7 @@ var CONFIG = {
                   },
                   {
                      type: TYPES.LIGHT,
-                     position: [0, 0],
+                     position: [1, 0],
                      title: 'Living Room',
                      // subtitle: 'Lounge',
                      id: 'light.dual_red',
@@ -141,7 +141,7 @@ var CONFIG = {
                   }, 
                   {
                      type: TYPES.LIGHT,
-                     position: [0, 0],
+                     position: [2, 0],
                      title: 'Kitchen',
                      // subtitle: 'Lounge',
                      id: 'light.dual_white',
@@ -157,7 +157,7 @@ var CONFIG = {
                   },
                   {
                      type: TYPES.LIGHT,
-                     position: [0, 0],
+                     position: [0, 1],
                      title: 'Dining Room',
                      // subtitle: 'Lounge',
                      id: 'light.basic',
@@ -171,6 +171,46 @@ var CONFIG = {
                         off: "mdi-lightbulb",
                      },
                   },
+                  {
+                     position: [0, 3],
+                     type: TYPES.SCRIPT,
+                     id: 'script.listen_music',
+                     icons: {
+                        on: "mdi-music",
+                        off: "mdi-music"
+                     },
+                     state: false
+                  },
+                  {
+                     position: [1, 3],
+                     type: TYPES.SCRIPT,
+                     id: 'script.watch_tv',
+                     icons: {
+                        on: "mdi-movie-open",
+                        off: "mdi-movie-open"
+                     },
+                     state: false
+                  },
+                  {
+                     position: [0, 4],
+                     type: TYPES.SCRIPT,
+                     id: 'script.media',
+                     icons: {
+                        on: "mdi-stop-circle-outline",
+                        off: "mdi-stop-circle-outline"
+                     },
+                     state: false
+                  },
+                  {
+                     position: [3, 4],
+                     type: TYPES.SCRIPT,
+                     id: 'script.all_off',
+                     icons: {
+                        on: "mdi-flash-off",
+                        off: "mdi-flash-off"
+                     },
+                     state: false
+                  }
                ]
             },
          ]
