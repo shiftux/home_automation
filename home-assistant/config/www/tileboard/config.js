@@ -172,7 +172,7 @@ var CONFIG = {
                      },
                   },
                   {
-                     position: [0, 3],
+                     position: [0, 2],
                      type: TYPES.SCRIPT,
                      id: 'script.listen_music',
                      icons: {
@@ -182,8 +182,9 @@ var CONFIG = {
                      state: false
                   },
                   {
-                     position: [1, 3],
+                     position: [1, 2],
                      type: TYPES.SCRIPT,
+                     title: 'Watch TV',
                      id: 'script.watch_tv',
                      icons: {
                         on: "mdi-movie-open",
@@ -195,21 +196,23 @@ var CONFIG = {
                      position: [0, 4],
                      type: TYPES.SCRIPT,
                      id: 'script.media',
+                     title: 'Media Off',
                      icons: {
                         on: "mdi-stop-circle-outline",
                         off: "mdi-stop-circle-outline"
                      },
                      state: false
-                  },
-                  {
-                     position: [3, 4],
-                     type: TYPES.SCRIPT,
-                     id: 'script.all_off',
-                     icons: {
-                        on: "mdi-flash-off",
-                        off: "mdi-flash-off"
-                     },
-                     state: false
+                  // },
+                  // {
+                  //    position: [3, 4],
+                  //    type: TYPES.SCRIPT, 
+                  //    title: 'All off',
+                  //    id: 'script.all_off',
+                  //    icons: {
+                  //       on: "mdi-flash-off",
+                  //       off: "mdi-flash-off"
+                  //    },
+                  //    state: false
                   }
                ]
             },
