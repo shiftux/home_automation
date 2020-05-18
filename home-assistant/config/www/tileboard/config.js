@@ -294,35 +294,36 @@ var CONFIG = {
                    },
                   {
                      position: [0, 3],
+                     width: 1.5,
+                     height: 1,
+                     title: 'Energy Production',
+                     subtitle: '',
                      type: TYPES.GAUGE,
-                     title: 'Aare Temperature',
-                     id: 'sensor.aare_temperature',
-                     unit: 'C', // override default entity unit
-                     state: false, // hidding state
-                     // filter: function (value) { // optional
-                     //    var num = parseFloat(value);
-                     //    return num && !isNaN(num) ? num.toFixed(1) : value;
-                     // },
+                     id: 'sensor.aare_temperature', // Assign the sensor you want to display on the gauge
                      value: function (item, entity) {
                         return entity.state;
                      },
                      settings: {
+                        size: 200, // Defaults to 50% of either height or width, whichever is smaller
                         type: 'full', // Options are: 'full', 'semi', and 'arch'. Defaults to 'full'
-                        min: 4, // https://aaremarzili.info/
-                        max: 24, // Defaults to 100
+                        min: 0, // Defaults to 0
+                        max: 100, // Defaults to 100
                         cap: 'round', // Options are: 'round', 'butt'. Defaults to 'butt'
                         thick: 6, // Defaults to 6
-                        label: 'Aare Temperature label', // Defaults to undefined
+                        label: 'My Gauge', // Defaults to undefined
                         append: '@attributes.unit_of_measurement', // Defaults to undefined
-                        // prepend: '$', // Defaults to undefined
-                        duration: 300000, // Defaults to 1500ms
-                        thresholds: { 4: { color: 'red' }, 14: { color: 'orange' }, 18: { color: 'green' } },  // Defaults to undefined
+                        prepend: '$', // Defaults to undefined
+                        duration: 1500, // Defaults to 1500ms
+                        thresholds: { 0: { color: 'green' }, 80: { color: 'red' } },  // Defaults to undefined
                         labelOnly: false, // Defaults to false
                         foregroundColor: 'rgba(0, 150, 136, 1)', // Defaults to rgba(0, 150, 136, 1)
                         backgroundColor: 'rgba(0, 0, 0, 0.1)', // Defaults to rgba(0, 0, 0, 0.1)
-                        fractionSize: 1, // Number of decimal places to round the number to. Defaults to current locale formatting
-                     }
-                   },
+                        fractionSize: 0, // Number of decimal places to round the number to. Defaults to current locale formatting
+                     },
+                  },
+                   // sensor.aare_temperature
+                   // min 4
+                   // max 24
                   {
                      position: [1, 3],
                      type: TYPES.SENSOR,
