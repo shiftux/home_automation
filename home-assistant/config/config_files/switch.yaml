@@ -88,7 +88,7 @@
     switches:
       lms_shuffle:
         friendly_name: "Shuffle"
-        value_template: "{{ is_state('binary_sensor.lms_shuffle_status', 'on') }}"
+        value_template: "{{ is_state_attr('media_player.picorelivingroom', 'shuffle', 'song') }}"
         turn_on:
           service:  squeezebox.call_method
           data: 
@@ -102,7 +102,7 @@
             command: "playlist"
             parameters: ["shuffle","0"]
         icon_template: >-
-          {% if is_state('binary_sensor.lms_shuffle_status', 'song') %}
+          {% if is_state_attr('media_player.picorelivingroom', 'shuffle', 'song')%}
             mdi:shuffle-variant
           {% else %}
             mdi:shuffle-disabled
