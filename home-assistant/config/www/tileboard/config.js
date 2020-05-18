@@ -326,7 +326,7 @@ var CONFIG = {
       },
       {
          title: 'Music page',
-         bg: 'images/bg5.jpeg',
+         bg: 'images/bg5.jpg',
          icon: 'mdi-music', // home icon
          groups: [
             {
