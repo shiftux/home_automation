@@ -14,6 +14,9 @@ var CONFIG = {
    tileSize: 150,
    tileMargin: 4,
    serverUrl: 'http://' + location.hostname + ':8123',
+   /* wsUrl: The URL to your HomeAssistant Websocket connection.
+   * If HomeAssistant is behind SSL, replace ws:// with wss://
+   */
    wsUrl: 'ws://' + location.hostname + ':8123/api/websocket',
    authToken: null, // optional long-lived token (CAUTION: only if TileBoard is not exposed to the internet)
    //googleApiKey: "XXXXXXXXXX", // Required if you are using Google Maps for device tracker
@@ -94,7 +97,7 @@ var CONFIG = {
                      width: 2,
                      height: 2,
                      id: 'media_player.picorelivingroom',
-                     type: TYPES.MEDIA_PLAYER,
+                     type: TYPES.CUSTOM,
                      hideSource: false,
                      hideMuteButton: false,
                      // state: false,
