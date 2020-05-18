@@ -7,6 +7,7 @@
       - service: homeassistant.turn_off
         data:
           entity_id: switch.tv_samsung
+
   turn_tv_on:
     sequence: 
       - condition: state
@@ -15,6 +16,7 @@
       - service: homeassistant.turn_on
         data:
           entity_id: switch.tv_samsung
+
   watch_tv:
     sequence:
       - service: homeassistant.turn_on
@@ -29,6 +31,7 @@
       - service: media_player.media_pause
         data:
           entity_id: media_player.picorelivingroom
+
   listen_music:
     sequence:
       - service: homeassistant.turn_on
@@ -43,6 +46,7 @@
       - service: media_player.media_play
         data:
           entity_id: media_player.picorelivingroom
+
   media:
     sequence:
       - service: homeassistant.turn_off
@@ -54,14 +58,136 @@
       - service: media_player.media_pause
         data:
           entity_id: media_player.picorelivingroom
+
   volume_up:
     sequence:
       - service: homeassistant.turn_on
         data:
           entity_id: switch.nad_receiver_vol_up
+
   volume_down:
     sequence:
       - service: homeassistant.turn_on
         data:
           entity_id: switch.nad_receiver_vol_down
 
+  playlist_easy_on_the_ears:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.turn_tv_off
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:7r0UpOkMuDWIMobO1HDEjh"]
+
+  playlist_discover_weekly:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.turn_tv_off
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:37i9dQZEVXcSlMQNVajogn"]
+ 
+  playlist_discover_weekly_saves:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.turn_tv_off
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:3jsoStJkZ2N97oh1bJBCdF"]
+  
+  playlist_starred:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.turn_tv_off
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:3yCTHjJl9xBLqukdvQqYon"]
+  
+  playlist_funky:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.turn_tv_off
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:38vMaIdHyEKUllTPqC2lzu"]
+  
+  playlist_no_isi:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.turn_tv_off
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:7Mm1cpwJTIYEcZnnOA9ONa"]
+  
+  playlist_discoveries:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.turn_tv_off
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:2NpsOCEnbmMkYYJFLprN6z"]
+  
+  playlist_grrif_style:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.turn_tv_off
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:5tnNlKZiGL8Piuoesvp6XV"]
+  
+  playlist_new_isi:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.turn_tv_off
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:6SKAjeSmHZXBAvnwsDylnb"]
+  
+  playlist_organica_deep_house:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.turn_tv_off
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:playlist:1ulmdUuvDGT0tRhbEKbA2M"]
+  
+  playlist_workout:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.turn_tv_off
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:6ws8F7hkTTOMFm8QnumZ04"]
