@@ -72,4 +72,75 @@
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:user:shiftux:playlist:7r0UpOkMuDWIMobO1HDEjh"]
-
+  
+  playlist_discover_weekly:
+    sequence:
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:37i9dQZEVXcSlMQNVajogn"]
+ 
+  playlist_discover_weekly_saves:
+    sequence:
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:3jsoStJkZ2N97oh1bJBCdF"]
+  
+  playlist_starred:
+    sequence:
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:3yCTHjJl9xBLqukdvQqYon"]
+  
+  playlist_funky:
+    sequence:
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:38vMaIdHyEKUllTPqC2lzu"]
+  
+  playlist_no_isi:
+    sequence:
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:7Mm1cpwJTIYEcZnnOA9ONa"]
+  
+  playlist_discoveries:
+    sequence:
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:2NpsOCEnbmMkYYJFLprN6z"]
+  
+  playlist_grrif_style:
+    sequence:
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:5tnNlKZiGL8Piuoesvp6XV"]
+  
+  playlist_new_isi:
+    sequence:
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:6SKAjeSmHZXBAvnwsDylnb"]
+  
+  playlist_organica_deep_house:
+    sequence:
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:playlist:1ulmdUuvDGT0tRhbEKbA2M"]
