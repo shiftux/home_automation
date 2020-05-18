@@ -1605,7 +1605,7 @@ camera_stream div {
 .media-player--source:active {
   background: rgba(0, 0, 0, 0.3);
 }
-.media-player-table .-custom {
+.media-player-table .custom {
   position: absolute;
   left: 0;
   right: 0;

@@ -97,7 +97,7 @@ var CONFIG = {
                      width: 2,
                      height: 2,
                      id: 'media_player.picorelivingroom',
-                     type: TYPES.CUSTOM,
+                     type: TYPES.MEDIA_PLAYER_CUSTOM,
                      hideSource: false,
                      hideMuteButton: false,
                      // state: false,
