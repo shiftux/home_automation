@@ -470,8 +470,8 @@ var CONFIG = {
                      id: 'script.playlist_grrif_style',
                      title: 'Grrif Style',
                      icons: {
-                        on: "mdi-alpha-g-outline",
-                        off: "mdi-alpha-g-outline"
+                        on: "mdi-alpha-g-circle-outline",
+                        off: "mdi-alpha-g-circle-outline"
                      },
                      state: false
                   },
