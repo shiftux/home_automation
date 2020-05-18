@@ -18,7 +18,7 @@ sensor transport: !include config_files/sensor_transport.yaml
 sensor river: !include config_files/sensor_river.yaml
 #remote: !include config_files/remote.yaml
 switch: !include config_files/switch.yaml
-binary_sensor: !include config_files/tv_sensor.yaml
+binary_sensor: !include config_files/binary_sensor.yaml
 logger: !include config_files/logger.yaml
 
 python_script:

@@ -1,0 +1,12 @@
+#binary_sensor:
+  - platform: ping
+    name: "tv_status"
+    host: 192.168.0.19
+    scan_interval: 10
+
+  - platform: template
+    sensors:
+      lms_shuffle:
+        friendly_name: "Shuffle"
+        value_template: >-
+          {{ state_attr('media_player.picorelivingroom', 'shuffle') }}

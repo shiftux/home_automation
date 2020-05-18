@@ -83,3 +83,27 @@
           {% else %}
             mdi:television-off
           {% endif %}
+
+  - platform: template
+    switches:
+      lms_shuffle:
+        friendly_name: "Shuffle"
+        value_template: "{{ is_state('binary_sensor.lms_shuffle_status', 'on') }}"
+        turn_on:
+          service:  squeezebox.call_method
+          data: 
+            entity_id: "media_player.picorelivingroom"
+            command: "playlist"
+            parameters: ["shuffle","1"]
+        turn_off:
+          service:  squeezebox.call_method
+          data: 
+            entity_id: "media_player.picorelivingroom"
+            command: "playlist"
+            parameters: ["shuffle","0"]
+        icon_template: >-
+          {% if is_state('binary_sensor.lms_shuffle_status', 'song') %}
+            mdi:shuffle-variant
+          {% else %}
+            mdi:shuffle-disabled
+          {% endif %}
