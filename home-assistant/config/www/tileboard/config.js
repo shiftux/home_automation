@@ -381,6 +381,17 @@ var CONFIG = {
                      }
                   },
                   {
+                     position: [1, 3],
+                     type: TYPES.SWITCH,
+                     id: 'switch.lms_shuffle',
+                     title: '',
+                     state: false,
+                     icons: {
+                        on: "mdi-shuffle-variant",
+                        off: "mdi-shuffle-disabled",
+                     }
+                  },
+                  {
                      position: [2, 3],
                      type: TYPES.SCRIPT,
                      id: 'script.media',
