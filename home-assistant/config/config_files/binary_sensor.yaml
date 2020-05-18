@@ -4,9 +4,9 @@
     host: 192.168.0.19
     scan_interval: 10
 
-  # - platform: template
-  #   sensors:
-  #     lms_shuffle:
-  #       friendly_name: "Shuffle"
-  #       value_template: >-
-  #         {{ state_attr('media_player.picorelivingroom', 'shuffle') }}
+  - platform: template
+    sensors:
+      lms_shuffle:
+        friendly_name: "Shuffle Sensor"
+        value_template: >-
+          {{ is_state_attr('media_player.picorelivingroom', 'shuffle', 'song') }}

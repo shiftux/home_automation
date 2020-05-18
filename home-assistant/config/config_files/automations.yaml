@@ -10,6 +10,7 @@
           entity_id: binary_sensor.tv_status
           allow_create: False
           state: 'on'
+
   - alias: "TV turned off"
     trigger:
       platform: state
@@ -21,3 +22,21 @@
           entity_id: binary_sensor.tv_status
           allow_create: False
           state: 'off'
+
+  - alias: "LMS switched shuffle off"
+    trigger:
+      platform: state
+      entity_id: "binary_sensor.lms_shuffle"
+      to: 'off'
+    action:
+      - service: switch.turn_off
+        entity_id: switch.lms_shuffle
+
+  - alias: "LMS switched shuffle on"
+    trigger:
+      platform: state
+      entity_id: "binary_sensor.lms_shuffle"
+      to: 'on'
+    action:
+      - service: switch.turn_on
+        entity_id: switch.lms_shuffle
