@@ -15,7 +15,11 @@ module Spotify
     "funky" => "spotify:user:shiftux:playlist:38vMaIdHyEKUllTPqC2lzu",
     "no_isi" => "spotify:user:shiftux:playlist:7Mm1cpwJTIYEcZnnOA9ONa",
     "rock_this" => "spotify:user:spotify:playlist:37i9dQZF1DXcF6B6QPhFDv",
-    "classic_rock" => "spotify:user:shiftux:playlist:41AMKtHMrxkYVcb6tq91Tb"
+    "classic_rock" => "spotify:user:shiftux:playlist:41AMKtHMrxkYVcb6tq91Tb",
+    "grrif_style" => "spotify:user:shiftux:playlist:5tnNlKZiGL8Piuoesvp6XV",
+    "discoveries" => "spotify:user:shiftux:playlist:2NpsOCEnbmMkYYJFLprN6z",
+    "new_isi" => "spotify:user:shiftux:playlist:6SKAjeSmHZXBAvnwsDylnb",
+    "organica_deep_house" => "spotify:playlist:1ulmdUuvDGT0tRhbEKbA2M"
   }
 
   def self.play

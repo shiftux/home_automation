@@ -246,7 +246,7 @@ var CONFIG = {
          ]
       },
       {
-         title: 'Second page',
+         title: 'Weather page',
          bg: 'images/bg2.png',
          icon: 'mdi-weather-partly-cloudy',
          groups: [
@@ -322,6 +322,172 @@ var CONFIG = {
                    },
                 ]
              },
+         ]
+      },
+      {
+         title: 'Music page',
+         bg: 'images/bg5.jpeg',
+         icon: 'mdi-music-circle-outline', // home icon
+         groups: [
+            {
+               title: '',
+               width: 3,
+               height: 2,
+               items: [
+                  {
+                     position: [0, 2],
+                     width: 2,
+                     height: 2,
+                     id: 'media_player.picorelivingroom',
+                     type: TYPES.MEDIA_PLAYER_CUSTOM,
+                     hideSource: false,
+                     hideMuteButton: false,
+                     // state: false,
+                     title: '@attributes.media_title',
+                     subtitle: '@attributes.media_artist',
+                     bgSuffix: '@attributes.entity_picture',
+                  },
+                  {
+                     position: [2, 2],
+                     type: TYPES.SCRIPT,
+                     id: 'script.volume_up',
+                     title: '',
+                     state: false,
+                     icons: {
+                        on: "mdi-volume-plus",
+                        off: "mdi-volume-plus",
+                     }
+                  },
+                  {
+                     position: [2, 3],
+                     type: TYPES.SCRIPT,
+                     id: 'script.volume_down',
+                     title: '',
+                     state: false,
+                     icons: {
+                        on: "mdi-volume-minus",
+                        off: "mdi-volume-minus",
+                     }
+                  }
+               ]
+            },
+            {
+               title: 'Playlists',
+               width: 3,
+               height: 4,
+               items: [
+                  {
+                     position: [0, 0],
+                     type: TYPES.SCRIPT,
+                     id: 'script.playlist_discover_weekly',
+                     title: 'Discover Weekly',
+                     icons: {
+                        on: "mdi-help",
+                        off: "mdi-help"
+                     },
+                     state: false
+                  },
+                  {
+                     position: [1, 0],
+                     type: TYPES.SCRIPT,
+                     id: 'script.playlist_discover_weekly_saves',
+                     title: 'Discover Weekly Saves',
+                     icons: {
+                        on: "mdi-help-network",
+                        off: "mdi-help-network"
+                     },
+                     state: false
+                  },
+                  {
+                     position: [2, 0],
+                     type: TYPES.SCRIPT,
+                     id: 'script.playlist_easy_on_the_ears',
+                     title: 'Easy on the ears',
+                     icons: {
+                        on: "mdi-ear-hearing",
+                        off: "mdi-ear-hearing"
+                     },
+                     state: false
+                  },
+                  {
+                     position: [0, 1],
+                     type: TYPES.SCRIPT,
+                     id: 'script.playlist_starred',
+                     title: 'Starred',
+                     icons: {
+                        on: "mdi-star",
+                        off: "mdi-star"
+                     },
+                     state: false
+                  },
+                  {
+                     position: [1, 1],
+                     type: TYPES.SCRIPT,
+                     id: 'script.playlist_funky',
+                     title: 'Funky',
+                     icons: {
+                        on: "mdi-guitar-electric",
+                        off: "mdi-guitar-electric"
+                     },
+                     state: false
+                  },
+                  {
+                     position: [2, 1],
+                     type: TYPES.SCRIPT,
+                     id: 'script.playlist_no_isi',
+                     title: 'No isi',
+                     icons: {
+                        on: "mdi-check",
+                        off: "mdi-check"
+                     },
+                     state: false
+                  },
+                  {
+                     position: [0, 2],
+                     type: TYPES.SCRIPT,
+                     id: 'script.playlist_new_isi',
+                     title: 'New isi',
+                     icons: {
+                        on: "mdi-check-all",
+                        off: "mdi-check-all"
+                     },
+                     state: false
+                  },
+                  {
+                     position: [1, 2],
+                     type: TYPES.SCRIPT,
+                     id: 'script.playlist_discoveries',
+                     title: 'Discoveries',
+                     icons: {
+                        on: "mdi-eye-outline",
+                        off: "mdi-eye-outline"
+                     },
+                     state: false
+                  },
+                  {
+                     position: [2, 2],
+                     type: TYPES.SCRIPT,
+                     id: 'script.playlist_grrif_style',
+                     title: 'Grrif Style',
+                     icons: {
+                        on: "mdi-alpha-g-outline",
+                        off: "mdi-alpha-g-outline"
+                     },
+                     state: false
+                  },
+                  {
+                     position: [0, 3],
+                     type: TYPES.SCRIPT,
+                     id: 'script.playlist_organica_deep_house',
+                     title: 'Organica Deep House',
+                     icons: {
+                        on: "mdi-home-circle-outline",
+                        off: "mdi-home-circle-outline"
+                     },
+                     state: false
+                  },
+               ]
+            },
          ]
       }
    ],
