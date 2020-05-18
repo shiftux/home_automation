@@ -299,9 +299,12 @@ var CONFIG = {
                      id: 'sensor.aare_temperature',
                      unit: 'C', // override default entity unit
                      state: false, // hidding state
-                     filter: function (value) { // optional
-                        var num = parseFloat(value);
-                        return num && !isNaN(num) ? num.toFixed(1) : value;
+                     // filter: function (value) { // optional
+                     //    var num = parseFloat(value);
+                     //    return num && !isNaN(num) ? num.toFixed(1) : value;
+                     // },
+                     value: function (item, entity) {
+                        return entity.state;
                      },
                      settings: {
                         type: 'full', // Options are: 'full', 'semi', and 'arch'. Defaults to 'full'
@@ -309,9 +312,9 @@ var CONFIG = {
                         max: 24, // Defaults to 100
                         cap: 'round', // Options are: 'round', 'butt'. Defaults to 'butt'
                         thick: 6, // Defaults to 6
-                        label: 'Aare Temperature', // Defaults to undefined
+                        label: 'Aare Temperature label', // Defaults to undefined
                         append: '@attributes.unit_of_measurement', // Defaults to undefined
-                        prepend: '$', // Defaults to undefined
+                        // prepend: '$', // Defaults to undefined
                         duration: 300000, // Defaults to 1500ms
                         thresholds: { 4: { color: 'red' }, 14: { color: 'orange' }, 18: { color: 'green' } },  // Defaults to undefined
                         labelOnly: false, // Defaults to false
