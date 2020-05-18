@@ -294,7 +294,7 @@ var CONFIG = {
                    },
                   {
                      position: [0, 3],
-                     type: TYPES.SENSOR,
+                     type: TYPES.GAUGE,
                      title: 'Aare Temperature',
                      id: 'sensor.aare_temperature',
                      unit: 'C', // override default entity unit
@@ -302,11 +302,29 @@ var CONFIG = {
                      filter: function (value) { // optional
                         var num = parseFloat(value);
                         return num && !isNaN(num) ? num.toFixed(1) : value;
+                     },
+                     settings: {
+                        type: 'full', // Options are: 'full', 'semi', and 'arch'. Defaults to 'full'
+                        min: 4, // https://aaremarzili.info/
+                        max: 24, // Defaults to 100
+                        cap: 'round', // Options are: 'round', 'butt'. Defaults to 'butt'
+                        thick: 6, // Defaults to 6
+                        label: 'Aare Temperature', // Defaults to undefined
+                        append: '@attributes.unit_of_measurement', // Defaults to undefined
+                        prepend: '$', // Defaults to undefined
+                        duration: 300000, // Defaults to 1500ms
+                        thresholds: { 4: { color: 'red' }, 14: { color: 'orange' }, 18: { color: 'green' } },  // Defaults to undefined
+                        labelOnly: false, // Defaults to false
+                        foregroundColor: 'rgba(0, 150, 136, 1)', // Defaults to rgba(0, 150, 136, 1)
+                        backgroundColor: 'rgba(0, 0, 0, 0.1)', // Defaults to rgba(0, 0, 0, 0.1)
+                        fractionSize: 1, // Number of decimal places to round the number to. Defaults to current locale formatting
                      }
                    },
                   {
                      position: [1, 3],
-		               type: TYPES.SENSOR,
+                     type: TYPES.SENSOR,
+                     // max : 350
+                     // min : 30
    	       	      title: 'Aare Discharge',
                      id: 'sensor.aare_discharge',
                      unit: 'm3/s', // override default entity unit
@@ -319,7 +337,10 @@ var CONFIG = {
                         foregroundColor: 'rgba(0, 150, 136, 1)', // Defaults to rgba(0, 150, 136, 1)
                         backgroundColor: 'rgba(166,166,166, 0.1)', // Defaults to rgba(0, 0, 0, 0.1)
                      }
-                   },
+                  },
+                  // pegel
+                  // max : 503.9
+                  // min : 501.3
                 ]
              },
          ]
