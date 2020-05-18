@@ -327,7 +327,7 @@ var CONFIG = {
       {
          title: 'Music page',
          bg: 'images/bg5.jpeg',
-         icon: 'mdi-music-circle-outline', // home icon
+         icon: 'mdi-music', // home icon
          groups: [
             {
                title: '',
@@ -486,6 +486,17 @@ var CONFIG = {
                      },
                      state: false
                   },
+                  {
+                     position: [1, 3],
+                     type: TYPES.SCRIPT,
+                     id: 'script.playlist_workout',
+                     title: 'Workout',
+                     icons: {
+                        on: "mdi-dumbbell",
+                        off: "mdi-dumbbell"
+                     },
+                     state: false
+                  }
                ]
             },
          ]
