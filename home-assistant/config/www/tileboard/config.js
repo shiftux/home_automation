@@ -335,7 +335,7 @@ var CONFIG = {
                height: 2,
                items: [
                   {
-                     position: [0, 2],
+                     position: [0, 0],
                      width: 2,
                      height: 2,
                      id: 'media_player.picorelivingroom',
@@ -348,7 +348,7 @@ var CONFIG = {
                      bgSuffix: '@attributes.entity_picture',
                   },
                   {
-                     position: [2, 2],
+                     position: [2, 0],
                      type: TYPES.SCRIPT,
                      id: 'script.volume_up',
                      title: '',
@@ -359,7 +359,7 @@ var CONFIG = {
                      }
                   },
                   {
-                     position: [2, 3],
+                     position: [2, 1],
                      type: TYPES.SCRIPT,
                      id: 'script.volume_down',
                      title: '',
