@@ -91,7 +91,7 @@ var CONFIG = {
                   },
                   {
                      position: [0, 2],
-                     width: 3,
+                     width: 2,
                      height: 2,
                      id: 'media_player.picorelivingroom',
                      type: TYPES.MEDIA_PLAYER,
@@ -103,28 +103,22 @@ var CONFIG = {
                      bgSuffix: '@attributes.entity_picture',
                   },
                   {
-                     position: [3, 2],
-                     type: TYPES.SWITCH,
-                     id: 'switch.switch.nad_receiver_vol_up',
+                     position: [2, 2],
+                     type: TYPES.SCRIPT,
+                     id: 'script.volume_up',
                      title: '',
-                     states: {
-                        on: "On",
-                        off: "Off"
-                     },
+                     state: false,
                      icons: {
                         on: "mdi-volume-plus",
                         off: "mdi-volume-plus",
                      }
                   },
                   {
-                     position: [3, 3],
-                     type: TYPES.SWITCH,
-                     id: 'switch.switch.nad_receiver_vol_down',
+                     position: [2, 3],
+                     type: TYPES.SCRIPT,
+                     id: 'script.volume_down',
                      title: '',
-                     states: {
-                        on: "On",
-                        off: "Off"
-                     },
+                     state: false,
                      icons: {
                         on: "mdi-volume-minus",
                         off: "mdi-volume-minus",
@@ -133,7 +127,7 @@ var CONFIG = {
                ]
             },
             {
-               title: 'Second group',
+               title: '',
                width: 3,
                height: 4,
                items: [
