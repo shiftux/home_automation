@@ -68,8 +68,8 @@
   playlist_easy_on_the_ears:
     sequence:
       - service:  squeezebox.call_method
-        data_template: 
+        data: 
           entity_id: "media_player.picorelivingroom"
-          command: playlistcontrol
-          parameters: ["cmd:load","playlist_id:spotify:user:shiftux:playlist:7r0UpOkMuDWIMobO1HDEjh"]
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:7r0UpOkMuDWIMobO1HDEjh"]
 
