@@ -225,8 +225,8 @@ var CONFIG = {
                      id: 'script.media',
                      title: 'Media Off',
                      icons: {
-                        on: "mdi-stop-circle-outline",
-                        off: "mdi-stop-circle-outline"
+                        on: "mdi-stop",
+                        off: "mdi-stop"
                      },
                      state: false
                   // },
@@ -332,7 +332,7 @@ var CONFIG = {
             {
                title: '',
                width: 3,
-               height: 2,
+               height: 4,
                items: [
                   {
                      position: [0, 0],
@@ -367,6 +367,28 @@ var CONFIG = {
                      icons: {
                         on: "mdi-volume-minus",
                         off: "mdi-volume-minus",
+                     }
+                  },
+                  {
+                     position: [0, 3],
+                     type: TYPES.SCRIPT,
+                     id: 'script.listen_music',
+                     title: '',
+                     state: false,
+                     icons: {
+                        on: "mdi-play",
+                        off: "mdi-play",
+                     }
+                  },
+                  {
+                     position: [2, 3],
+                     type: TYPES.SCRIPT,
+                     id: 'script.media',
+                     title: '',
+                     state: false,
+                     icons: {
+                        on: "mdi-stop",
+                        off: "mdi-stop",
                      }
                   }
                ]
