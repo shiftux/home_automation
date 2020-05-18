@@ -54,3 +54,14 @@
       - service: media_player.media_pause
         data:
           entity_id: media_player.picorelivingroom
+  volume_up:
+    sequence:
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.nad_receiver_vol_up
+  volume_down:
+    sequence:
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.nad_receiver_vol_down
+

@@ -55,6 +55,7 @@ var TYPES = {
    WEATHER: 'weather',
    CLIMATE: 'climate',
    MEDIA_PLAYER: 'media_player',
+   MEDIA_PLAYER_CUSTOM: 'media_player_custom',
    CUSTOM: 'custom',
    ALARM: 'alarm',
    WEATHER_LIST: 'weather_list',
