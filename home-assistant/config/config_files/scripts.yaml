@@ -180,3 +180,14 @@
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:playlist:1ulmdUuvDGT0tRhbEKbA2M"]
+  
+  playlist_workout:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.turn_tv_off
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["play","spotify:user:shiftux:playlist:6ws8F7hkTTOMFm8QnumZ04"]
