@@ -325,7 +325,7 @@ var CONFIG = {
                    // min 4
                    // max 24
                   {
-                     position: [1, 3],
+                     position: [2, 3],
                      type: TYPES.SENSOR,
                      // max : 350
                      // min : 30

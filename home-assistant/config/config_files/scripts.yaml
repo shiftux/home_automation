@@ -75,7 +75,7 @@
     sequence:
       - service: script.turn_on
         data:
-          entity_id: script.turn_tv_off
+          entity_id: script.listen_music
       - service:  squeezebox.call_method
         data: 
           entity_id: "media_player.picorelivingroom"
@@ -86,7 +86,7 @@
     sequence:
       - service: script.turn_on
         data:
-          entity_id: script.turn_tv_off
+          entity_id: script.listen_music
       - service:  squeezebox.call_method
         data: 
           entity_id: "media_player.picorelivingroom"
@@ -97,7 +97,7 @@
     sequence:
       - service: script.turn_on
         data:
-          entity_id: script.turn_tv_off
+          entity_id: script.listen_music
       - service:  squeezebox.call_method
         data: 
           entity_id: "media_player.picorelivingroom"
@@ -108,7 +108,7 @@
     sequence:
       - service: script.turn_on
         data:
-          entity_id: script.turn_tv_off
+          entity_id: script.listen_music
       - service:  squeezebox.call_method
         data: 
           entity_id: "media_player.picorelivingroom"
@@ -119,7 +119,7 @@
     sequence:
       - service: script.turn_on
         data:
-          entity_id: script.turn_tv_off
+          entity_id: script.listen_music
       - service:  squeezebox.call_method
         data: 
           entity_id: "media_player.picorelivingroom"
@@ -130,7 +130,7 @@
     sequence:
       - service: script.turn_on
         data:
-          entity_id: script.turn_tv_off
+          entity_id: script.listen_music
       - service:  squeezebox.call_method
         data: 
           entity_id: "media_player.picorelivingroom"
@@ -141,7 +141,7 @@
     sequence:
       - service: script.turn_on
         data:
-          entity_id: script.turn_tv_off
+          entity_id: script.listen_music
       - service:  squeezebox.call_method
         data: 
           entity_id: "media_player.picorelivingroom"
@@ -152,7 +152,7 @@
     sequence:
       - service: script.turn_on
         data:
-          entity_id: script.turn_tv_off
+          entity_id: script.listen_music
       - service:  squeezebox.call_method
         data: 
           entity_id: "media_player.picorelivingroom"
@@ -163,7 +163,7 @@
     sequence:
       - service: script.turn_on
         data:
-          entity_id: script.turn_tv_off
+          entity_id: script.listen_music
       - service:  squeezebox.call_method
         data: 
           entity_id: "media_player.picorelivingroom"
@@ -174,7 +174,7 @@
     sequence:
       - service: script.turn_on
         data:
-          entity_id: script.turn_tv_off
+          entity_id: script.listen_music
       - service:  squeezebox.call_method
         data: 
           entity_id: "media_player.picorelivingroom"
@@ -185,7 +185,7 @@
     sequence:
       - service: script.turn_on
         data:
-          entity_id: script.turn_tv_off
+          entity_id: script.listen_music
       - service:  squeezebox.call_method
         data: 
           entity_id: "media_player.picorelivingroom"
