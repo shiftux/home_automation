@@ -411,7 +411,7 @@ var CONFIG = {
                items: [
                   {
                      position: [0, 0],
-                     type: TYPES.SCRIPT,
+                     type: TYPES.GRAY_TEXT_SCRIPT,
                      id: 'script.playlist_discover_weekly',
                      title: 'Discover Weekly',
                      bg: 'images/palette1.png',

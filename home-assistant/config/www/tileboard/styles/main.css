@@ -412,6 +412,16 @@ body {
   font-weight: 300;
   opacity: 0.8;
 }
+.gray-text-item {
+  position: absolute;
+  background-color: #777;
+  font-size: 14px;
+  color: #808080;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  /*overflow: hidden;*/
+}
 .item {
   position: absolute;
   background-color: #777;
