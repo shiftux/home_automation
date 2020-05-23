@@ -415,6 +415,7 @@ var CONFIG = {
                      id: 'script.playlist_discover_weekly',
                      title: 'Discover Weekly',
                      bg: 'images/palette1.png',
+                     customStyles: {'color':'#808080'},
                      icons: {
                         on: "mdi-help",
                         off: "mdi-help"
@@ -462,6 +463,7 @@ var CONFIG = {
                      type: TYPES.SCRIPT,
                      id: 'script.playlist_funky',
                      bg: 'images/palette5.png',
+                     customStyles: {'color':'#808080'},
                      title: 'Funky',
                      icons: {
                         on: "mdi-guitar-electric",
@@ -474,6 +476,7 @@ var CONFIG = {
                      type: TYPES.SCRIPT,
                      id: 'script.playlist_no_isi',
                      bg: 'images/palette1.png',
+                     customStyles: {'color':'#808080'},
                      title: 'No isi',
                      icons: {
                         on: "mdi-check",
@@ -522,6 +525,7 @@ var CONFIG = {
                      type: TYPES.SCRIPT,
                      id: 'script.playlist_organica_deep_house',
                      bg: 'images/palette5.png',
+                     customStyles: {'color':'#808080'},
                      title: 'Organica Deep House',
                      icons: {
                         on: "mdi-home-circle-outline",
@@ -534,6 +538,7 @@ var CONFIG = {
                      type: TYPES.SCRIPT,
                      id: 'script.playlist_workout',
                      bg: 'images/palette1.png',
+                     customStyles: {'color':'#808080'},
                      title: 'Workout',
                      icons: {
                         on: "mdi-dumbbell",
