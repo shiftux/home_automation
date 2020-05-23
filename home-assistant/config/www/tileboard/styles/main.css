@@ -31,6 +31,15 @@
 .item.-th-script.-on {
   background-color: #10b4cd;
 }
+.item.-th-gray_text_script {
+  background-color: #259eb0;
+}
+.item.-th-gray_text_script.-loading {
+  background-color: #10cee4;
+}
+.item.-th-gray_text_script.-on {
+  background-color: #10b4cd;
+}
 .item.-th-automation {
   background-color: #259eb0;
 }
@@ -467,7 +476,11 @@ body {
   transition: 0.5s ease background-color;
   transition-delay: 0.2s;
 }
+.item.-gray_text_script {
+  color: #808080;
+}
 .item.-script.-loading,
+.item.-gray_text_script.-loading,
 .item.-automation.-loading,
 .item.-scene.-loading {
   transition: none;
@@ -512,6 +525,7 @@ body {
 .item.-custom,
 .item.-light,
 .item.-script,
+.item.-gray_text_script,
 .item.-automation,
 .item.-input_boolean,
 .item.-input_select,
@@ -539,6 +553,7 @@ body {
 .item.-custom:active,
 .item.-light:active,
 .item.-script:active,
+.item.-gray_text_script:active,
 .item.-automation:active,
 .item.-input_boolean:active,
 .item.-input_select:active,
@@ -563,6 +578,7 @@ body {
 .item.-custom .item-clickable,
 .item.-light .item-clickable,
 .item.-script .item-clickable,
+.item.-gray_text_script .item-clickable,
 .item.-automation .item-clickable,
 .item.-input_boolean .item-clickable,
 .item.-input_select .item-clickable,
