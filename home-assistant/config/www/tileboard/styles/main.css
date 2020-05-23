@@ -412,6 +412,16 @@ body {
   font-weight: 300;
   opacity: 0.8;
 }
+.gray-text-item {
+  position: absolute;
+  background-color: #777;
+  font-size: 14px;
+  color: #808080;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  /*overflow: hidden;*/
+}
 .item {
   position: absolute;
   background-color: #777;
@@ -430,13 +440,6 @@ body {
   height: 100%;
   width: 100%;
   position: relative;
-}
-.gray-item-entity-container {
-  z-index: 3;
-  height: 100%;
-  width: 100%;
-  position: relative;
-  color: #808080;
 }
 .item-entity-container.-below {
   z-index: 1;
