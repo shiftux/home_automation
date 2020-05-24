@@ -82,6 +82,17 @@ services:
       - "8082:80"
     restart: unless-stopped
 
+  logitechmediaserver:
+    image: justifiably/logitechmediaserver
+    container_name: logitechmediaserver
+    volumes:
+      - /mnt/nas-music/:/mnt/music
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+      - "3483:3483" 
+      - "3483:3483/udp"
+
 networks:
   docker-network:
     driver: bridge
