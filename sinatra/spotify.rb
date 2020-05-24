@@ -4,7 +4,7 @@ require 'json'
 
 module Spotify
 
-  @@spotifyServer = 'http://192.168.0.93:9000'
+  @@spotifyServer = 'http://192.168.0.16:9000'
   @@defaultPlayer = "b8:27:eb:12:7c:b1"
   @@playlists = {
     "discover_weekly" => "spotify:user:spotify:playlist:37i9dQZEVXcSlMQNVajogn",
