@@ -202,6 +202,7 @@ var CONFIG = {
                      position: [0, 2],
                      type: TYPES.SCRIPT,
                      id: 'script.listen_music',
+                     customStyles: {'background-color':'#00a896'},
                      icons: {
                         on: "mdi-music",
                         off: "mdi-music"
@@ -212,6 +213,7 @@ var CONFIG = {
                      position: [1, 2],
                      type: TYPES.SCRIPT,
                      title: 'Watch TV',
+                     customStyles: {'background-color':'#00a896'},
                      id: 'script.watch_tv',
                      icons: {
                         on: "mdi-movie-open",
@@ -224,6 +226,7 @@ var CONFIG = {
                      type: TYPES.SCRIPT,
                      id: 'script.media',
                      title: 'Media Off',
+                     customStyles: {'background-color':'#e63946'},
                      icons: {
                         on: "mdi-stop",
                         off: "mdi-stop"
@@ -297,6 +300,7 @@ var CONFIG = {
                      type: TYPES.SENSOR,
                      title: 'Aare Temperature',
                      id: 'sensor.aare_temperature',
+                     customStyles: {'background-color':'#fca311'},
                      unit: 'C', // override default entity unit
                      state: false, // hidding state
                      filter: function (value) { // optional
@@ -307,8 +311,9 @@ var CONFIG = {
                   {
                      position: [1, 3],
 		               type: TYPES.SENSOR,
-   	       	      title: 'Aare Discharge',
+   	       	     title: 'Aare Discharge',
                      id: 'sensor.aare_discharge',
+                     customStyles: {'background-color':'#fca311'},
                      unit: 'm3/s', // override default entity unit
                      state: false, // hidding state
                      filter: function (value) { // optional
