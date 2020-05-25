@@ -1,5 +1,5 @@
-const weatherPage = {
-  title: 'Weather page',
+const transportPage = {
+  title: 'Transport page',
   bg: 'images/bg2.png',
   icon: 'mdi-train',
   groups: [
