@@ -35,8 +35,8 @@ const transportPage = {
           id: 'sensor.next_departure',
           unit: '', // override default entity unit
           state: false, // hidding state
-          filter: function (value) { // optional
-            const num = new Date(Date.parse("@attributes.next_departure"));
+          filter: function (item, entity) { // optional
+            const num = new Date(Date.parse(entity.attributes.next_departure));
             var time = num.getHours() + ":"
             if (num.getMinutes().toString().length > 1) {
               time = time + num.getMinutes()
