@@ -191,3 +191,25 @@
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:user:shiftux:playlist:6ws8F7hkTTOMFm8QnumZ04"]
+
+  podcast_heute_morgen:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.listen_music
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "podcast"
+          parameters: ["playlist","play","item_id:0.0"]
+
+  podcast_echo_der_zeit:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.listen_music
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "podcast"
+          parameters: ["playlist","play","item_id:1.0"]
