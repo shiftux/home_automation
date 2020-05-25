@@ -244,7 +244,7 @@ const musicPage = {
           type: TYPES.SCRIPT,
           id: 'script.podcast_heute_morgen',
           bg: 'images/heute_morgen.png',
-          title: 'Heute Morgen',
+          title: '',
           state: false
         },
         {
@@ -254,7 +254,7 @@ const musicPage = {
           type: TYPES.SCRIPT,
           id: 'script.podcast_echo_der_zeit',
           bg: 'images/echo_der_zeit.png',
-          title: 'Echo der Zeit',
+          title: '',
           state: false
         }
       ]
