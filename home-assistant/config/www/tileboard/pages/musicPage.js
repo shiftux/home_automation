@@ -135,8 +135,7 @@ const musicPage = {
           position: [1, 1],
           type: TYPES.SCRIPT,
           id: 'script.playlist_funky',
-          customStyles: { 'background-color': '#f2cc8f' },
-          customStyles: { 'color': '#808080' },
+          customStyles: { 'color': '#808080', 'background-color': '#f2cc8f' },
           title: 'Funky',
           icons: {
             on: "mdi-guitar-electric",
@@ -196,8 +195,7 @@ const musicPage = {
           position: [0, 3],
           type: TYPES.SCRIPT,
           id: 'script.playlist_organica_deep_house',
-          customStyles: { 'background-color': '#f2cc8f' },
-          customStyles: { 'color': '#808080' },
+          customStyles: { 'color': '#808080', 'background-color': '#f2cc8f' },
           title: 'Organica Deep House',
           icons: {
             on: "mdi-home-circle-outline",
