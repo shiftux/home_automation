@@ -192,6 +192,8 @@
           command: "playlist"
           parameters: ["play","spotify:user:shiftux:playlist:6ws8F7hkTTOMFm8QnumZ04"]
 
+
+  # Heute Morgen https://www.srf.ch/feed/podcast/sd/179ababb-4b36-40b2-951d-92d5c207fe9f.xml
   podcast_heute_morgen:
     sequence:
       - service: script.turn_on
@@ -200,9 +202,10 @@
       - service:  squeezebox.call_method
         data: 
           entity_id: "media_player.picorelivingroom"
-          command: "podcast"
+          command: "podcasts"
           parameters: ["playlist","play","item_id:0.0"]
 
+  # Echo der Zeit https://www.srf.ch/feed/podcast/sd/28549e81-c453-4671-92ad-cb28796d06a8.xml
   podcast_echo_der_zeit:
     sequence:
       - service: script.turn_on
@@ -211,5 +214,5 @@
       - service:  squeezebox.call_method
         data: 
           entity_id: "media_player.picorelivingroom"
-          command: "podcast"
+          command: "podcasts"
           parameters: ["playlist","play","item_id:1.0"]
