@@ -910,16 +910,18 @@ App.controller('Main', ['$scope', '$timeout', '$location', 'Api', function ($sco
    };
 
    $scope.shouldShowVolumeSlider = function (entity) {
-      return $scope.supportsFeature(FEATURES.MEDIA_PLAYER.VOLUME_SET, entity)
-          && ('volume_level' in entity.attributes)
-          && entity.state !== 'off';
+      return false;
+      // return $scope.supportsFeature(FEATURES.MEDIA_PLAYER.VOLUME_SET, entity)
+      //     && ('volume_level' in entity.attributes)
+      //     && entity.state !== 'off';
    };
 
    $scope.shouldShowVolumeButtons = function (entity) {
-      return (!$scope.supportsFeature(FEATURES.MEDIA_PLAYER.VOLUME_SET, entity)
-          || !('volume_level' in entity.attributes))
-          && $scope.supportsFeature(FEATURES.MEDIA_PLAYER.VOLUME_STEP, entity)
-          && entity.state !== 'off';
+      return false;
+      // return (!$scope.supportsFeature(FEATURES.MEDIA_PLAYER.VOLUME_SET, entity)
+      //     || !('volume_level' in entity.attributes))
+      //     && $scope.supportsFeature(FEATURES.MEDIA_PLAYER.VOLUME_STEP, entity)
+      //     && entity.state !== 'off';
    };
 
    var GAUGE_DEFAULTS = {

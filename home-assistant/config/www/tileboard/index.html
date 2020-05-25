@@ -1306,12 +1306,13 @@
                <tr class="media-player-table--source">
                   <td colspan="3" class="media-player-table--td-source">
                      <div class="media-player--source" ng-click="openSelect(item)"
-                          ng-if="entity.attributes.source_list.length && !item.hideVolumeSlider">
-                        <span ng-bind="entity.attributes.source || 'Source'"></span>
-                     </div>
-                  </td>
-               </tr>
-
+                     ng-if="entity.attributes.source_list.length && !item.hideVolumeSlider">
+                     <span ng-bind="entity.attributes.source || 'Source'"></span>
+                  </div>
+               </td>
+            </tr>
+            
+               <!-- Note: I forced the shouldShowVolumeSlider function in main.js to always return false -->
                <tr ng-if="shouldShowVolumeSlider(entity) && (_c = getVolumeConf(item, entity))  && !item.hideVolumeSlider">
                   <td colspan="3" class="media-player-table--td-volume">
                      <div class="media-player--volume">
