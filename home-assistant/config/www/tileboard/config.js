@@ -80,7 +80,7 @@ var CONFIG = {
    },*/
 
    pages: [
-      loadJS('./pages/homePage'),
+      loadJS('./pages/homePage.js'),
       {
          title: 'Weather page',
          bg: 'images/bg2.png',
