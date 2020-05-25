@@ -1,4 +1,4 @@
-{
+const homePage = {
   title: 'Home page',
   bg: 'images/bg1.jpeg',
   icon: 'mdi-home-outline', // home icon
