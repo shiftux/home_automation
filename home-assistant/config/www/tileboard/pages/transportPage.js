@@ -4,7 +4,7 @@ const transportPage = {
   icon: 'mdi-train',
   groups: [
     {
-      title: 'Galgenfeld -> Bern Bahnhof (9 min)',
+      title: 'Galgenfeld -> Bern (9 min)',
       width: 1.5,
       height: 3,
       items: [
