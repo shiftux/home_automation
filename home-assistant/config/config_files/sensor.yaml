@@ -1,0 +1,24 @@
+#sensor:
+  - platform: swiss_public_transport
+    from: !secret transport_from
+    to: !secret transport_to
+    
+  - platform: swiss_public_transport
+    from: !secret transport_2_from
+    to: !secret transport_2_to
+
+  - platform: swiss_public_transport
+    from: !secret transport_2_from
+    to: !secret transport_3_to
+
+  - platform: swiss_public_transport
+    from: !secret transport_2_from
+    to: !secret transport_4_to
+
+  # https://www.home-assistant.io/integrations/swiss_hydrological_data/  
+  - platform: swiss_hydrological_data
+    station: !secret river_station
+    monitored_conditions:
+      - temperature
+      - level
+      - discharge

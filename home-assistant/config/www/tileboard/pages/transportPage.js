@@ -1,6 +1,6 @@
 const transportPage = {
   title: 'Transport page',
-  bg: 'images/bg2.png',
+  bg: 'images/bg3.jpg',
   icon: 'mdi-train',
   groups: [
     {
