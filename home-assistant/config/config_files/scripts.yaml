@@ -192,7 +192,6 @@
           command: "playlist"
           parameters: ["play","spotify:user:shiftux:playlist:6ws8F7hkTTOMFm8QnumZ04"]
 
-
   # Heute Morgen https://www.srf.ch/feed/podcast/sd/179ababb-4b36-40b2-951d-92d5c207fe9f.xml
   podcast_heute_morgen:
     sequence:
@@ -216,3 +215,28 @@
           entity_id: "media_player.picorelivingroom"
           command: "podcasts"
           parameters: ["playlist","play","item_id:1.0"]
+
+  # Info 3 https://www.srf.ch/feed/podcast/sd/fc20e6ad-9e5f-40a9-b3c3-61765e927edc.xml
+  podcast_info3:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.listen_music
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "podcasts"
+          parameters: ["playlist","play","item_id:3.0"]
+
+  # La Matinale https://www.rts.ch/la-1ere/programmes/la-matinale/podcast/?flux=rss
+  podcast_la_matinale:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.listen_music
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "podcasts"
+          parameters: ["playlist","play","item_id:2.0"]
+  

@@ -238,7 +238,7 @@ const musicPage = {
           state: false
         },
         {
-          position: [0, 2.5],
+          position: [0, 3],
           width: 0.75,
           height: 0.75,
           type: TYPES.SCRIPT,
@@ -248,12 +248,32 @@ const musicPage = {
           state: false
         },
         {
-          position: [0.75, 2.5],
+          position: [0.75, 3],
           width: 0.75,
           height: 0.75,
           type: TYPES.SCRIPT,
           id: 'script.podcast_echo_der_zeit',
           bg: 'images/echo_der_zeit.png',
+          title: '',
+          state: false
+        },
+        {
+          position: [1.5, 3],
+          width: 0.75,
+          height: 0.75,
+          type: TYPES.SCRIPT,
+          id: 'script.podcast_info3',
+          bg: 'images/info3.png',
+          title: '',
+          state: false
+        },
+        {
+          position: [2.25, 3],
+          width: 0.75,
+          height: 0.75,
+          type: TYPES.SCRIPT,
+          id: 'script.podcast_la_matinale',
+          bg: 'images/la_matinale.png',
           title: '',
           state: false
         }
