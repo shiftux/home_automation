@@ -6,7 +6,14 @@
  Make sure you use real IDs from your HA entities.
 */
 
-const homePage = require('./pages/homePage');
+function loadJS(url) {
+   var xhttp = new XMLHttpRequest();
+   var script = document.createElement("script");
+   xhttp.open("GET", url + suffix, false);
+   xhttp.send();
+   script.text = xhttp.responseText;
+   document.head.appendChild(script).parentNode.removeChild(script);
+}
 
 var CONFIG = {
    customTheme: null, // CUSTOM_THEMES.TRANSPARENT, CUSTOM_THEMES.MATERIAL, CUSTOM_THEMES.MOBILE, CUSTOM_THEMES.COMPACT, CUSTOM_THEMES.HOMEKIT, CUSTOM_THEMES.WINPHONE, CUSTOM_THEMES.WIN95
@@ -73,7 +80,7 @@ var CONFIG = {
    },*/
 
    pages: [
-      homePage,
+      loadJS('./pages/homePage'),
       {
          title: 'Weather page',
          bg: 'images/bg2.png',
