@@ -29,13 +29,22 @@ const transportPage = {
         },
         {
           position: [0, 1],
-          width: 2,
+          width: 4,
           type: TYPES.SENSOR,
           title: '',
           id: 'sensor.next_departure',
           unit: '', // override default entity unit
           state: false, // hidding state
-          value: '&sensor.next_departure.attributes.next_departure'
+          value: function (item, entity){
+            const num = new Date(Date.parse('&sensor.next_departure.attributes.next_departure'))
+            var time = num.getHours() + ":"
+            if (num.getMinutes().toString().length > 1) {
+              time = time + num.getMinutes()
+            } else {
+              time = time + "0" + num.getMinutes()
+            }
+            return time;
+          }
           // filter: function (item, entity) { // optional
           //   const num = new Date(Date.parse(entity.attributes.next_departure));
           //   var time = num.getHours() + ":"
