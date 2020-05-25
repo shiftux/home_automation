@@ -36,7 +36,7 @@ const transportPage = {
           unit: '', // override default entity unit
           state: false, // hidding state
           value: function (item, entity){
-            const num = new Date(Date.parse('&sensor.next_departure.attributes.next_departure'))
+            const num = new Date(Date.parse(entity.attributes.next_departure))
             var time = num.getHours() + ":"
             if (num.getMinutes().toString().length > 1) {
               time = time + num.getMinutes()
