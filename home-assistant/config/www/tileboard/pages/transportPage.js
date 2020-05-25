@@ -10,15 +10,16 @@ const transportPage = {
       items: [
         {
           position: [0, 0],
+          width: 4,
           type: TYPES.SENSOR,
           title: 'Bern Bahnhof',
           id: 'sensor.next_departure',
           unit: '', // override default entity unit
           state: false, // hidding state
           filter: function (value) { // optional
-            const time = Date.parse(value);
-            // const time = num.getHours() + ":" + num.getMinutes();
-            return time && !isNaN(time) ? time.toFixed(1) : value;
+            const num = new Date(Date.parse(value));
+            const time = num.getHours() + ":" + num.getMinutes();
+            return time;
           }        
         }
       ]
