@@ -243,7 +243,7 @@ const musicPage = {
           height: 0.75,
           type: TYPES.SCRIPT,
           id: 'script.podcast_heute_morgen',
-          bg: 'heute_morgen.png',
+          bg: 'images/heute_morgen.png',
           title: 'Heute Morgen',
           state: false
         },
@@ -253,7 +253,7 @@ const musicPage = {
           height: 0.75,
           type: TYPES.SCRIPT,
           id: 'script.podcast_echo_der_zeit',
-          bg: 'echo_der_zeit.png',
+          bg: 'images/echo_der_zeit.png',
           title: 'Echo der Zeit',
           state: false
         }
