@@ -15,6 +15,8 @@ function loadJS(url) {
    document.head.appendChild(script).parentNode.removeChild(script);
 }
 
+const homePage = loadJS('./pages/homePage.js')
+
 var CONFIG = {
    customTheme: null, // CUSTOM_THEMES.TRANSPARENT, CUSTOM_THEMES.MATERIAL, CUSTOM_THEMES.MOBILE, CUSTOM_THEMES.COMPACT, CUSTOM_THEMES.HOMEKIT, CUSTOM_THEMES.WINPHONE, CUSTOM_THEMES.WIN95
    transition: TRANSITIONS.ANIMATED_GPU, //ANIMATED or SIMPLE (better perfomance)
@@ -80,7 +82,7 @@ var CONFIG = {
    },*/
 
    pages: [
-      loadJS('./pages/homePage.js'),
+      homePage,
       {
          title: 'Weather page',
          bg: 'images/bg2.png',
