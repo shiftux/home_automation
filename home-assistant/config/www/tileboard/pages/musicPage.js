@@ -88,8 +88,7 @@ const musicPage = {
           type: TYPES.SCRIPT,
           id: 'script.playlist_discover_weekly',
           title: 'Discover Weekly',
-          bg: 'images/palette1.png',
-          customStyles: { 'color': '#808080' },
+          customStyles: { 'color': '#808080', 'background-color': '#f4f1de' },
           icons: {
             on: "mdi-help",
             off: "mdi-help"
@@ -100,7 +99,7 @@ const musicPage = {
           position: [1, 0],
           type: TYPES.SCRIPT,
           id: 'script.playlist_discover_weekly_saves',
-          bg: 'images/palette2.png',
+          customStyles: { 'background-color': '#e07a5f' },
           title: 'Discover Weekly Saves',
           icons: {
             on: "mdi-help-network",
@@ -112,7 +111,7 @@ const musicPage = {
           position: [2, 0],
           type: TYPES.SCRIPT,
           id: 'script.playlist_easy_on_the_ears',
-          bg: 'images/palette3.png',
+          customStyles: { 'background-color': '#3d405b' },
           title: 'Easy on the ears',
           icons: {
             on: "mdi-ear-hearing",
@@ -124,7 +123,7 @@ const musicPage = {
           position: [0, 1],
           type: TYPES.SCRIPT,
           id: 'script.playlist_starred',
-          bg: 'images/palette4.png',
+          customStyles: { 'background-color': '#81b29a' },
           title: 'Starred',
           icons: {
             on: "mdi-star",
@@ -136,7 +135,7 @@ const musicPage = {
           position: [1, 1],
           type: TYPES.SCRIPT,
           id: 'script.playlist_funky',
-          bg: 'images/palette5.png',
+          customStyles: { 'background-color': '#f2cc8f' },
           customStyles: { 'color': '#808080' },
           title: 'Funky',
           icons: {
@@ -149,8 +148,7 @@ const musicPage = {
           position: [2, 1],
           type: TYPES.SCRIPT,
           id: 'script.playlist_no_isi',
-          bg: 'images/palette1.png',
-          customStyles: { 'color': '#808080' },
+          customStyles: { 'color': '#808080', 'background-color': '#f4f1de' },
           title: 'No isi',
           icons: {
             on: "mdi-check",
@@ -162,7 +160,7 @@ const musicPage = {
           position: [0, 2],
           type: TYPES.SCRIPT,
           id: 'script.playlist_new_isi',
-          bg: 'images/palette2.png',
+          customStyles: { 'background-color': '#e07a5f' },
           title: 'New isi',
           icons: {
             on: "mdi-check-all",
@@ -174,7 +172,7 @@ const musicPage = {
           position: [1, 2],
           type: TYPES.SCRIPT,
           id: 'script.playlist_discoveries',
-          bg: 'images/palette3.png',
+          customStyles: { 'background-color': '#3d405b' },
           title: 'Discoveries',
           icons: {
             on: "mdi-eye-outline",
@@ -186,7 +184,7 @@ const musicPage = {
           position: [2, 2],
           type: TYPES.SCRIPT,
           id: 'script.playlist_grrif_style',
-          bg: 'images/palette4.png',
+          customStyles: { 'background-color': '#81b29a' },
           title: 'Grrif Style',
           icons: {
             on: "mdi-alpha-g-circle-outline",
@@ -198,7 +196,7 @@ const musicPage = {
           position: [0, 3],
           type: TYPES.SCRIPT,
           id: 'script.playlist_organica_deep_house',
-          bg: 'images/palette5.png',
+          customStyles: { 'background-color': '#f2cc8f' },
           customStyles: { 'color': '#808080' },
           title: 'Organica Deep House',
           icons: {
@@ -211,8 +209,7 @@ const musicPage = {
           position: [1, 3],
           type: TYPES.SCRIPT,
           id: 'script.playlist_workout',
-          bg: 'images/palette1.png',
-          customStyles: { 'color': '#808080' },
+          customStyles: { 'color': '#808080', 'background-color': '#f4f1de' },
           title: 'Workout',
           icons: {
             on: "mdi-dumbbell",
