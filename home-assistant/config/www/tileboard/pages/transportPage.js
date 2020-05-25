@@ -16,8 +16,8 @@ const transportPage = {
           unit: '', // override default entity unit
           state: false, // hidding state
           filter: function (value) { // optional
-            const num = Date.parse(value);
-            const time = num.getHours() + ":" + num.getMinutes();
+            const time = Date.parse(value);
+            // const time = num.getHours() + ":" + num.getMinutes();
             return time && !isNaN(time) ? time.toFixed(1) : value;
           }        
         }
