@@ -5,12 +5,12 @@ const transportPage = {
   groups: [
     {
       title: 'Galgenfeld -> Bern Bahnhof (9 min)',
-      width: 2,
+      width: 1.5,
       height: 3,
       items: [
         {
           position: [0, 0],
-          width: 2,
+          width: 1.5,
           type: TYPES.SENSOR,
           title: '',
           id: 'sensor.next_departure',
@@ -29,7 +29,7 @@ const transportPage = {
         },
         {
           position: [0, 1],
-          width: 2,
+          width: 1.5,
           type: TYPES.SENSOR,
           title: '',
           id: 'sensor.next_departure',
@@ -48,7 +48,7 @@ const transportPage = {
         },
         {
           position: [0, 2],
-          width: 2,
+          width: 1.5,
           type: TYPES.SENSOR,
           title: '',
           id: 'sensor.next_departure',
@@ -69,12 +69,12 @@ const transportPage = {
     },
     {
       title: 'Bern -> Fribourg',
-      width: 2,
+      width: 1.5,
       height: 3,
       items: [
         {
           position: [0, 0],
-          width: 2,
+          width: 1.5,
           type: TYPES.SENSOR,
           title: '',
           id: 'sensor.next_departure_2',
@@ -93,7 +93,7 @@ const transportPage = {
         },
         {
           position: [0, 1],
-          width: 2,
+          width: 1.5,
           type: TYPES.SENSOR,
           title: '',
           id: 'sensor.next_departure_2',
@@ -112,7 +112,7 @@ const transportPage = {
         },
         {
           position: [0, 2],
-          width: 2,
+          width: 1.5,
           type: TYPES.SENSOR,
           title: '',
           id: 'sensor.next_departure_2',
@@ -132,13 +132,13 @@ const transportPage = {
       ]
     },
     {
-      title: 'Galgenfeld -> Lausanne',
-      width: 2,
+      title: 'Bern -> Lausanne',
+      width: 1.5,
       height: 3,
       items: [
         {
           position: [0, 0],
-          width: 2,
+          width: 1.5,
           type: TYPES.SENSOR,
           title: '',
           id: 'sensor.next_departure_3',
@@ -157,7 +157,7 @@ const transportPage = {
         },
         {
           position: [0, 1],
-          width: 2,
+          width: 1.5,
           type: TYPES.SENSOR,
           title: '',
           id: 'sensor.next_departure_3',
@@ -176,7 +176,7 @@ const transportPage = {
         },
         {
           position: [0, 2],
-          width: 2,
+          width: 1.5,
           type: TYPES.SENSOR,
           title: '',
           id: 'sensor.next_departure_3',
@@ -196,13 +196,13 @@ const transportPage = {
       ]
     },
     {
-      title: 'Galgenfeld -> Zürich HB',
-      width: 2,
+      title: 'Bern -> Zürich HB',
+      width: 1.5,
       height: 3,
       items: [
         {
           position: [0, 0],
-          width: 2,
+          width: 1.5,
           type: TYPES.SENSOR,
           title: '',
           id: 'sensor.next_departure_4',
@@ -221,7 +221,7 @@ const transportPage = {
         },
         {
           position: [0, 1],
-          width: 2,
+          width: 1.5,
           type: TYPES.SENSOR,
           title: '',
           id: 'sensor.next_departure_4',
@@ -240,7 +240,7 @@ const transportPage = {
         },
         {
           position: [0, 2],
-          width: 2,
+          width: 1.5,
           type: TYPES.SENSOR,
           title: '',
           id: 'sensor.next_departure_4',
