@@ -79,12 +79,14 @@ const musicPage = {
       ]
     },
     {
-      title: 'Playlists',
+      title: 'Playlists / Podcasts',
       width: 3,
       height: 4,
       items: [
         {
           position: [0, 0],
+          width: 0.75,
+          height: 0.75,
           type: TYPES.SCRIPT,
           id: 'script.playlist_discover_weekly',
           title: 'Discover Weekly',
@@ -96,7 +98,9 @@ const musicPage = {
           state: false
         },
         {
-          position: [1, 0],
+          position: [.75, 0],
+          width: 0.75,
+          height: 0.75,
           type: TYPES.SCRIPT,
           id: 'script.playlist_discover_weekly_saves',
           customStyles: { 'background-color': '#e07a5f' },
@@ -108,7 +112,9 @@ const musicPage = {
           state: false
         },
         {
-          position: [2, 0],
+          position: [1.5, 0],
+          width: 0.75,
+          height: 0.75,
           type: TYPES.SCRIPT,
           id: 'script.playlist_easy_on_the_ears',
           customStyles: { 'background-color': '#3d405b' },
@@ -120,7 +126,9 @@ const musicPage = {
           state: false
         },
         {
-          position: [0, 1],
+          position: [2.25, 0],
+          width: 0.75,
+          height: 0.75,
           type: TYPES.SCRIPT,
           id: 'script.playlist_starred',
           customStyles: { 'background-color': '#81b29a' },
@@ -132,7 +140,9 @@ const musicPage = {
           state: false
         },
         {
-          position: [1, 1],
+          position: [0, 0.75],
+          width: 0.75,
+          height: 0.75,
           type: TYPES.SCRIPT,
           id: 'script.playlist_funky',
           customStyles: { 'color': '#808080', 'background-color': '#f2cc8f' },
@@ -144,7 +154,9 @@ const musicPage = {
           state: false
         },
         {
-          position: [2, 1],
+          position: [0.75, 0.75],
+          width: 0.75,
+          height: 0.75,
           type: TYPES.SCRIPT,
           id: 'script.playlist_no_isi',
           customStyles: { 'color': '#808080', 'background-color': '#f4f1de' },
@@ -156,7 +168,9 @@ const musicPage = {
           state: false
         },
         {
-          position: [0, 2],
+          position: [1.5, 0.75],
+          width: 0.75,
+          height: 0.75,
           type: TYPES.SCRIPT,
           id: 'script.playlist_new_isi',
           customStyles: { 'background-color': '#e07a5f' },
@@ -168,7 +182,9 @@ const musicPage = {
           state: false
         },
         {
-          position: [1, 2],
+          position: [2.25, 0.75],
+          width: 0.75,
+          height: 0.75,
           type: TYPES.SCRIPT,
           id: 'script.playlist_discoveries',
           customStyles: { 'background-color': '#3d405b' },
@@ -180,7 +196,9 @@ const musicPage = {
           state: false
         },
         {
-          position: [2, 2],
+          position: [0, 1.5],
+          width: 0.75,
+          height: 0.75,
           type: TYPES.SCRIPT,
           id: 'script.playlist_grrif_style',
           customStyles: { 'background-color': '#81b29a' },
@@ -192,7 +210,9 @@ const musicPage = {
           state: false
         },
         {
-          position: [0, 3],
+          position: [0.75, 1.5],
+          width: 0.75,
+          height: 0.75,
           type: TYPES.SCRIPT,
           id: 'script.playlist_organica_deep_house',
           customStyles: { 'color': '#808080', 'background-color': '#f2cc8f' },
@@ -204,7 +224,9 @@ const musicPage = {
           state: false
         },
         {
-          position: [1, 3],
+          position: [1.5, 1.5],
+          width: 0.75,
+          height: 0.75,
           type: TYPES.SCRIPT,
           id: 'script.playlist_workout',
           customStyles: { 'color': '#808080', 'background-color': '#f4f1de' },
@@ -213,6 +235,26 @@ const musicPage = {
             on: "mdi-dumbbell",
             off: "mdi-dumbbell"
           },
+          state: false
+        },
+        {
+          position: [0, 2.5],
+          width: 0.75,
+          height: 0.75,
+          type: TYPES.SCRIPT,
+          id: 'script.podcast_heute_morgen',
+          bg: 'heute_morgen.png',
+          title: 'Heute Morgen',
+          state: false
+        },
+        {
+          position: [0.75, 2.5],
+          width: 0.75,
+          height: 0.75,
+          type: TYPES.SCRIPT,
+          id: 'script.podcast_echo_der_zeit',
+          bg: 'echo_der_zeit.png',
+          title: 'Echo der Zeit',
           state: false
         }
       ]
