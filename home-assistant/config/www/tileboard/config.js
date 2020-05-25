@@ -63,7 +63,7 @@ var CONFIG = {
       ]
    },
 
-   screensaver: screenSaverConfig,
+   // screensaver: screenSaverConfig,
 
    pages: [
       homePage,
