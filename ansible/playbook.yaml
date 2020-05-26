@@ -5,5 +5,5 @@
   vars:
     ansible_ssh_user: ubuntu
   roles:
-    # - create_user
+    - create_user
     - ssh_setup

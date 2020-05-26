@@ -1,34 +1,4 @@
-- name: make sure ssh directory exist
-  file:
-    path: "/home/{{user}}/.ssh/"
-    state: directory
-    owner: "{{user}}"
-    group: "{{group}}"
-  become: yes
+--- 
 
-- name: Check that authorized_keys exists
-  stat:
-    path: "/home/{{user}}/.ssh/authorized_keys"
-  register: stat_result
-
-- name: Create authorized_keys, if it doesn't exist already
-  file:
-    path: "/home/{{user}}/.ssh/authorized_keys"
-    state: touch
-    owner: "{{user}}"
-    group: "{{group}}"
-    mode: "u=rw,g=r,o=r"
-  become: yes
-  when: stat_result.stat.exists == false
-
-- name: check wheter the authorized_keys file contains the tgdmosaa key
-  shell: cat "/home/{{user}}/.ssh/authorized_keys" | grep tgdmosaa@
-  register: grep_output
-  ignore_errors: true
-
-- name: insert the ssh key to authorized_keys
-  blockinfile:
-    block: "{{ lookup('file', '../files/tgdmosaa_id_rsa.pub') }}"
-    dest: "/home/{{user}}/.ssh/authorized_keys"
-  become: yes
-  when: grep_output.stdout==""
+- include: authorize_key.yaml
+- include: harden_ssh.yaml
