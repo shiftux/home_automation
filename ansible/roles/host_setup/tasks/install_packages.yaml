@@ -1,0 +1,17 @@
+- name: Update all packages to the latest version
+  apt:
+    upgrade: dist
+    update_cache: yes
+  become: yes
+
+- name: install packages
+  package:
+    state: latest
+    name:
+      - vim
+      - curl
+      - net-tools
+      - git
+      - python3
+      - python3-pip
+  become: yes

@@ -1,0 +1,9 @@
+- name: apply the bashrc file
+  copy:
+    src: ../files/bashrc
+    dest: /home/{{ user }}/.bashrc
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: u=rw,g=r,o=r
+    force: yes
+    backup: no

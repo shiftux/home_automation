@@ -1,5 +1,5 @@
 [RPi4]
-192.168.0.33
+192.168.0.33 host_name=hass2
 
 [RPi4:vars]
 user=pi

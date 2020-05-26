@@ -18,7 +18,7 @@
     force: yes
     backup: yes
   become: yes
-  # when: stat_result.stat.exists == false
+  when: stat_result.stat.exists == false
 
 - name: restart sshd
   service:

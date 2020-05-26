@@ -1,0 +1,12 @@
+---
+
+# this includes apt steps, only works on debian so far
+- name: System Setup
+  hosts: RPi4
+  vars:
+    ansible_ssh_user: pi
+    ansible_port: "{{ ssh_port }}"
+  vars_files: 
+    - secrets.yaml
+  roles:
+    - host_setup
