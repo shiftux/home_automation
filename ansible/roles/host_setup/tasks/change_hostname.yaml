@@ -2,3 +2,11 @@
   hostname:
     name: "{{ host_name }}"
   become: yes
+
+- name: Add hostname in hosts file
+  lineinfile:
+    path: /etc/hosts
+    insertafter: '^127\.0\.0\.1'
+    line: "127.0.0.1 {{ host_name }}"
+    state: present
+  become: yes

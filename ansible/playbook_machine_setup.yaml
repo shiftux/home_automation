@@ -10,3 +10,5 @@
     - secrets.yaml
   roles:
     - host_setup
+    - install_docker
+    - setup_kubernetes
