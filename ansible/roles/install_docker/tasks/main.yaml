@@ -12,3 +12,10 @@
     groups: [docker]
     append: yes
   become: yes
+
+- name: start docker and ensure it starts on boot
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+  become: yes

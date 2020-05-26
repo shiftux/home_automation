@@ -1,0 +1,31 @@
+- name: Update all packages to the latest version
+  apt:
+    upgrade: dist
+    update_cache: yes
+  become: yes
+
+- name: install packages
+  package:
+    state: latest
+    name:
+      - vim
+      - curl
+      - net-tools
+      - git
+      - python3
+      - python3-pip
+      - dbus
+  become: yes
+
+- name: make sure dbus is running # this is needed for host name control (hostnamectl)
+  systemd:
+    name: dbus.service
+    state: started
+    enabled: yes
+  become: yes
+- name: make sure dbus socket is running # this is needed for host name control (hostnamectl)
+  systemd:
+    name: dbus.socket
+    state: restarted
+    enabled: yes
+  become: yes

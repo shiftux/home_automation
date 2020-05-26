@@ -1,5 +1,3 @@
----
-
 - include: install_packages.yaml
 - include: add_bashrc.yaml
 - include: change_hostname.yaml

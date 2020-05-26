@@ -1,0 +1,12 @@
+- name: set swapoff
+  command: swapoff -a
+  become: yes
+
+- name: Remove swap line in fstab
+  lineinfile:
+    path: /etc/fstab
+    regex: 'swapfile'
+    state: absent
+  become: yes
+
+
