@@ -1,6 +1,6 @@
 const screenSaverConfig = {// optional. https://github.com/resoai/TileBoard/wiki/Screensaver-configuration
-  timeout: 3, // after 5 mins of inactive
-  slidesTimeout: 5, // 10s for one slide
+  timeout: 300, // after 5 mins of inactive
+  slidesTimeout: 10, // 10s for one slide
   styles: { fontSize: '40px' },
   slides: [
     { bg: 'images/screensaver_pics/0715cbed-3462-48bb-800a-0312431b07c7.jpeg' ,
