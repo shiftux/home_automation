@@ -1,0 +1,4 @@
+- include: disable_swap.yaml
+- include: add_hosts_to_hosts_file.yaml
+- include: enable_inter_machine_ssh.yaml
+- include: install_kubernetes.yaml

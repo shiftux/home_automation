@@ -1,0 +1,8 @@
+- name: add other hosts to hosts file
+  lineinfile: 
+    dest: /etc/hosts
+    line: "{{ item }} {{ hostvars[item]['host_name'] }}"
+    state: present
+  with_items: "{{ groups['RPi4'] }}"
+  become: yes
+

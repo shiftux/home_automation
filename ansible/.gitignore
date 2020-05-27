@@ -1,0 +1,4 @@
+*.pub
+secrets.yaml
+.vault_pass
+**/hass_id_rsa
