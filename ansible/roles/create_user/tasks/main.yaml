@@ -1,0 +1,33 @@
+- name: check if user exists
+  shell: 'grep {{ user }} -q /etc/passwd'
+  register: user_exists
+  ignore_errors: true
+
+- name: Ensure group exists
+  group:
+    name: "{{ group }}"
+    state: present
+  when: user_exists is failed
+  become: yes
+
+- name: Add user
+  user:
+    name: "{{ user }}"
+    group: "{{ group }}"
+    groups: [sudo]
+    append: yes
+    shell: /bin/bash
+    create_home: yes
+  become: yes
+  when: user_exists is failed
+
+- name: check if user is sudoer
+  shell: 'grep {{ user }} -q /etc/sudoers'
+  register: is_sudoer
+  become: yes
+  ignore_errors: true
+
+- name: make user sudoer
+  shell: 'echo "{{ user }} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers'
+  when: is_sudoer is failed
+  become: yes

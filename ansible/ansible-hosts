@@ -1,0 +1,7 @@
+[RPi4]
+192.168.0.28 host_name=hass
+192.168.0.33 host_name=hass2
+
+[RPi4:vars]
+user=pi
+group=pi

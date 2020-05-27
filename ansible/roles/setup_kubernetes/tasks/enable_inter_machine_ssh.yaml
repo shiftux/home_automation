@@ -1,0 +1,22 @@
+- name: copy key file
+  copy:
+    src: ../files/hass_id_rsa
+    dest: /home/{{ user }}/.ssh/id_rsa
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: '600'
+    force: yes
+    backup: no
+
+- name: copy pubkey file
+  copy:
+    src: ../files/hass_id_rsa.pub
+    dest: /home/{{ user }}/.ssh/id_rsa.pub
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: '644'
+    force: yes
+    backup: no
+
+- name: add pubkey to authorized_keys
+  shell: "/usr/bin/cat /home/{{ user }}/.ssh/id_rsa.pub >> /home/{{ user }}/.ssh/authorized_keys"

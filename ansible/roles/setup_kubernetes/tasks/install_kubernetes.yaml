@@ -1,0 +1,41 @@
+- name: install dependency
+  apt:
+    pkg:
+      - apt-transport-https
+    state: latest
+  become: yes
+
+- name: add the Kubernetes signing key
+  shell: "curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add"
+
+  # note: at the time of this writing, Ubuntu 16.04 Xenial Xerus is the latest Kubernetes 
+  # repository available. This should eventually be superseded by Ubuntu 20.04 Focal Fossa, 
+  # and the following command can then be updated from xenial to focal
+- name: add k8s repo
+  apt_repository:
+    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+  become: yes
+
+- name: install k8s packages
+  apt:
+    update_cache: yes
+    pkg:
+      - kubelet
+      - kubeadm
+      - kubectl
+      - keepalived
+      - apt-transport-https
+    state: latest
+  become: yes
+
+- name: start keepalived and ensure it starts on boot
+  systemd:
+    name: keepalived
+    state: started
+    enabled: yes
+  become: yes
+
+- name: set net.bridge to 1
+  shell: "sysctl net.bridge.bridge-nf-call-iptables=1"
+  become: yes

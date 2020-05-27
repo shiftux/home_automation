@@ -1,0 +1,9 @@
+---
+
+- name: Setup user and access on Raspberry Pi 4
+  hosts: RPi4
+  vars:
+    ansible_ssh_user: ubuntu
+  roles:
+    - create_user
+    - ssh_setup
