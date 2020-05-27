@@ -201,8 +201,18 @@
       - service:  squeezebox.call_method
         data: 
           entity_id: "media_player.picorelivingroom"
-          command: "podcasts"
-          parameters: ["playlist","play","item_id:0.0"]
+          command: "playlist"
+          parameters: ["play","spotify:show:2yltdfmAGQsU8UnsTBjWwV"]
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["shuffle","0"]
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["jump","0"]
 
   # Echo der Zeit https://www.srf.ch/feed/podcast/sd/28549e81-c453-4671-92ad-cb28796d06a8.xml
   podcast_echo_der_zeit:
@@ -213,8 +223,18 @@
       - service:  squeezebox.call_method
         data: 
           entity_id: "media_player.picorelivingroom"
-          command: "podcasts"
-          parameters: ["playlist","play","item_id:1.0"]
+          command: "playlist"
+          parameters: ["play","spotify:show:2ZSmqyt0bE5RXbhJZVBTaD"]
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["shuffle","0"]
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["jump","0"]
 
   # Info 3 https://www.srf.ch/feed/podcast/sd/fc20e6ad-9e5f-40a9-b3c3-61765e927edc.xml
   podcast_info3:
@@ -225,8 +245,18 @@
       - service:  squeezebox.call_method
         data: 
           entity_id: "media_player.picorelivingroom"
-          command: "podcasts"
-          parameters: ["playlist","play","item_id:3.0"]
+          command: "playlist"
+          parameters: ["play","spotify:show:46QFreBLhnaGrl5svL3FWP"]
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["shuffle","0"]
+      - service:  squeezebox.call_method
+        data: 
+          entity_id: "media_player.picorelivingroom"
+          command: "playlist"
+          parameters: ["jump","0"]
 
   # La Matinale https://www.rts.ch/la-1ere/programmes/la-matinale/podcast/?flux=rss
   podcast_la_matinale:
