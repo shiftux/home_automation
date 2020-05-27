@@ -1,0 +1,35 @@
+- name: change the home directory owner
+  file: 
+    path: "{{ home_automation_dir }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    state: directory
+    mode: '755'
+  become: yes
+
+- name: clone home automation repo
+  git:
+    repo: git@github.com:shiftux/home_automation.git
+    dest: "{{ home_automation_dir }}"
+    accept_hostkey: yes
+
+- name: add files to mount screensaver pictures
+  file: 
+    path: /mnt/nas_pi
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    state: directory
+    mode: '755'
+  become: yes
+
+- name: Add screensaver pictures to fstab
+  lineinfile:
+    path: /etc/fstab
+    insertafter: EOF
+    line: "//192.168.0.14/pi/    /mnt/nas_pi/    cifs    uid=1000,gid=1000,ro,username={{user}},password={{nas_pw}},noexec,x-systemd.automount,vers=1.0    0    0"
+    state: present
+  become: yes
+
+- name: mount fstab
+  shell: "mount -a"
+  become: yes

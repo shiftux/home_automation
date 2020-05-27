@@ -15,6 +15,7 @@
       - python3
       - python3-pip
       - dbus
+      - cifs-utils
   become: yes
 
 - name: make sure dbus is running # this is needed for host name control (hostnamectl)

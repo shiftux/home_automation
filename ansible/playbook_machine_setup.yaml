@@ -12,5 +12,5 @@
   roles:
     - host_config
     - install_docker
-    - clone_home_automation
+    - setup_home_automation
     - setup_kubernetes
