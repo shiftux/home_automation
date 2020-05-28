@@ -48,8 +48,9 @@
       payload: 'on'
     action:
       - service: mqtt.publish
-        topic: "light/sonoff-4ch/cmnd/POWER4"
-        payload: 'on'
+        data:
+          topic: "light/sonoff-4ch/cmnd/POWER4"
+          payload: 'on'
 
   - alias: "Sync dining room light relays off"
     trigger:
@@ -58,5 +59,6 @@
       payload: 'off'
     action:
       - service: mqtt.publish
-        topic: "light/sonoff-4ch/cmnd/POWER4"
-        payload: 'off'
+        data:
+          topic: "light/sonoff-4ch/cmnd/POWER4"
+          payload: 'off'
