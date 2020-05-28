@@ -13,7 +13,7 @@
   - platform: mqtt
     name: "Kitchen"
     command_topic: "light/sonoff-kitchen/cmnd/POWER"
-    state_topic: "light/sonoff-entry/stat/RESULT"
+    state_topic: "light/sonoff-kitchen/stat/RESULT"
     state_value_template: "{{value_json.POWER}}"
     availability_topic: "light/sonoff-kitchen/tele/LWT"
     payload_on: "ON"
