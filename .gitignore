@@ -1,3 +1,4 @@
 *.pw
 *.db
 *.log
+**/tasmota.bin
