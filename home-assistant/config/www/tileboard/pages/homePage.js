@@ -136,8 +136,8 @@ const homePage = {
             off: "Off"
           },
           icons: {
-            on: "mdi-lightbulb-on",
-            off: "mdi-lightbulb",
+            on: "mdi-lightbulb-group",
+            off: "mdi-lightbulb-group-off",
           },
         },
         {
