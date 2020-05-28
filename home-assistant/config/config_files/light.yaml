@@ -1,8 +1,8 @@
   - platform: mqtt
     name: "Entry"
-    command_topic: "light/sonoff-entry/cmnd/POWER"
+    command_topic: "light/sonoff-entry/cmnd/POWER1"
     state_topic: "light/sonoff-entry/tele/STATE"
-    state_value_template: "{{value_json.POWER}}"
+    state_value_template: "{{value_json.POWER1}}"
     availability_topic: "light/sonoff-entry/tele/LWT"
     payload_on: "ON"
     payload_off: "OFF"
@@ -12,9 +12,9 @@
     retain: true
   - platform: mqtt
     name: "Kitchen"
-    command_topic: "light/sonoff-kitchen/cmnd/POWER"
+    command_topic: "light/sonoff-kitchen/cmnd/POWER1"
     state_topic: "light/sonoff-kitchen/tele/STATE"
-    state_value_template: "{{value_json.POWER}}"
+    state_value_template: "{{value_json.POWER1}}"
     availability_topic: "light/sonoff-kitchen/tele/LWT"
     payload_on: "ON"
     payload_off: "OFF"
