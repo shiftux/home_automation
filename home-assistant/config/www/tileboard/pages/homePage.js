@@ -176,7 +176,7 @@ const homePage = {
           state: false
         },
         {
-          position: [3, 4],
+          position: [2, 3],
           type: TYPES.SCRIPT, 
           title: 'All off',
           id: 'script.all_off',
