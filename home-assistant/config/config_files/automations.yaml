@@ -40,3 +40,23 @@
     action:
       - service: switch.turn_on
         entity_id: switch.lms_shuffle
+
+  - alias: "Sync dining room light relays on"
+    trigger:
+      platform: mqtt
+      topic: "light/sonoff-4ch/cmnd/POWER3"
+      payload: 'on'
+    action:
+      - service: mqtt.publish
+        topic: "light/sonoff-4ch/cmnd/POWER4"
+        payload: 'on'
+
+  - alias: "Sync dining room light relays off"
+    trigger:
+      platform: mqtt
+      topic: "light/sonoff-4ch/cmnd/POWER3"
+      payload: 'off'
+    action:
+      - service: mqtt.publish
+        topic: "light/sonoff-4ch/cmnd/POWER4"
+        payload: 'off'
