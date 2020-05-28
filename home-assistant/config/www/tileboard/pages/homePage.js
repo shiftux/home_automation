@@ -137,7 +137,7 @@ const homePage = {
           },
           icons: {
             on: "mdi-lightbulb-group",
-            off: "mdi-lightbulb-group-off",
+            off: "mdi-lightbulb-group",
           },
         },
         {
