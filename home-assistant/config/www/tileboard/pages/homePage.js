@@ -61,68 +61,68 @@ const homePage = {
       height: 4,
       items: [
         {
-            type: TYPES.LIGHT,
-            position: [0, 0],
-            title: 'Entry',
-            // subtitle: 'Lounge',
-            id: 'light.basic',
-            state: false,
-            states: {
-              on: "On",
-              off: "Off"
-            },
-            icons: {
-              on: "mdi-lightbulb-on",
-              off: "mdi-lightbulb",
-            },
+          type: TYPES.LIGHT,
+          position: [0, 0],
+          title: 'Entry',
+          // subtitle: 'Lounge',
+          id: 'light.entry',
+          state: false,
+          states: {
+            on: "On",
+            off: "Off"
+          },
+          icons: {
+            on: "mdi-lightbulb-on",
+            off: "mdi-lightbulb",
+          },
         },
         {
-            type: TYPES.LIGHT,
-            position: [1, 0],
-            title: 'Living Room',
-            // subtitle: 'Lounge',
-            id: 'light.dual_red',
-            state: false,
-            states: {
-              on: "On",
-              off: "Off"
-            },
-            icons: {
-              on: "mdi-lightbulb-on",
-              off: "mdi-lightbulb",
-            },
+          type: TYPES.LIGHT,
+          position: [1, 0],
+          title: 'Living Room',
+          // subtitle: 'Lounge',
+          id: 'light.living_room',
+          state: false,
+          states: {
+            on: "On",
+            off: "Off"
+          },
+          icons: {
+            on: "mdi-lightbulb-on",
+            off: "mdi-lightbulb",
+          },
         }, 
         {
-            type: TYPES.LIGHT,
-            position: [2, 0],
-            title: 'Kitchen',
-            // subtitle: 'Lounge',
-            id: 'light.dual_white',
-            state: false,
-            states: {
-              on: "On",
-              off: "Off"
-            },
-            icons: {
-              on: "mdi-lightbulb-on",
-              off: "mdi-lightbulb",
-            },
+          type: TYPES.LIGHT,
+          position: [2, 0],
+          title: 'Kitchen',
+          // subtitle: 'Lounge',
+          id: 'light.kitchen',
+          state: false,
+          states: {
+            on: "On",
+            off: "Off"
+          },
+          icons: {
+            on: "mdi-lightbulb-on",
+            off: "mdi-lightbulb",
+          },
         },
         {
-            type: TYPES.LIGHT,
-            position: [0, 1],
-            title: 'Dining Room',
-            // subtitle: 'Lounge',
-            id: 'light.basic',
-            state: false,
-            states: {
-              on: "On",
-              off: "Off"
-            },
-            icons: {
-              on: "mdi-lightbulb-on",
-              off: "mdi-lightbulb",
-            },
+          type: TYPES.LIGHT,
+          position: [0, 1],
+          title: 'Dining Room',
+          // subtitle: 'Lounge',
+          id: 'light.dining_room',
+          state: false,
+          states: {
+            on: "On",
+            off: "Off"
+          },
+          icons: {
+            on: "mdi-lightbulb-on",
+            off: "mdi-lightbulb",
+          },
         },
         {
             position: [0, 2],
