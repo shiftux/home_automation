@@ -1,3 +1,4 @@
+#light:
   - platform: mqtt
     name: "Entry"
     command_topic: "light/sonoff-entry/cmnd/POWER"
@@ -10,6 +11,7 @@
     payload_not_available: "Offline"
     qos: 1
     retain: true
+
   - platform: mqtt
     name: "Kitchen"
     command_topic: "light/sonoff-kitchen/cmnd/POWER"
@@ -22,6 +24,7 @@
     payload_not_available: "Offline"
     qos: 1
     retain: true
+
   - platform: mqtt
     name: "Living Room"
     command_topic: "light/sonoff-4ch/cmnd/POWER1"
@@ -34,6 +37,7 @@
     payload_not_available: "Offline"
     qos: 1
     retain: true
+
   - platform: mqtt
     name: "Dining Room"
     command_topic: "light/sonoff-4ch/cmnd/POWER3"
@@ -46,3 +50,11 @@
     payload_not_available: "Offline"
     qos: 1
     retain: true
+
+  - platform: group
+    name: All Lights
+    entities:
+      - light.kitchen
+      - light.entry
+      - light.dining_room
+      - light.living_room

@@ -125,15 +125,31 @@ const homePage = {
           },
         },
         {
-            position: [0, 2],
-            type: TYPES.SCRIPT,
-            id: 'script.listen_music',
-            customStyles: {'background-color':'#00a896'},
-            icons: {
-              on: "mdi-music",
-              off: "mdi-music"
-            },
-            state: false
+          type: TYPES.LIGHT,
+          position: [2, 1],
+          title: 'All lights',
+          // subtitle: 'Lounge',
+          id: 'light.all_lights',
+          state: false,
+          states: {
+            on: "On",
+            off: "Off"
+          },
+          icons: {
+            on: "mdi-lightbulb-on",
+            off: "mdi-lightbulb",
+          },
+        },
+        {
+          position: [0, 2],
+          type: TYPES.SCRIPT,
+          id: 'script.listen_music',
+          customStyles: {'background-color':'#00a896'},
+          icons: {
+            on: "mdi-music",
+            off: "mdi-music"
+          },
+          state: false
         },
         {
           position: [1, 2],
@@ -158,17 +174,18 @@ const homePage = {
             off: "mdi-stop"
           },
           state: false
-        // },
-        // {
-        //    position: [3, 4],
-        //    type: TYPES.SCRIPT, 
-        //    title: 'All off',
-        //    id: 'script.all_off',
-        //    icons: {
-        //       on: "mdi-flash-off",
-        //       off: "mdi-flash-off"
-        //    },
-        //    state: false
+        },
+        {
+          position: [3, 4],
+          type: TYPES.SCRIPT, 
+          title: 'All off',
+          id: 'script.all_off',
+          customStyles: { 'background-color': '#e63946' },
+          icons: {
+            on: "mdi-flash-off",
+            off: "mdi-flash-off"
+          },
+          state: false
         }
       ]
     }

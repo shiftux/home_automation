@@ -50,14 +50,3 @@
         data_template:
           topic: "light/sonoff-4ch/cmnd/POWER4"
           payload: '{{ trigger.payload }}'
-
-  # - alias: "Sync dining room light relays off"
-  #   trigger:
-  #     platform: mqtt
-  #     topic: "light/sonoff-4ch/cmnd/POWER3"
-  #     payload: 'OFF'
-  #   action:
-  #     - service: mqtt.publish
-  #       data:
-  #         topic: "light/sonoff-4ch/cmnd/POWER4"
-  #         payload: 'OFF'
