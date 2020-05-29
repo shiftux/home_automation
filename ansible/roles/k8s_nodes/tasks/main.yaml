@@ -1,4 +1,11 @@
+- name: check if /etc/kubernetes/kubelet.conf exists
+  stat:
+    path: /etc/kubernetes/kubelet.conf
+  register: kubelet_conf
+  become: yes
+
 - name: Join the k8s cluster
   shell: >
     {{ kubernetes_join_command }}
   become: yes
+  when: not kubelet_conf.stat.exists
