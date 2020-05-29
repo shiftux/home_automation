@@ -1,16 +1,43 @@
 ---
 
-# this includes apt steps, only works on debian so far
+# NOTE: this includes apt steps, only works on debian so far
+# NOTE2: at the time of this writing, Ubuntu 16.04 Xenial Xerus is the latest Kubernetes 
+# repository available. This should eventually be superseded by Ubuntu 20.04 Focal Fossa, 
+# and the following command can then be updated from xenial to focal
 - name: System Setup
   hosts: RPi4
   vars:
-    ansible_ssh_user: pi
+    ansible_ssh_user: "{{ user }}"
     ansible_port: "{{ ssh_port }}"
     home_automation_dir: /opt/home_automation
+    k8s_repo_version: "kubernetes-xenial"
   vars_files: 
     - secrets.yaml
   roles:
     - host_config
     - install_docker
     - setup_home_automation
-    - setup_kubernetes
+    - prepare_k8s
+
+- name: K8s Master Setup
+  hosts: k8s_master
+  vars:
+    ansible_ssh_user: "{{ user }}"
+    ansible_port: "{{ ssh_port }}"
+    kubernetes_flannel_manifest_file_rbac: https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
+    kubernetes_flannel_manifest_file: https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+    kubernetes_pod_network_cidr: '10.244.0.0/16'
+  vars_files: 
+    - secrets.yaml
+  roles:
+    - k8s_master
+
+- name: K8s Node Setup
+  hosts: k8s_nodes
+  vars:
+    ansible_ssh_user: "{{ user }}"
+    ansible_port: "{{ ssh_port }}"
+  vars_files: 
+    - secrets.yaml
+  roles:
+    - k8s_nodes

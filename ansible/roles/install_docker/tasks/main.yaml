@@ -19,3 +19,63 @@
     state: started
     enabled: yes
   become: yes
+
+# k8s and docker should rely on the same cgroup driver, k8s suggests systemd
+# https://askubuntu.com/questions/1189480/raspberry-pi-4-ubuntu-19-10-cannot-enable-cgroup-memory-at-boostrap
+- name: check if systemd is default cgroup driver
+  shell: docker info | grep -i cgroup
+  register: cgroup_driver
+
+- name: ensure /etc/docker/daemon.json is present
+  file:
+    path: /etc/docker/daemon.json
+    state: touch
+    mode: '0644'
+    owner: root
+    group: root
+  become: yes
+  when: "cgroup_driver.stdout != \" Cgroup Driver: systemd\""
+
+- name: make docker use systemd as cgroup driver
+  lineinfile:
+    path: /etc/docker/daemon.json
+    line: "{ \"exec-opts\": [\"native.cgroupdriver=systemd\"] }"
+    state: present
+  become: yes
+  when: "cgroup_driver.stdout != \" Cgroup Driver: cgroupf\""
+
+- name: start docker and ensure it starts on boot
+  systemd:
+    daemon_reload: yes
+    name: docker
+    state: restarted
+    enabled: yes
+  become: yes
+  when: "cgroup_driver.stdout != \" Cgroup Driver: systemd\""
+
+- name: backup /boot/firmware/cmdline.txt
+  copy: 
+    remote_src: yes
+    src: /boot/firmware/cmdline.txt
+    dest: /boot/firmware/cmdline.txt.bkp
+    force: no
+    owner: root
+    group: root
+    mode: '0755'
+  become: yes
+
+- name: make sure cgroup cpu/mem are enabled
+  copy:
+    src: ../files/cmdline.txt
+    dest: /boot/firmware/cmdline.txt
+    owner: root
+    group: root
+    mode: '0755'
+    force: yes
+  become: yes
+  when: "cgroup_driver.stdout != \" Cgroup Driver: systemd\""
+
+- name: Reboot
+  reboot:
+  become: yes
+  when: "cgroup_driver.stdout != \" Cgroup Driver: systemd\""

@@ -1,0 +1,4 @@
+- name: Join the k8s cluster
+  shell: >
+    {{ kubernetes_join_command }}
+  become: yes

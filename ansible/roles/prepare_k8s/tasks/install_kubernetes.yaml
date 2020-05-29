@@ -5,15 +5,18 @@
     state: latest
   become: yes
 
-- name: add the Kubernetes signing key
-  shell: "curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add"
+- name: Add Kubernetes apt key.
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+  become: yes
 
-  # note: at the time of this writing, Ubuntu 16.04 Xenial Xerus is the latest Kubernetes 
+  # Note: at the time of this writing, Ubuntu 16.04 Xenial Xerus is the latest Kubernetes 
   # repository available. This should eventually be superseded by Ubuntu 20.04 Focal Fossa, 
   # and the following command can then be updated from xenial to focal
 - name: add k8s repo
   apt_repository:
-    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+    repo: "deb http://apt.kubernetes.io/ {{k8s_repo_version}} main"
     state: present
   become: yes
 
@@ -32,6 +35,13 @@
 - name: start keepalived and ensure it starts on boot
   systemd:
     name: keepalived
+    state: started
+    enabled: yes
+  become: yes
+
+- name: start kubelet and ensure it starts on boot
+  systemd:
+    name: kubelet
     state: started
     enabled: yes
   become: yes

@@ -5,3 +5,9 @@
 [RPi4:vars]
 user=pi
 group=pi
+
+[k8s_master]
+192.168.0.28
+
+[k8s_nodes]
+192.168.0.33
