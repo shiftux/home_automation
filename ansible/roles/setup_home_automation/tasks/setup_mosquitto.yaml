@@ -1,0 +1,43 @@
+- name: create mosquitto log folder
+  file:
+    state: directory
+    path: /opt/home_automation/mosquitto/log
+    mode: '0777'
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: create mosquitto data folder
+  file:
+    state: directory
+    path: /opt/home_automation/mosquitto/data
+    mode: '0777'
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: create mosquitto config folder
+  file:
+    state: directory
+    path: /opt/home_automation/mosquitto/config
+    mode: '0777'
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: copy config file
+  copy:
+    src: ../files/mosquitto_conf
+    dest: /opt/home_automation/mosquitto/config/mosquitto.conf
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: '0664'
+    force: yes
+    backup: no
+
+- name: copy password file
+  copy:
+    src: ../files/passwordfile.pw
+    dest: /opt/home_automation/mosquitto/config/passwordfile.pw
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: '0644'
+    force: yes
+    backup: no

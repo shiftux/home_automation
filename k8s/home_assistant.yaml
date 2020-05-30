@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: home-assistant
+  namespace: hass
+  labels:
+    ms: home-assistant
+spec:
+  ports:
+  - name: home-assistant-p
+    protocol: TCP
+    port: 8123
+    nodePort: 30123
+    targetPort: home-assistant-p-t
+  selector:
+    ms: home-assistant
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: hass
+  name: home-assistant
+  labels:
+    ms: home-assistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        ms: home-assistant
+  template:
+    metadata:
+      namespace: hass
+      labels:
+        ms: home-assistant
+    spec:
+      containers:
+      - name: homeassistant/raspberrypi4-64-homeassistant
+        image: eclipse-home-assistant
+        env:
+        - name: TZ
+          value: Europe/Zurich
+        ports:
+        - containerPort: 8123
+          name: home-assistant-p-t
+        volumeMounts:
+        - name: home-assistant-config
+          mountPath: /config
+      volumes:
+        - name: home-assistant-config
+          hostPath:
+            path: /opt/home_automation/home-assistant/config
+            type: Directory

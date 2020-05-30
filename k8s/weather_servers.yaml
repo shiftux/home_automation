@@ -10,65 +10,47 @@ spec:
   ports:
   - name: w-forecast-sp
     protocol: TCP
-    port: 9090
+    port: 8080
     targetPort: w-forecast-p
   selector:
     weather: forecast
-  type: NodePort
-# ---
-# apiVersion: v1
-# kind: PersistentVolume
-# metadata:
-#   name: weather-forecast-pv-html
-# spec:
-#   capacity:
-#     storage: 10Mi
-#   volumeMode: Filesystem
-#   accessModes:
-#   - ReadWriteOnce
-#   persistentVolumeReclaimPolicy: Delete
-#   storageClassName: local-storage
-#   local:
-#     path: /opt/home_automation/local-weather-sites/forecast
-# ---
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: weather-forecast-pvc-html
-# spec:
-#   storageClassName: local-storage
-#   accessModes:
-#     - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: 10Mi
-# ---
-# apiVersion: v1
-# kind: PersistentVolume
-# metadata:
-#   name: weather-forecast-pv-nginx
-# spec:
-#   capacity:
-#     storage: 10Mi
-#   volumeMode: Filesystem
-#   accessModes:
-#   - ReadWriteOnce
-#   persistentVolumeReclaimPolicy: Delete
-#   storageClassName: local-storage
-#   local:
-#     path: /opt/home_automation/local-weather-sites/forecast/config
-# ---
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: weather-forecast-pvc-nginx
-# spec:
-#   storageClassName: local-storage
-#   accessModes:
-#     - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: 10Mi
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: weather-radar
+  namespace: hass
+  labels:
+    weather: radar
+    ms: weather
+spec:
+  ports:
+  - name: w-radar-sp
+    protocol: TCP
+    port: 8081
+    targetPort: w-radar-p
+  selector:
+    weather: radar
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: weather-daily
+  namespace: hass
+  labels:
+    weather: daily
+    ms: weather
+spec:
+  ports:
+  - name: w-daily-sp
+    protocol: TCP
+    port: 8082
+    targetPort: w-daily-p
+  selector:
+    weather: daily
+  type: ClusterIP
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -112,4 +94,92 @@ spec:
         - name: weather-forecast-nginx
           hostPath:
             path: /opt/home_automation/local-weather-sites/forecast/config
+            type: Directory
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: hass
+  name: weather-radar
+  labels:
+    weather: radar
+    ms: weather
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      weather: radar
+      ms: weather
+  template:
+    metadata:
+      namespace: hass
+      labels:
+        weather: radar
+        ms: weather
+    spec:
+      containers:
+      - name: weather-radar
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+          name: w-radar-p
+        volumeMounts:
+        - name: weather-radar-html
+          mountPath: /usr/share/nginx/html
+          readOnly: true
+        - name: weather-radar-nginx
+          mountPath: /etc/nginx/conf.d
+          readOnly: true
+      volumes:
+        - name: weather-radar-html
+          hostPath:
+            path: /opt/home_automation/local-weather-sites/radar
+            type: Directory
+        - name: weather-radar-nginx
+          hostPath:
+            path: /opt/home_automation/local-weather-sites/radar/config
+            type: Directory
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: hass
+  name: weather-daily
+  labels:
+    weather: daily
+    ms: weather
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      weather: daily
+      ms: weather
+  template:
+    metadata:
+      namespace: hass
+      labels:
+        weather: daily
+        ms: weather
+    spec:
+      containers:
+      - name: weather-daily
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+          name: w-daily-p
+        volumeMounts:
+        - name: weather-daily-html
+          mountPath: /usr/share/nginx/html
+          readOnly: true
+        - name: weather-daily-nginx
+          mountPath: /etc/nginx/conf.d
+          readOnly: true
+      volumes:
+        - name: weather-daily-html
+          hostPath:
+            path: /opt/home_automation/local-weather-sites/daily
+            type: Directory
+        - name: weather-daily-nginx
+          hostPath:
+            path: /opt/home_automation/local-weather-sites/daily/config
             type: Directory

@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mosquitto
+  namespace: hass
+  labels:
+    ms: mosquitto
+spec:
+  ports:
+  - name: mosquitto-1
+    protocol: TCP
+    port: 9001
+    nodePort: 31001
+    targetPort: mosquitto-1-t
+  - name: mosquitto-2
+    protocol: TCP
+    port: 1883
+    nodePort: 31883
+    targetPort: mosquitto-2-t
+  selector:
+    ms: mosquitto
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: hass
+  name: mosquitto
+  labels:
+    ms: mosquitto
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        ms: mosquitto
+  template:
+    metadata:
+      namespace: hass
+      labels:
+        ms: mosquitto
+    spec:
+      containers:
+      - name: mosquitto
+        image: eclipse-mosquitto
+        ports:
+        - containerPort: 9001
+          name: mosquitto-1-t
+        - containerPort: 1883
+          name: mosquitto-2-t
+        volumeMounts:
+        - name: mosquitto-config
+          mountPath: /mosquitto/config/
+          readOnly: true
+        - name: mosquitto-log
+          mountPath: /mosquitto/log
+        - name: mosquitto-data
+          mountPath: /mosquitto/data
+      volumes:
+        - name: mosquitto-config
+          hostPath:
+            path: /opt/home_automation/mosquitto/config/
+            type: DirectoryOrCreate
+        - name: mosquitto-log
+          hostPath:
+            path: /opt/home_automation/mosquitto/log
+            type: DirectoryOrCreate
+        - name: mosquitto-data
+          hostPath:
+            path: /opt/home_automation/mosquitto/data
+            type: DirectoryOrCreate

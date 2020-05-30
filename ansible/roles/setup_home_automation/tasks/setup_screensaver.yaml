@@ -1,0 +1,47 @@
+- name: add files to mount screensaver pictures
+  file: 
+    path: /mnt/nas_pi
+    owner: ubuntu
+    group: ubuntu
+    state: directory
+    mode: '755'
+  become: yes
+
+- name: Add screensaver pictures to fstab
+  lineinfile:
+    path: /etc/fstab
+    insertafter: EOF
+    line: "//192.168.0.14/pi/    /mnt/nas_pi/    cifs    uid=1000,gid=1000,ro,username={{user}},password={{nas_pw}},noexec,x-systemd.automount,vers=1.0    0    0"
+    state: present
+  become: yes
+
+- name: mount fstab
+  command: mount -a
+  args:
+    warn: no
+  become: true
+  ignore_errors: yes
+
+- name: Get all image files
+  find:
+    paths: /mnt/nas_pi/hass_screensaver_pictures/
+  register: pictures
+
+- name: create screensaver image directory
+  file:
+    state: directory
+    path: /opt/home_automation/home-assistant/config/www/tileboard/images/screensaver_pics/
+    mode: '0775'
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: copy screensaver pics over to tileboard folder
+  copy:
+    remote_src: yes
+    src: "{{ item.path }}"
+    dest: /opt/home_automation/home-assistant/config/www/tileboard/images/screensaver_pics/
+    mode: '0755'
+    owner: "{{ user }}"
+    group: "{{ group }}"
+  with_items: "{{ pictures.files }}"
+  no_log: True
