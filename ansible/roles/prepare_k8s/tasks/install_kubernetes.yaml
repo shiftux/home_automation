@@ -50,3 +50,11 @@
 - name: set net.bridge to 1
   shell: "sysctl net.bridge.bridge-nf-call-iptables=1"
   become: yes
+
+- name: set cgroup driver
+  lineinfile:
+    path:  /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+    line: "Environment=\"cgroup-driver=systemd/cgroup-driver=cgroupfs\""
+    insertbefore: '^# This is a file that "kubeadm init"'
+    state: present
+  become: yes

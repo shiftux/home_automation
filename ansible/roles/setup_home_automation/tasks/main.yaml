@@ -35,6 +35,7 @@
   args:
     warn: no
   become: true
+  ignore_errors: yes
 
 - name: Get files on remote machine
   find:
