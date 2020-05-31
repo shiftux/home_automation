@@ -53,7 +53,7 @@ spec:
         #     port: hass-p-t
         #     scheme: HTTP
         #   successThreshold: 2
-        #   initialDelaySeconds: 20
+        #   initialDelaySeconds: 100
         #   periodSeconds: 15
       volumes:
         - name: home-assistant-config

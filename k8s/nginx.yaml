@@ -1,0 +1,93 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: hass
+  labels:
+    ms: nginx
+spec:
+  ports:
+  - name: nginx-1
+    protocol: TCP
+    port: 80
+    nodePort: 30080
+    targetPort: nginx-http-p-t
+  - name: nginx-2
+    protocol: TCP
+    port: 443
+    nodePort: 30443
+    targetPort: nginx-https-p-t
+  selector:
+    ms: nginx
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: hass
+  name: nginx
+  labels:
+    ms: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        ms: nginx
+  template:
+    metadata:
+      namespace: hass
+      labels:
+        ms: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+          name: nginx-http-p-t
+          hostPort: 30080
+        - containerPort: 443
+          hostPort: 30443
+          name: nginx-https-p-t
+        livenessProbe:
+          tcpSocket:
+            port: nginx-http-p-t
+          initialDelaySeconds: 10
+          periodSeconds: 15
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d/default.conf
+          subPath: default.conf
+        - name: nginx-letsencrypt-site
+          mountPath: /usr/share/nginx/html
+        - name: ssl-certs
+          mountPath: /etc/ssl/certs/
+        - name: fullchain
+          mountPath: /etc/letsencrypt/live/hass.shiftux.org/fullchain.pem
+          subPath: fullchain.pem
+        - name: privkey
+          mountPath: /etc/letsencrypt/live/hass.shiftux.org/privkey.pem
+          subPath: privkey.pem
+      nodeSelector:
+        kubernetes.io/hostname: hass2
+      volumes:
+        - name: nginx-config
+          hostPath:
+            path: /opt/nginx-certbot/nginx.conf
+            type: File
+        - name: nginx-letsencrypt-site
+          hostPath:
+            path: /opt/nginx-certbot/letsencrypt-site
+            type: DirectoryOrCreate
+        - name: ssl-certs
+          hostPath:
+            path: /opt/nginx-certbot/dh-param/
+            type: DirectoryOrCreate
+        - name: fullchain
+          hostPath:
+            path: /opt/nginx-certbot/docker-volumes/etc/letsencrypt/live/hass.shiftux.org-0001/fullchain.pem
+            type: File
+        - name: privkey
+          hostPath:
+            path: /opt/nginx-certbot/docker-volumes/etc/letsencrypt/live/hass.shiftux.org-0001/privkey.pem
+            type: File
