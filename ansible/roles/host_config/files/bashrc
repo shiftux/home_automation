@@ -99,6 +99,7 @@ alias ga="git add -A"
 alias gco="git checkout"
 alias gcom="git commit -m"
 alias gdiff='git diff'
+alias kc='kubectl'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -161,3 +162,8 @@ else
  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
 fi
 unset color_prompt force_color_prompt
+
+########
+# enable k8s bash completion
+source <(kubectl completion bash)
+complete -F __start_kubectl kc

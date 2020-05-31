@@ -29,6 +29,7 @@
       - kubectl
       - keepalived
       - apt-transport-https
+      - bash-completion
     state: latest
   become: yes
 
