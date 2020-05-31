@@ -5,3 +5,7 @@
 - refactor to packages?
 - reformat mac
 - dynamic getting of screensaver pics
+- setup monitoring
+
+- make k8s schedule pods on master node
+- fix tablet aw snap issue
