@@ -11,10 +11,11 @@ spec:
   - name: w-forecast-sp
     protocol: TCP
     port: 8080
+    nodePort: 30880
     targetPort: w-forecast-p
   selector:
     weather: forecast
-  type: ClusterIP
+  type: NodePort
 ---
 apiVersion: v1
 kind: Service
@@ -29,10 +30,11 @@ spec:
   - name: w-radar-sp
     protocol: TCP
     port: 8081
+    nodePort: 30881
     targetPort: w-radar-p
   selector:
     weather: radar
-  type: ClusterIP
+  type: NodePort
 ---
 apiVersion: v1
 kind: Service
@@ -47,10 +49,11 @@ spec:
   - name: w-daily-sp
     protocol: TCP
     port: 8082
+    nodePort: 30882
     targetPort: w-daily-p
   selector:
     weather: daily
-  type: ClusterIP
+  type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
