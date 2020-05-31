@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: hass
+  name: hass-ingress
+  labels:
+    ms: ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/issuer: "letsencrypt-prod"
+    # ingress.kubernetes.io/ssl-redirect: "true"
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    # nginx.ingress.kubernetes.io/proxy-read-timeout: "604800"
+    # nginx.ingress.kubernetes.io/proxy-send-timeout: "604800"
+    # nginx.ingress.kubernetes.io/proxy-connect-timeout: "604800"
+spec:
+  rules:
+  - host: hass.shiftux.org
+    http:
+      paths: 
+      - path: /
+        backend:
+          serviceName: home-assistant
+          servicePort: hass-p
+  tls:
+  - hosts:
+    - hass.shiftux.org
+    secretName: hass-ingress-secret
