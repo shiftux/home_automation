@@ -2,7 +2,6 @@
     host: !secret broadlink_ip
     mac: !secret broadlink_mac
     timeout: 15
-    retry: 5
     switches:
       tv_samsung:
         friendly_name: "Samsung Tv"
@@ -13,7 +12,6 @@
     host: !secret broadlink_ip
     mac: !secret broadlink_mac
     timeout: 15
-    retry: 5
     switches:
       nad_receiver_power:
         friendly_name: "NAD Receiver"
@@ -24,7 +22,6 @@
     host: !secret broadlink_ip
     mac: !secret broadlink_mac
     timeout: 15
-    retry: 5
     switches:
       nad_receiver_vol_up:
         friendly_name: "Volume Up"
@@ -35,7 +32,6 @@
     host: !secret broadlink_ip
     mac: !secret broadlink_mac
     timeout: 15
-    retry: 5
     switches:
       nad_receiver_vol_down:
         friendly_name: "Volume Down"
@@ -46,7 +42,6 @@
     host: !secret broadlink_ip
     mac: !secret broadlink_mac
     timeout: 15
-    retry: 5
     switches:
       nad_receiver_select_opt1:
         friendly_name: "Music input"
@@ -57,7 +52,6 @@
     host: !secret broadlink_ip
     mac: !secret broadlink_mac
     timeout: 15
-    retry: 5
     switches:
       nad_receiver_select_opt2:
         friendly_name: "TV input"

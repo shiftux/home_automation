@@ -7,11 +7,11 @@ metadata:
     ms: home-assistant
 spec:
   ports:
-  - name: home-assistant-p
+  - name: hass-p
     protocol: TCP
     port: 8123
     nodePort: 30123
-    targetPort: home-assistant-p-t
+    targetPort: hass-p-t
   selector:
     ms: home-assistant
   type: NodePort
@@ -35,17 +35,26 @@ spec:
         ms: home-assistant
     spec:
       containers:
-      - name: homeassistant/raspberrypi4-64-homeassistant
-        image: eclipse-home-assistant
+      - name: home-assistant
+        image: homeassistant/raspberrypi4-64-homeassistant:0.110.4
         env:
         - name: TZ
           value: Europe/Zurich
         ports:
         - containerPort: 8123
-          name: home-assistant-p-t
+          hostPort: 30123
+          name: hass-p-t
         volumeMounts:
         - name: home-assistant-config
           mountPath: /config
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: hass-p-t
+        #     scheme: HTTP
+        #   successThreshold: 2
+        #   initialDelaySeconds: 20
+        #   periodSeconds: 15
       volumes:
         - name: home-assistant-config
           hostPath:

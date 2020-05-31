@@ -46,7 +46,13 @@ spec:
         - containerPort: 9001
           name: mosquitto-1-t
         - containerPort: 1883
+          hostPort: 31833
           name: mosquitto-2-t
+        livenessProbe:
+          tcpSocket:
+            port: mosquitto-2-t
+          initialDelaySeconds: 10
+          periodSeconds: 15
         volumeMounts:
         - name: mosquitto-config
           mountPath: /mosquitto/config/
