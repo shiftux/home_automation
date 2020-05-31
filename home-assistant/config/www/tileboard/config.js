@@ -27,11 +27,11 @@ var CONFIG = {
    entitySize: ENTITY_SIZES.NORMAL, //SMALL, BIG are available
    tileSize: 150,
    tileMargin: 4,
-   serverUrl: 'http://' + location.hostname + ':8123',
+   serverUrl: 'https://' + location.hostname + ':8123',
    /* wsUrl: The URL to your HomeAssistant Websocket connection.
    * If HomeAssistant is behind SSL, replace ws:// with wss://
    */
-   wsUrl: 'ws://' + location.hostname + ':8123/api/websocket',
+   wsUrl: 'wss://' + location.hostname + ':8123/api/websocket',
    authToken: null, // optional long-lived token (CAUTION: only if TileBoard is not exposed to the internet)
    //googleApiKey: "XXXXXXXXXX", // Required if you are using Google Maps for device tracker
    //mapboxToken: "XXXXXXXXXX", // Required if you are using Mapbox for device tracker
