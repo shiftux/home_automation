@@ -1,5 +1,5 @@
 - make aare temp a color gague
-- see if aareguru has api
+- see if aareguru has api - https://aareguru.existenz.ch/openapi/#/v2018/get_v2018_current
 - update openvpn
 - godaddy and noip
 - refactor to packages?
@@ -7,5 +7,4 @@
 - dynamic getting of screensaver pics
 - setup monitoring
 
-- make k8s schedule pods on master node
 - fix tablet aw snap issue
