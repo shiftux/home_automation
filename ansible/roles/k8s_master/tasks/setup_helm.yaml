@@ -1,45 +1,47 @@
+- name: check if helm is installed
+  shell: which helm
+  register: helm_installed
+  ignore_errors: true
+
+# NOTE: Ansible has a helm module, which relies on pyhelm on the remote host
+# However pyhelm somehow compiles from source when installing and takes foreeeever, so not used...
+# ### this takes foreeeeeeever
+# - name: install pyhelm
+#   pip:
+#     executable: pip3
+#     name: pyhelm
+# ### This is how the ansible helm module would work
+# - name: install helm nginx
+#   helm:
+#     chart: 
+#       name: stable/nginx-ingress
+#       source:
+#         type: repo
+#         repo: https://helm.nginx.com/stable
+#     state: present
+#     name: hass-nginx
+#     namespace: hass
+
+# source https://mhausenblas.info/kube-rpi/
+# "normal" helm installation via snap has porblems on ARM arch
 - name: install helm
-  shell: snap install helm --classic
+  shell: |
+    export HELM_VERSION={{helm_version}}
+    wget https://get.helm.sh/helm-$HELM_VERSION-linux-arm64.tar.gz
+    tar xvzf helm-$HELM_VERSION-linux-arm64.tar.gz
+    mv linux-arm64/helm /usr/local/bin/helm
+    rm -rf linux-arm64 && rm helm-$HELM_VERSION-linux-arm64.tar.gz
+  when: helm_installed.rc != 0
   become: yes
 
-# this takes foreeeeeeever
-- name: install pyhelm
-  pip:
-    executable: pip3
-    name: pyhelm
+- name: add the repo "stable"
+  shell: helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+  when: helm_installed.rc != 0
 
-- name: update repo
-  shell: /snap/bin/helm repo update
+- name: add the repo "jetstack"
+  shell: helm repo add jetstack https://charts.jetstack.io
+  when: helm_installed.rc != 0
 
-- name: install helm nginx
-  helm:
-    chart: 
-      name: stable/nginx-ingress
-      source:
-        type: repo
-        repo: https://helm.nginx.com/stable
-    state: present
-    name: hass-nginx
-    namespace: hass
-
-- name: install helm cert manager
-  helm:
-    chart: stable/cert-manager
-    state: present
-    name: hass-cert-manager
-    namespace: hass
-
-https://cert-manager.io/docs/tutorials/acme/ingress/
-
-install helm as here: https://mhausenblas.info/kube-rpi/
-install nginx arm version: https://github.com/kubernetes/ingress-nginx/issues/4876
-helm install hass-nginx-ingress stable/nginx-ingress --set controller.image.repository="quay.io/kubernetes-ingress-controller/nginx-ingress-controller-arm64" --set defaultBackend.image.repository="k8s.gcr.io/defaultbackend-arm64" --set controller.service.externalIPs={144.2.115.50} --set rbac.create=true --set controller.publishService.enabled=true --set controller.hostNetwork=true
-
-apply -f ingress.yaml
-
-helm repo add jetstack https://charts.jetstack.io
-helm repo update
-
-helm install   cert-manager jetstack/cert-manager   --namespace hass   --version v0.15.1   --set installCRDs=true
-apply -f letsencrypt-staging.yaml
-apply -f letsencrypt-prod.yaml
+- name: update repos
+  shell: helm repo update
+  when: helm_installed.rc != 0

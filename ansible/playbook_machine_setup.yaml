@@ -28,6 +28,7 @@
     kubernetes_flannel_manifest_file: https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
     kubernetes_pod_network_cidr: '10.244.0.0/16'
     ansible_python_interpreter: /usr/bin/python3
+    helm_version: "v3.2.1"
   vars_files: 
     - secrets.yaml
   roles:
