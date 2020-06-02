@@ -40,6 +40,11 @@ spec:
         env:
         - name: TZ
           value: Europe/Zurich
+        - name: TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: token-secret
+              key: token
         ports:
         - containerPort: 8123
           hostPort: 30123
@@ -47,14 +52,17 @@ spec:
         volumeMounts:
         - name: home-assistant-config
           mountPath: /config
-        # livenessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: hass-p-t
-        #     scheme: HTTP
-        #   successThreshold: 2
-        #   initialDelaySeconds: 100
-        #   periodSeconds: 15
+        # https://stackoverflow.com/questions/60077057/livenessprobe-with-secret-not-working-in-kubernetes
+        livenessProbe:
+          httpGet:
+            path: /
+            port: hass-p-t
+            httpHeaders:
+            - name: Authorization
+              value: $TOKEN
+          initialDelaySeconds: 60
+          failureThreshold: 5
+          timeoutSeconds: 15
       volumes:
         - name: home-assistant-config
           hostPath:

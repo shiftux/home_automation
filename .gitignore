@@ -3,3 +3,4 @@
 *.log
 **/tasmota.bin
 .metals/*
+**/secret*

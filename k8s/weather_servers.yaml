@@ -89,6 +89,14 @@ spec:
         - name: weather-forecast-nginx
           mountPath: /etc/nginx/conf.d
           readOnly: true
+        livenessProbe:
+          httpGet:
+            path: /
+            port: w-forecast-p
+            scheme: HTTP
+          successThreshold: 1
+          initialDelaySeconds: 20
+          periodSeconds: 15
       volumes:
         - name: weather-forecast-html
           hostPath:
@@ -133,6 +141,14 @@ spec:
         - name: weather-radar-nginx
           mountPath: /etc/nginx/conf.d
           readOnly: true
+        livenessProbe:
+          httpGet:
+            path: /
+            port: w-radar-p
+            scheme: HTTP
+          successThreshold: 1
+          initialDelaySeconds: 20
+          periodSeconds: 15      
       volumes:
         - name: weather-radar-html
           hostPath:
@@ -177,6 +193,14 @@ spec:
         - name: weather-daily-nginx
           mountPath: /etc/nginx/conf.d
           readOnly: true
+        livenessProbe:
+          httpGet:
+            path: /
+            port: w-daily-p
+            scheme: HTTP
+          successThreshold: 1
+          initialDelaySeconds: 20
+          periodSeconds: 15
       volumes:
         - name: weather-daily-html
           hostPath:
