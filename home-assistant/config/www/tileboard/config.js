@@ -20,6 +20,7 @@ loadJS('./pages/weatherPage.js')
 loadJS('./pages/musicPage.js')
 loadJS('./pages/transportPage.js')
 loadJS('./screensaver.js')
+loadJS('./secret_token.js')
 
 var CONFIG = {
    customTheme: null, // CUSTOM_THEMES.TRANSPARENT, CUSTOM_THEMES.MATERIAL, CUSTOM_THEMES.MOBILE, CUSTOM_THEMES.COMPACT, CUSTOM_THEMES.HOMEKIT, CUSTOM_THEMES.WINPHONE, CUSTOM_THEMES.WIN95
@@ -38,7 +39,7 @@ var CONFIG = {
    */
    wsUrl: 'ws://' + location.hostname + ':30123/api/websocket',
    // orig: wsUrl: 'ws://' + location.hostname + ':8123/api/websocket',
-   authToken: null, // optional long-lived token (CAUTION: only if TileBoard is not exposed to the internet)
+   authToken: bearer_token, // optional long-lived token (CAUTION: only if TileBoard is not exposed to the internet)
    //googleApiKey: "XXXXXXXXXX", // Required if you are using Google Maps for device tracker
    //mapboxToken: "XXXXXXXXXX", // Required if you are using Mapbox for device tracker
    debug: false, // Prints entities and state change info to the console.
