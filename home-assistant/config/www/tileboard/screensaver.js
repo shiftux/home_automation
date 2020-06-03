@@ -641,7 +641,7 @@ const slideList = [
 ]
 
 const screenSaverConfig = {// optional. https://github.com/resoai/TileBoard/wiki/Screensaver-configuration
-  timeout: 10, // after 5 mins of inactive
+  timeout: 300, // after 5 mins of inactive
   slidesTimeout: 10, // 10s for one slide
   styles: { fontSize: '40px' },
   slides: shuffle(slideList)
