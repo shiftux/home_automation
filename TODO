@@ -1,10 +1,12 @@
 - make aare temp a color gague
 - see if aareguru has api - https://aareguru.existenz.ch/openapi/#/v2018/get_v2018_current
+  -> aare page
 - update openvpn
-- godaddy and noip
 - refactor to packages?
 - reformat mac
 - dynamic getting of screensaver pics
 - setup monitoring
 
 - fix tablet aw snap issue
+
+- deploy updater script
