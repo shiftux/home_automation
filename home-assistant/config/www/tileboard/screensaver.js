@@ -1,11 +1,3 @@
-const screenSaverConfig = {// optional. https://github.com/resoai/TileBoard/wiki/Screensaver-configuration
-  timeout: 10, // after 5 mins of inactive
-  slidesTimeout: 10, // 10s for one slide
-  styles: { fontSize: '40px' },
-  slides: shuffle(slideList)
-}
-
-
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
   // While there remain elements to shuffle...
@@ -647,3 +639,10 @@ const slideList = [
     leftBottom: [{ type: SCREENSAVER_ITEMS.DATETIME }]
   }
 ]
+
+const screenSaverConfig = {// optional. https://github.com/resoai/TileBoard/wiki/Screensaver-configuration
+  timeout: 10, // after 5 mins of inactive
+  slidesTimeout: 10, // 10s for one slide
+  styles: { fontSize: '40px' },
+  slides: shuffle(slideList)
+}
