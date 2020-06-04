@@ -19,6 +19,7 @@ loadJS('./pages/homePage.js')
 loadJS('./pages/weatherPage.js')
 loadJS('./pages/musicPage.js')
 loadJS('./pages/transportPage.js')
+loadJS('./pages/riverPage.js')
 loadJS('./screensaver.js')
 // loadJS('./secret_token.js')
 
@@ -32,13 +33,13 @@ var CONFIG = {
    serverUrl: 'https://hass.domain.ct',
    wsUrl: 'wss://hass.domain.ct/api/websocket',
    */
-   // orig: serverUrl: 'http://' + location.hostname + ':8123',
+   // serverUrl: 'http://' + location.hostname + ':8123',
    serverUrl: 'http://' + location.hostname + ':30123',
    /* wsUrl: The URL to your HomeAssistant Websocket connection.
    * If HomeAssistant is behind SSL, replace ws:// with wss://
    */
+   // wsUrl: 'ws://' + location.hostname + ':8123/api/websocket',
    wsUrl: 'ws://' + location.hostname + ':30123/api/websocket',
-   // orig: wsUrl: 'ws://' + location.hostname + ':8123/api/websocket',
    // authToken: bearer_token, // optional long-lived token (CAUTION: only if TileBoard is not exposed to the internet)
    //googleApiKey: "XXXXXXXXXX", // Required if you are using Google Maps for device tracker
    //mapboxToken: "XXXXXXXXXX", // Required if you are using Mapbox for device tracker
@@ -76,6 +77,7 @@ var CONFIG = {
    pages: [
       homePage,
       weatherPage,
+      riverPage,
       musicPage,
       transportPage
    ],

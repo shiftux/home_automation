@@ -2,7 +2,7 @@
   - platform: swiss_public_transport
     from: !secret transport_from
     to: !secret transport_to
-    
+
   - platform: swiss_public_transport
     from: !secret transport_2_from
     to: !secret transport_2_to
@@ -15,10 +15,46 @@
     from: !secret transport_2_from
     to: !secret transport_4_to
 
-  # https://www.home-assistant.io/integrations/swiss_hydrological_data/  
+  # https://www.home-assistant.io/integrations/swiss_hydrological_data/
   - platform: swiss_hydrological_data
     station: !secret river_station
     monitored_conditions:
       - temperature
       - level
       - discharge
+
+  - platform: rest
+    resource: !secret river_rest_endpoint
+    method: GET
+    name: !secret river_rest_endpoint_temp_name
+    value_template: !secret river_rest_endpoint_temp_json
+
+  - platform: rest
+    resource: !secret river_rest_endpoint
+    method: GET
+    name: !secret river_rest_endpoint_temp_forecast_name
+    value_template: !secret river_rest_endpoint_temp_forecast_json
+
+  - platform: rest
+    resource: !secret river_rest_endpoint
+    method: GET
+    name: !secret river_rest_endpoint_temp_flow_name
+    value_template: !secret river_rest_endpoint_temp_flow_json
+
+  - platform: rest
+    resource: !secret river_rest_endpoint
+    method: GET
+    name: !secret river_rest_endpoint_temp_text_name
+    value_template: !secret river_rest_endpoint_temp_text_json
+
+  - platform: rest
+    resource: !secret river_rest_endpoint
+    method: GET
+    name: !secret river_rest_endpoint_temp_forecast_text_name
+    value_template: !secret river_rest_endpoint_temp_forecast_text_json
+
+  - platform: rest
+    resource: !secret river_rest_endpoint
+    method: GET
+    name: !secret river_rest_endpoint_temp_flow_text_name
+    value_template: !secret river_rest_endpoint_temp_flow_text_json
