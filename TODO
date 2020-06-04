@@ -6,7 +6,6 @@
 - reformat mac
 - dynamic getting of screensaver pics
 - setup monitoring
-
-- fix tablet aw snap issue
+- make hass & mosquitto a statefulset with storage on NAS
 
 - deploy updater script
