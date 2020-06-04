@@ -1,6 +1,4 @@
 - make aare temp a color gague
-- see if aareguru has api - https://aareguru.existenz.ch/openapi/#/v2018/get_v2018_current
-  -> aare page
 - update openvpn
 - refactor to packages?
 - reformat mac

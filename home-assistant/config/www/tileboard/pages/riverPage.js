@@ -1,6 +1,6 @@
 const riverPage = {
   title: 'River page',
-  bg: 'images/bg_pattern.jpg',
+  bg: 'images/bg_water_pattern.jpeg',
   icon: 'mdi-waves',
   groups: [
     {
