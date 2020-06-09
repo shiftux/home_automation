@@ -1,0 +1,88 @@
+version: '3.1'
+services:
+  nginx:
+    container_name: 'nginx'
+    image: nginx:latest
+    depends_on:
+      - home-assistant
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /opt/nginx-certbot/nginx.conf:/etc/nginx/conf.d/default.conf
+      - /opt/nginx-certbot/letsencrypt-site:/usr/share/nginx/html
+      - /opt/nginx-certbot/dh-param/:/etc/ssl/certs/
+      - /opt/nginx-certbot/docker-volumes/etc/letsencrypt/live/hass.shiftux.org-0001/fullchain.pem:/etc/letsencrypt/live/hass.shiftux.org/fullchain.pem
+      - /opt/nginx-certbot/docker-volumes/etc/letsencrypt/live/hass.shiftux.org-0001/privkey.pem:/etc/letsencrypt/live/hass.shiftux.org/privkey.pem
+        #    restart: unless-stopped
+    networks:
+      - docker-network
+
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mosquitto
+    volumes:
+      - /opt/home_automation/mosquitto/config/:/mosquitto/config/
+      - /opt/home_automation/mosquitto/log:/mosquitto/log
+      - /opt/home_automation/mosquitto/data:/mosquitto/data
+        # restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    networks:
+      - docker-network
+
+  home-assistant:
+    image: "homeassistant/home-assistant:0.110.4"
+    container_name: home-assistant
+    environment:
+      - TZ=Europe/Zurich
+    volumes: 
+      - /Users/tgdmosaa/development/home_automation/home-assistant/config/:/config/
+      # prod - /opt/home_automation/home-assistant/config/:/config/
+    ports:
+      - "8123:8123"
+    # restart: unless-stopped
+    # depends_on:
+    #   - mosquitto
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8123"]
+      interval: 30s
+      timeout: 10s
+      retries: 6
+    networks:
+      - docker-network
+
+  weather-forecast:
+    image: nginx:latest
+    container_name: weather-forecast
+    volumes: 
+      - /opt/home_automation/local-weather-sites/forecast:/usr/share/nginx/html
+      - /opt/home_automation/local-weather-sites/forecast/config:/etc/nginx/conf.d 
+    ports:
+      - "8080:80"
+        # restart: unless-stopped
+  
+  weather-radar:
+    image: nginx:latest
+    container_name: weather-radar
+    volumes: 
+      - /opt/home_automation/local-weather-sites/radar:/usr/share/nginx/html
+      - /opt/home_automation/local-weather-sites/radar/config:/etc/nginx/conf.d 
+    ports:
+      - "8081:80"
+        # restart: unless-stopped
+
+  weather-daily:
+    image: nginx:latest
+    container_name: weather-daily
+    volumes: 
+      - /opt/home_automation/local-weather-sites/daily:/usr/share/nginx/html
+      - /opt/home_automation/local-weather-sites/daily/config:/etc/nginx/conf.d 
+    ports:
+      - "8082:80"
+        # restart: unless-stopped
+
+networks:
+  docker-network:
+    driver: bridge

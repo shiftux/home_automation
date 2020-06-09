@@ -13,7 +13,7 @@
 # ### This is how the ansible helm module would work
 # - name: install helm nginx
 #   helm:
-#     chart: 
+#     chart:
 #       name: stable/nginx-ingress
 #       source:
 #         type: repo
@@ -38,7 +38,11 @@
   shell: helm repo add stable https://kubernetes-charts.storage.googleapis.com/
   when: helm_installed.rc != 0
 
-- name: add the repo "jetstack"
+- name: add the ingress-nginx repo"
+  shell: helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+  when: helm_installed.rc != 0
+
+- name: add the repo "jetstack (for cert mananger)"
   shell: helm repo add jetstack https://charts.jetstack.io
   when: helm_installed.rc != 0
 
