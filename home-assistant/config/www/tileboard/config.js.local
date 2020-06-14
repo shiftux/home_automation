@@ -32,13 +32,13 @@ var CONFIG = {
    serverUrl: 'https://hass.domain.ct',
    wsUrl: 'wss://hass.domain.ct/api/websocket',
    */
-   // serverUrl: 'http://' + location.hostname + ':8123',
-   serverUrl: 'http://' + location.hostname + ':30123',
+   serverUrl: 'http://' + location.hostname + ':8123',
+   // prod serverUrl: 'http://' + location.hostname + ':30123',
    /* wsUrl: The URL to your HomeAssistant Websocket connection.
    * If HomeAssistant is behind SSL, replace ws:// with wss://
    */
-   // wsUrl: 'ws://' + location.hostname + ':8123/api/websocket',
-   wsUrl: 'ws://' + location.hostname + ':30123/api/websocket',
+   wsUrl: 'ws://' + location.hostname + ':8123/api/websocket',
+   // prod wsUrl: 'ws://' + location.hostname + ':30123/api/websocket',
    authToken: null, // optional long-lived token (CAUTION: only if TileBoard is not exposed to the internet)
    //googleApiKey: "XXXXXXXXXX", // Required if you are using Google Maps for device tracker
    //mapboxToken: "XXXXXXXXXX", // Required if you are using Mapbox for device tracker

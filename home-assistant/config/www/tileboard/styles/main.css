@@ -737,6 +737,18 @@ body {
   z-index: 2;
   overflow: hidden;
 }
+.item-entity-cust-sensor {
+  position: absolute;
+  height: 80px;
+  line-height: 40px;
+  white-space: normal;
+  word-wrap: break-word;
+  top: calc(50% - 45px);
+  left: 0;
+  right: 0;
+  z-index: 2;
+  overflow: hidden;
+}
 .item-entity.-select {
   /*height: 90px;
       top: 20px;*/

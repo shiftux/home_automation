@@ -1,10 +1,9 @@
 - make aare temp a color gague
-- see if aareguru has api - https://aareguru.existenz.ch/openapi/#/v2018/get_v2018_current
 - update openvpn
-- godaddy and noip
 - refactor to packages?
 - reformat mac
 - dynamic getting of screensaver pics
 - setup monitoring
-
-- fix tablet aw snap issue
+- alexa intents: https://www.home-assistant.io/integrations/intent_script
+- make hass & mosquitto a statefulset with storage on NAS and move secrets in the mounted folder as well
+- deploy updater script, missing node port update https://github.com/kubernetes/ingress-nginx/issues/5640

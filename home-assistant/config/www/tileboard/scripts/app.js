@@ -33,6 +33,7 @@ var TYPES = {
    SCRIPT: 'script',
    AUTOMATION: 'automation',
    SENSOR: 'sensor',
+   CUSTOM_SENSOR: 'custom_sensor',
    SENSOR_ICON: 'sensor_icon',
    SWITCH: 'switch',
    LOCK: 'lock',

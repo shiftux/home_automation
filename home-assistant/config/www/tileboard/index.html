@@ -13,7 +13,7 @@
    <title>TileBoard</title>
 
    <!-- refresh page after X seconds -->
-   <meta http-equiv="refresh" content="750" > <!-- 15mins -->
+   <meta http-equiv="refresh" content="750"> <!-- 15mins -->
 
    <!-- WebApp configuration -->
    <link rel="manifest" href="manifest.webmanifest" crossorigin="use-credentials">
@@ -560,6 +560,17 @@
       <div ng-if="item.type === TYPES.SENSOR"
            class="item-entity-container">
          <div class="item-entity">
+            <span ng-bind="entityValue(item, entity)"
+                  class="item-entity--value"></span>
+
+            <span ng-if="(_unit = entityUnit(item, entity))"
+                  class="item-entity--unit" ng-bind="_unit"></span>
+         </div>
+      </div>
+
+      <div ng-if="item.type === TYPES.CUSTOM_SENSOR"
+           class="item-entity-container">
+         <div class="item-entity-cust-sensor">
             <span ng-bind="entityValue(item, entity)"
                   class="item-entity--value"></span>
 
