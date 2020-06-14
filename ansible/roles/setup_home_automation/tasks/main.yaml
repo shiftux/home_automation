@@ -1,3 +1,4 @@
 - include: clone_home_automation.yaml
 - include: setup_screensaver.yaml
 - include: setup_mosquitto.yaml
+- include: setup_hass.yaml

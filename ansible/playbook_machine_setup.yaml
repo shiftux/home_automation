@@ -10,6 +10,8 @@
     ansible_ssh_user: "{{ user }}"
     ansible_port: "{{ ssh_port }}"
     k8s_repo_version: "kubernetes-xenial"
+    mosquitto_data_folder: /mnt/nas_pi/mosquitto_storage
+    hass_data_folder: /mnt/nas_pi/hass_storage
   vars_files: 
     - secrets.yaml
   roles:

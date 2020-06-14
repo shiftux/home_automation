@@ -52,6 +52,8 @@ spec:
         volumeMounts:
         - name: home-assistant-config
           mountPath: /config
+        - name: home-assistant-storage
+          mountPath: /config/.storage
         # https://stackoverflow.com/questions/60077057/livenessprobe-with-secret-not-working-in-kubernetes
         livenessProbe:
           httpGet:
@@ -67,4 +69,8 @@ spec:
         - name: home-assistant-config
           hostPath:
             path: /opt/home_automation/home-assistant/config
+            type: Directory
+        - name: home-assistant-storage
+          hostPath:
+            path: /mnt/nas_pi/hass_storage/.storage
             type: Directory

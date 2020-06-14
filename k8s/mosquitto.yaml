@@ -64,13 +64,13 @@ spec:
       volumes:
         - name: mosquitto-config
           hostPath:
-            path: /opt/home_automation/mosquitto/config/
+            path: /mnt/nas_pi/mosquitto_storage/config/
             type: DirectoryOrCreate
         - name: mosquitto-log
           hostPath:
-            path: /opt/home_automation/mosquitto/log
+            path: /mnt/nas_pi/mosquitto_storage/log
             type: DirectoryOrCreate
         - name: mosquitto-data
           hostPath:
-            path: /opt/home_automation/mosquitto/data
+            path: /mnt/nas_pi/mosquitto_storage/data
             type: DirectoryOrCreate

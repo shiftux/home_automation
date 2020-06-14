@@ -1,0 +1,7 @@
+- name: create hass folder
+  file:
+    state: directory
+    path: "{{hass_data_folder}}"
+    mode: '0777'
+    owner: "{{ user }}"
+    group: "{{ group }}"
