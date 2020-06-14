@@ -29,29 +29,29 @@ fi
 # update ingress
 ###########
 
-helm_deploy_command="helm install hass-nginx-ingress ingress-nginx/ingress-nginx \
+helm_deploy_command="/usr/local/bin/helm install hass-nginx-ingress ingress-nginx/ingress-nginx \
   --set controller.service.externalIPs={\"${myip}\"}\
   --set controller.service.type=NodePort \
   --set controller.service.nodePorts.https=\"$port\" "
 
-helm list | grep hass-nginx-ingress >> /dev/null
+/usr/local/bin/helm list | grep hass-nginx-ingress >> /dev/null
 helmListVal=$?
 if [ "$helmListVal" -ne 0 ]; then
   echo "installing nginx-ingress via helm"
-  helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-  helm repo update
+  /usr/local/bin/helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+  /usr/local/bin/helm repo update
   eval "$helm_deploy_command"
 else
   echo "nginx-ingress exists"
 fi
 
-helm_extip=$(helm get values hass-nginx-ingress | grep -A 1 externalIP | tail -n 1 | sed -e "s/^    - //")
+helm_extip=$(/usr/local/bin/helm get values hass-nginx-ingress | grep -A 1 externalIP | tail -n 1 | sed -e "s/^    - //")
 svcPorts=$(kubectl get svc hass-nginx-ingress-ingress-nginx-controller | tail -n 1 | awk '{print $5}')
 echo $svcPorts | grep 443:"$port" >> /dev/null
 svcPortCorrect=$?
 echo "helm was created using IP ${helm_extip} and ports ${svcPorts}"
 if [ "$helm_extip" != "$myip" ] || [ "$svcPortCorrect" -ne 0 ]; then
-  helm uninstall hass-nginx-ingress
+  /usr/local/bin/helm uninstall hass-nginx-ingress
   eval "$helm_deploy_command" >> /dev/null
   echo "changed helm ingress deployment to have new IP or port"
 else
