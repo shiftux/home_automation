@@ -1,6 +1,9 @@
 #!/bin/bash
 # source: https://www.instructables.com/id/Quick-and-Dirty-Dynamic-DNS-Using-GoDaddy/
 
+date=$(date)
+echo "################# running IP updater, on $date #################"
+
 ###########
 # update godaddy
 ###########
