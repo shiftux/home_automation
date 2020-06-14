@@ -1,0 +1,14 @@
+- name: make sure log file is present
+  file: 
+    path: "{{ cron_logfile }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    state: touch
+    mode: '755'
+  become: yes
+
+- name: Create cronjob to check correct public IP
+  cron:
+    name: check public ip
+    minute: "*/15"
+    job: "{{ home_automation_dir }}/scripts/ip_updater.sh  >> {{ cron_logfile }} 2>&1" 

@@ -13,6 +13,19 @@
     append: yes
   become: yes
 
+# ensure cgroup driver is systemd
+# https://github.com/kubernetes/kubeadm/issues/1394#issuecomment-461443286
+- name: ensure docker daemon.json file is present
+  copy:
+    src: ../files/daemon.json
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: '0644'
+    force: yes
+    backup: no
+  become: yes
+
 - name: start docker and ensure it starts on boot
   systemd:
     name: docker
@@ -33,7 +46,7 @@
     state: restarted
     enabled: yes
   become: yes
-  when: "cgroup_driver.stdout != \" Cgroup Driver: cgroupfs\""
+  when: "cgroup_driver.stdout != \" Cgroup Driver: systemd\""
 
 - name: backup /boot/firmware/cmdline.txt
   copy: 
@@ -55,9 +68,9 @@
     mode: '0755'
     force: yes
   become: yes
-  when: "cgroup_driver.stdout != \" Cgroup Driver: cgroupfs\""
+  when: "cgroup_driver.stdout != \" Cgroup Driver: systemd\""
 
 - name: Reboot
   reboot:
   become: yes
-  when: "cgroup_driver.stdout != \" Cgroup Driver: cgroupfs\""
+  when: "cgroup_driver.stdout != \" Cgroup Driver: systemd\""

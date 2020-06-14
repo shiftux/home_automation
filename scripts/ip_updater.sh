@@ -7,7 +7,6 @@
 mydomain="shiftux.org"
 myhostname="hass"
 gd_apikey="e52jGTSiBTfr_2A7HGMUXr7oqFQBhYxHh91:FvsHVM7cCRbYLUhMhnhSyk"
-logdest="local7.info"
 port=31223
 
 myip=`curl -s "https://api.ipify.org"`
@@ -18,7 +17,6 @@ echo "`date '+%Y-%m-%d %H:%M:%S'` - Current External IP is $myip, GoDaddy DNS IP
 if [ "$gdip" != "$myip" -a "$myip" != "" ]; then
   echo "IP has changed!! Updating on GoDaddy"
   curl -s -X PUT "https://api.godaddy.com/v1/domains/${mydomain}/records/A/${myhostname}" -H "Authorization: sso-key ${gd_apikey}" -H "Content-Type: application/json" -d "[{\"data\": \"${myip}\"}]"
-  # logger -p $logdest "Changed IP on ${hostname}.${mydomain} from ${gdip} to ${myip}"
   echo "Changed IP on ${hostname}.${mydomain} from ${gdip} to ${myip}"
 else
   echo "nothing to do"

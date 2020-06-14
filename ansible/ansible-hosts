@@ -3,8 +3,7 @@
 192.168.0.33 host_name=hass2
 
 [RPi4:vars]
-user=pi
-group=pi
+home_automation_dir=/opt/home_automation
 
 [k8s_master]
 192.168.0.28

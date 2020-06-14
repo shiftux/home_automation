@@ -1,2 +1,3 @@
 - include: master_setup.yaml
 - include: setup_helm.yaml
+- include: add_cron_jobs.yaml

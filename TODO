@@ -6,4 +6,5 @@
 - setup monitoring
 - alexa intents: https://www.home-assistant.io/integrations/intent_script
 - make hass & mosquitto a statefulset with storage on NAS and move secrets in the mounted folder as well
-- deploy updater script, missing node port update https://github.com/kubernetes/ingress-nginx/issues/5640
+
+- cronjob & ansible deployment of ipupdater

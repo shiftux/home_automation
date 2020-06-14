@@ -9,7 +9,6 @@
   vars:
     ansible_ssh_user: "{{ user }}"
     ansible_port: "{{ ssh_port }}"
-    home_automation_dir: /opt/home_automation
     k8s_repo_version: "kubernetes-xenial"
   vars_files: 
     - secrets.yaml
@@ -29,6 +28,7 @@
     kubernetes_pod_network_cidr: '10.244.0.0/16'
     ansible_python_interpreter: /usr/bin/python3
     helm_version: "v3.2.1"
+    cron_logfile: /var/log/home_automation_cron.log
   vars_files: 
     - secrets.yaml
   roles:
