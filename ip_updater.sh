@@ -8,6 +8,7 @@ mydomain="shiftux.org"
 myhostname="hass"
 gd_apikey="e52jGTSiBTfr_2A7HGMUXr7oqFQBhYxHh91:FvsHVM7cCRbYLUhMhnhSyk"
 logdest="local7.info"
+port=31223
 
 myip=`curl -s "https://api.ipify.org"`
 dnsdata=`curl -s -X GET -H "Authorization: sso-key ${gd_apikey}" "https://api.godaddy.com/v1/domains/${mydomain}/records/A/${myhostname}"`
@@ -28,17 +29,13 @@ fi
 ###########
 
 helm_deploy_command="helm install hass-nginx-ingress ingress-nginx/ingress-nginx \
-  --set controller.image.repository=\"quay.io/kubernetes-ingress-controller/nginx-ingress-controller-arm64\"\
-  --set defaultBackend.image.repository=\"k8s.gcr.io/defaultbackend-arm64\"\
   --set controller.service.externalIPs={\"${myip}\"}\
-  --set rbac.create=true\
-  --set controller.publishService.enabled=true\
   --set controller.service.type=NodePort \
-  --set controller.service.httpsPort.nodePort=31123 "
+  --set controller.service.nodePorts.https=\"$port\" "
 
 helm list | grep hass-nginx-ingress >> /dev/null
-retVal=$?
-if [ $retVal -ne 0 ]; then
+helmListVal=$?
+if [ "$helmListVal" -ne 0 ]; then
   echo "installing nginx-ingress via helm"
   helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
   helm repo update
@@ -48,11 +45,14 @@ else
 fi
 
 helm_extip=$(helm get values hass-nginx-ingress | grep -A 1 externalIP | tail -n 1 | sed -e "s/^    - //")
-echo "helm was created using IP ${helm_extip}"
-if [ "$helm_extip" != "$myip" ]; then
+svcPorts=$(kubectl get svc hass-nginx-ingress-ingress-nginx-controller | tail -n 1 | awk '{print $5}')
+echo $svcPorts | grep 443:"$port" >> /dev/null
+svcPortCorrect=$?
+echo "helm was created using IP ${helm_extip} and ports ${svcPorts}"
+if [ "$helm_extip" != "$myip" ] || [ "$svcPortCorrect" -ne 0 ]; then
   helm uninstall hass-nginx-ingress
-  eval "$helm_deploy_command"
-  echo "changed helm ingress deployment to have new IP"
+  eval "$helm_deploy_command" >> /dev/null
+  echo "changed helm ingress deployment to have new IP or port"
 else
   echo "helm is up to date"
 fi
