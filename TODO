@@ -4,3 +4,4 @@
 - dynamic getting of screensaver pics
 - setup monitoring
 - alexa intents: https://www.home-assistant.io/integrations/intent_script
+- nginx directories on NAS
