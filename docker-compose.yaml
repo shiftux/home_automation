@@ -33,7 +33,7 @@ services:
       - docker-network
 
   home-assistant:
-    image: homeassistant/raspberrypi4-64-homeassistant
+    image: homeassistant/raspberrypi4-64-homeassistant:0.110.4
     container_name: home-assistant
     environment:
       - TZ=Europe/Zurich
