@@ -16,7 +16,8 @@ const homePage = {
           title: 'Weather Bern',
           type: TYPES.IFRAME,
           id: {}, // using empty object for an unknown id
-          url: "http://192.168.0.28:30880/"
+          url: "http://192.168.0.28:8080/"
+          // url: "http://192.168.0.28:30880/"
         },
         {
           position: [0, 2],
@@ -91,7 +92,7 @@ const homePage = {
             on: "mdi-lightbulb-on",
             off: "mdi-lightbulb",
           },
-        }, 
+        },
         {
           type: TYPES.LIGHT,
           position: [2, 0],
@@ -177,7 +178,7 @@ const homePage = {
         },
         {
           position: [2, 3],
-          type: TYPES.SCRIPT, 
+          type: TYPES.SCRIPT,
           title: 'All off',
           id: 'script.all_off',
           customStyles: { 'background-color': '#e63946' },
