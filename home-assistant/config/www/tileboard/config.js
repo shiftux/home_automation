@@ -20,6 +20,7 @@ loadJS('./pages/weatherPage.js')
 loadJS('./pages/musicPage.js')
 loadJS('./pages/transportPage.js')
 loadJS('./pages/riverPage.js')
+loadJS('./pages/irrigationPage.js')
 loadJS('./screensaver.js')
 
 var CONFIG = {
@@ -76,8 +77,9 @@ var CONFIG = {
    pages: [
       homePage,
       weatherPage,
-      riverPage,
       musicPage,
+      irrigationPage,
+      riverPage,
       transportPage
    ],
 }

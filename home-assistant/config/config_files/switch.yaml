@@ -26,7 +26,7 @@
       nad_receiver_vol_up:
         friendly_name: "Volume Up"
         command_on: 'JgBQAAABKJIUNRQ1FDYUERQRFBEUERQ1FBITEhQ1FDUUNhQ1FDUUEhMSExITEhQ1FBEUERQRFDYUNRQ1FDYUERQ1FDUUNhQRFAAE8wABKEgUAA0FAAAAAAAAAAA='
-        command_off: 'JgBQAAABKJIUNRQ1FDYUERQRFBEUERQ1FBITEhQ1FDUUNhQ1FDUUEhMSExITEhQ1FBEUERQRFDYUNRQ1FDYUERQ1FDUUNhQRFAAE8wABKEgUAA0FAAAAAAAAAAA='        
+        command_off: 'JgBQAAABKJIUNRQ1FDYUERQRFBEUERQ1FBITEhQ1FDUUNhQ1FDUUEhMSExITEhQ1FBEUERQRFDYUNRQ1FDYUERQ1FDUUNhQRFAAE8wABKEgUAA0FAAAAAAAAAAA='
 
   - platform: broadlink
     host: !secret broadlink_ip
@@ -85,13 +85,13 @@
         value_template: "{{ is_state_attr('media_player.picorelivingroom', 'shuffle', 'song') }}"
         turn_on:
           service:  squeezebox.call_method
-          data: 
+          data:
             entity_id: "media_player.picorelivingroom"
             command: "playlist"
             parameters: ["shuffle","1"]
         turn_off:
           service:  squeezebox.call_method
-          data: 
+          data:
             entity_id: "media_player.picorelivingroom"
             command: "playlist"
             parameters: ["shuffle","0"]
@@ -101,3 +101,16 @@
           {% else %}
             mdi:shuffle-disabled
           {% endif %}
+
+  - platform: mqtt
+    name: "Irrigation Balcony North"
+    command_topic: "irrigation/balcony_north/cmnd/POWER"
+    state_topic: "irrigation/balcony_north/stat/RESULT"
+    state_value_template: "{{value_json.POWER}}"
+    availability_topic: "irrigation/balcony_north/tele/LWT"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: true
