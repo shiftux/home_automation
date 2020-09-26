@@ -103,10 +103,11 @@
           {% endif %}
 
   - platform: mqtt
+    unique_id: irrigation_balcony_north_switch
     name: "Irrigation Balcony North"
     command_topic: "irrigation/balcony_north/cmnd/POWER"
     state_topic: "irrigation/balcony_north/stat/RESULT"
-    state_value_template: "{{value_json.POWER}}"
+    value_template: "{{value_json.POWER}}"
     availability_topic: "irrigation/balcony_north/tele/LWT"
     payload_on: "ON"
     payload_off: "OFF"

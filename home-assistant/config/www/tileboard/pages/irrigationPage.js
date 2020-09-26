@@ -19,7 +19,11 @@ const irrigationPage = {
             states: {
                 on: "On",
                 off: "Off"
-             }
+            },
+   	    icons: {
+      		on: "mdi-water-pump",
+      		off: "mdi-water-pump-off",
+   	    }
             // customStyles: { 'background-color': '#e63946' }
           },
         ]
