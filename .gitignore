@@ -4,3 +4,6 @@
 **/tasmota.bin
 .metals/*
 **/secret*
+**/.vscode
+node_modules
+yarn.lock
