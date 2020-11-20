@@ -2,11 +2,11 @@
     host: !secret squeezebox_ip
 
   - platform: soundtouch
-    host: !secret bose_diningroom_ip
-    port: !secret bose_port
-    name: Soundtouch Dining Room
-
-  - platform: soundtouch
     host: !secret bose_bathroom_ip
     port: !secret bose_port
     name: Soundtouch Bathroom
+
+  - platform: soundtouch
+    host: !secret bose_diningroom_ip
+    port: !secret bose_port
+    name: Soundtouch Dining Room
