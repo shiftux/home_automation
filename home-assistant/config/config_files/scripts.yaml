@@ -99,12 +99,24 @@
       - service: media_player.volume_up
         data:
           entity_id: media_player.soundtouch_dining_room
+      - service: media_player.volume_up
+        data:
+          entity_id: media_player.soundtouch_dining_room
+      - service: media_player.volume_up
+        data:
+          entity_id: media_player.soundtouch_dining_room
 
   volume_down:
     sequence:
       - service: homeassistant.turn_on
         data:
           entity_id: switch.nad_receiver_vol_down
+      - service: media_player.volume_down
+        data:
+          entity_id: media_player.soundtouch_dining_room
+      - service: media_player.volume_down
+        data:
+          entity_id: media_player.soundtouch_dining_room
       - service: media_player.volume_down
         data:
           entity_id: media_player.soundtouch_dining_room
