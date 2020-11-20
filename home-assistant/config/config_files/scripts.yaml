@@ -1,6 +1,6 @@
 #script:
   turn_tv_off:
-    sequence: 
+    sequence:
       - condition: state
         entity_id: binary_sensor.tv_status
         state: 'on'
@@ -9,7 +9,7 @@
           entity_id: switch.tv_samsung
 
   turn_tv_on:
-    sequence: 
+    sequence:
       - condition: state
         entity_id: binary_sensor.tv_status
         state: 'off'
@@ -55,6 +55,13 @@
       - service: media_player.media_play
         data:
           entity_id: media_player.picorelivingroom
+      - service: media_player.turn_on
+        data:
+          entity_id: media_player.soundtouch_dining_room
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.soundtouch_dining_room
+          source: AUX
 
   media:
     sequence:
@@ -67,6 +74,12 @@
       - service: media_player.media_pause
         data:
           entity_id: media_player.picorelivingroom
+      - service: media_player.turn_off
+        data:
+          entity_id: media_player.soundtouch_dining_room
+      - service: media_player.turn_off
+        data:
+          entity_id: media_player.soundtouch_bathroom
 
   all_off:
     alias: All off
@@ -78,18 +91,23 @@
         data:
           entity_id: light.all_lights
 
-
   volume_up:
     sequence:
       - service: homeassistant.turn_on
         data:
           entity_id: switch.nad_receiver_vol_up
+      - service: media_player.volume_up
+        data:
+          entity_id: media_player.soundtouch_dining_room
 
   volume_down:
     sequence:
       - service: homeassistant.turn_on
         data:
           entity_id: switch.nad_receiver_vol_down
+      - service: media_player.volume_down
+        data:
+          entity_id: media_player.soundtouch_dining_room
 
   playlist_easy_on_the_ears:
     sequence:
@@ -97,12 +115,12 @@
         data:
           entity_id: script.listen_music
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
-          parameters: ["shuffle","1"]      
+          parameters: ["shuffle","1"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:user:shiftux:playlist:7r0UpOkMuDWIMobO1HDEjh"]
@@ -113,156 +131,156 @@
         data:
           entity_id: script.listen_music
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
-          parameters: ["shuffle","1"]      
+          parameters: ["shuffle","1"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:user:shiftux:playlist:37i9dQZEVXcSlMQNVajogn"]
- 
+
   playlist_discover_weekly_saves:
     sequence:
       - service: script.turn_on
         data:
           entity_id: script.listen_music
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
-          parameters: ["shuffle","1"]      
+          parameters: ["shuffle","1"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:user:shiftux:playlist:3jsoStJkZ2N97oh1bJBCdF"]
-  
+
   playlist_starred:
     sequence:
       - service: script.turn_on
         data:
           entity_id: script.listen_music
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
-          parameters: ["shuffle","1"]      
+          parameters: ["shuffle","1"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:user:shiftux:playlist:3yCTHjJl9xBLqukdvQqYon"]
-  
+
   playlist_funky:
     sequence:
       - service: script.turn_on
         data:
           entity_id: script.listen_music
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
-          parameters: ["shuffle","1"]      
+          parameters: ["shuffle","1"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:user:shiftux:playlist:38vMaIdHyEKUllTPqC2lzu"]
-  
+
   playlist_no_isi:
     sequence:
       - service: script.turn_on
         data:
           entity_id: script.listen_music
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
-          parameters: ["shuffle","1"]      
+          parameters: ["shuffle","1"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:user:shiftux:playlist:7Mm1cpwJTIYEcZnnOA9ONa"]
-  
+
   playlist_discoveries:
     sequence:
       - service: script.turn_on
         data:
           entity_id: script.listen_music
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
-          parameters: ["shuffle","1"]      
+          parameters: ["shuffle","1"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:user:shiftux:playlist:2NpsOCEnbmMkYYJFLprN6z"]
-  
+
   playlist_grrif_style:
     sequence:
       - service: script.turn_on
         data:
           entity_id: script.listen_music
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
-          parameters: ["shuffle","1"]      
+          parameters: ["shuffle","1"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:user:shiftux:playlist:5tnNlKZiGL8Piuoesvp6XV"]
-  
+
   playlist_new_isi:
     sequence:
       - service: script.turn_on
         data:
           entity_id: script.listen_music
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
-          parameters: ["shuffle","1"]      
+          parameters: ["shuffle","1"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:user:shiftux:playlist:6SKAjeSmHZXBAvnwsDylnb"]
-  
+
   playlist_organica_deep_house:
     sequence:
       - service: script.turn_on
         data:
           entity_id: script.listen_music
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
-          parameters: ["shuffle","1"]      
+          parameters: ["shuffle","1"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:playlist:1ulmdUuvDGT0tRhbEKbA2M"]
-  
+
   playlist_workout:
     sequence:
       - service: script.turn_on
         data:
           entity_id: script.listen_music
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
-          parameters: ["shuffle","1"]      
+          parameters: ["shuffle","1"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:user:shiftux:playlist:6ws8F7hkTTOMFm8QnumZ04"]
@@ -274,17 +292,17 @@
         data:
           entity_id: script.listen_music
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:show:2yltdfmAGQsU8UnsTBjWwV"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["shuffle","0"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["jump","0"]
@@ -296,17 +314,17 @@
         data:
           entity_id: script.listen_music
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:show:2ZSmqyt0bE5RXbhJZVBTaD"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["shuffle","0"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["jump","0"]
@@ -318,17 +336,17 @@
         data:
           entity_id: script.listen_music
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["play","spotify:show:46QFreBLhnaGrl5svL3FWP"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["shuffle","0"]
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "playlist"
           parameters: ["jump","0"]
@@ -340,8 +358,7 @@
         data:
           entity_id: script.listen_music
       - service:  squeezebox.call_method
-        data: 
+        data:
           entity_id: "media_player.picorelivingroom"
           command: "podcasts"
           parameters: ["playlist","play","item_id:2.0"]
-  
