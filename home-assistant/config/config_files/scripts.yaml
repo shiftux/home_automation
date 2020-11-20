@@ -63,6 +63,23 @@
           entity_id: media_player.soundtouch_dining_room
           source: AUX
 
+  shower:
+    sequence:
+      - service: media_player.media_play
+        data:
+          entity_id: media_player.picorelivingroom
+      - service: media_player.turn_on
+        data:
+          entity_id: media_player.soundtouch_bathroom
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.soundtouch_bathroom
+          source: AUX
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.soundtouch_bathroom
+          volume_level: 0.7
+
   media:
     sequence:
       - service: homeassistant.turn_off

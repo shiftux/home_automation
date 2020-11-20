@@ -165,6 +165,18 @@ const homePage = {
           state: false
         },
         {
+          position: [2, 2],
+          type: TYPES.SCRIPT,
+          title: 'Shower',
+          customStyles: {'background-color':'#00a896'},
+          id: 'script.shower',
+          icons: {
+            on: "mdi-shower",
+            off: "mdi-shower"
+          },
+          state: false
+        },
+        {
           position: [0, 3],
           type: TYPES.SCRIPT,
           id: 'script.media',
