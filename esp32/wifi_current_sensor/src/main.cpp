@@ -4,6 +4,36 @@ WiFiClient espClient;
 PubSubClient client(espClient);
 const int currentInput = 34;
 
+void connectWifi() {
+  Serial.print("Connecting to WiFi");
+  WiFi.begin(ssid, wifiPw);
+  while (WiFi.status() != WL_CONNECTED) {
+      delay(500);
+      Serial.print(".");
+  }
+  Serial.println("WiFi connected.");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+  Serial.println(WiFi.macAddress());
+  delay(1000);
+}
+
+void connectMQTT() {
+  Serial.println("Connect MQTT");
+  client.setServer(mqttServer, mqttPort);
+    while (!client.connected()) {
+    Serial.println("Connecting to MQTT");
+    // if (client.connect("ESP32_DiningRoom", mqttUser, mqttPassword )) {
+    if (client.connect("ESP32_LivingRoom", mqttUser, mqttPassword )) {
+      Serial.println("connected");
+    } else {
+      Serial.print("failed with state ");
+      Serial.print(client.state());
+      delay(2000);
+    }
+  }
+}
+
 void setup() {
   Serial.begin(9600); // open the serial port at 9600 bps
   pinMode(currentInput,INPUT);
@@ -14,33 +44,8 @@ void setup() {
   WiFi.disconnect();
   delay(100);
 
-  Serial.print("Connecting to WiFi");
-
-  WiFi.begin(ssid, wifiPw);
-
-  while (WiFi.status() != WL_CONNECTED) {
-      delay(500);
-      Serial.print(".");
-  }
-
-  Serial.println("WiFi connected.");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
-
-  delay(1000);
-  Serial.println("Setup MQTT");
-  client.setServer(mqttServer, mqttPort);
-    while (!client.connected()) {
-    Serial.println("Connecting to MQTT");
-    if (client.connect("ESP32Client", mqttUser, mqttPassword )) {
-      Serial.println("connected");
-    } else {
-      Serial.print("failed with state ");
-      Serial.print(client.state());
-      delay(2000);
-    }
-  }
-
+  connectWifi();
+  connectMQTT();
   Serial.println("Setup done");
 }
 
@@ -77,9 +82,17 @@ void loop() {
   // }
   if (now - lastStatus > 1200) {
     lastStatus = now;
-    String status = getOnOff();
-    Serial.println(status);
-    status.toCharArray(currentStatus, 5);
-    client.publish("sensor/light/diningRoom", currentStatus);
+    if (WiFi.status() != WL_CONNECTED) { connectWifi(); }
+    else {
+      bool loop = client.loop();
+      if (!loop) { connectMQTT(); }
+      else {
+        String status = getOnOff();
+        Serial.println(status);
+        status.toCharArray(currentStatus, 5);
+        // client.publish("sensor/light/diningRoom", currentStatus); // also change the clientID!!!
+        client.publish("sensor/light/livingRoom", currentStatus);
+      }
+    }
   }
 }
