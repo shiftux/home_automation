@@ -28,8 +28,8 @@
   - platform: mqtt
     name: "Living Room"
     command_topic: "light/sonoff-4ch/cmnd/POWER1"
-    state_topic: "light/sonoff-4ch/stat/RESULT"
-    state_value_template: "{{value_json.POWER1}}"
+    state_topic: "sensor/light/livingRoom"
+    # state_value_template: "{{value_json.POWER1}}"
     availability_topic: "light/sonoff-4ch/tele/LWT"
     payload_on: "ON"
     payload_off: "OFF"
