@@ -68,7 +68,7 @@ const musicPage = {
         {
           position: [2, 3],
           type: TYPES.SCRIPT,
-          id: 'script.media',
+          id: 'script.media_off',
           title: '',
           state: false,
           icons: {
