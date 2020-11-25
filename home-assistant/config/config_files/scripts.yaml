@@ -44,7 +44,6 @@
         data:
           entity_id: script.lower_living_room_blinds
 
-
   listen_music:
     sequence:
       - service: homeassistant.turn_on
@@ -56,6 +55,18 @@
       - service: script.turn_on
         data:
           entity_id: script.turn_tv_off
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.picorelivingroom
+          volume_level: 0.8
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.picorebedroom
+          volume_level: 0.8
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.picorebathroom
+          volume_level: 0.8
       - service: media_player.media_play
         data:
           entity_id: media_player.picorelivingroom
