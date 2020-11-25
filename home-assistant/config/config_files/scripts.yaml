@@ -162,7 +162,7 @@
 
   lower_living_room_blinds:
     sequence:
-    - service: cover.close_cover
+    - service: cover.open_cover
       data:
         entity_id: cover.blinds_living_room
     - delay: 50
@@ -172,7 +172,7 @@
 
   raise_living_room_blinds:
     sequence:
-    - service: cover.open_cover
+    - service: cover.close_cover
       data:
         entity_id: cover.blinds_living_room
     - delay: 65
