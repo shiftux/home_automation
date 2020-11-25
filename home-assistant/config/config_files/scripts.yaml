@@ -40,6 +40,10 @@
       - service: light.turn_off
         data:
           entity_id: light.dining_room
+      - service: script.turn_on
+        data:
+          entity_id: script.lower_living_room_blinds
+
 
   listen_music:
     sequence:
@@ -62,6 +66,9 @@
         data:
           entity_id: media_player.soundtouch_dining_room
           source: AUX
+      - service: script.turn_on
+        data:
+          entity_id: script.raise_living_room_blinds
 
   shower:
     sequence:
@@ -80,7 +87,7 @@
           entity_id: media_player.soundtouch_bathroom
           volume_level: 0.7
 
-  media:
+  media_off:
     sequence:
       - service: homeassistant.turn_off
         data:
@@ -97,13 +104,16 @@
       - service: media_player.turn_off
         data:
           entity_id: media_player.soundtouch_bathroom
+      - service: script.turn_on
+        data:
+          entity_id: script.raise_living_room_blinds
 
   all_off:
     alias: All off
     sequence:
       - service: script.turn_on
         data:
-          entity_id: script.media
+          entity_id: script.media_off
       - service: light.turn_off
         data:
           entity_id: light.all_lights
@@ -150,12 +160,22 @@
         data:
           entity_id: media_player.soundtouch_dining_room
 
-  living_room_blinds_down:
+  lower_living_room_blinds:
     sequence:
     - service: cover.close_cover
       data:
         entity_id: cover.blinds_living_room
-    - delay: 3
+    - delay: 50
+    - service: cover.stop_cover
+      data:
+        entity_id: cover.blinds_living_room
+
+  raise_living_room_blinds:
+    sequence:
+    - service: cover.open_cover
+      data:
+        entity_id: cover.blinds_living_room
+    - delay: 65
     - service: cover.stop_cover
       data:
         entity_id: cover.blinds_living_room
