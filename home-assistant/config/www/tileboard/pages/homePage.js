@@ -179,7 +179,7 @@ const homePage = {
         {
           position: [0, 3],
           type: TYPES.SCRIPT,
-          id: 'script.media',
+          id: 'script.media_off',
           title: 'Media Off',
           customStyles: {'background-color':'#e63946'},
           icons: {
