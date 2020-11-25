@@ -150,6 +150,19 @@
         data:
           entity_id: media_player.soundtouch_dining_room
 
+  living_room_blinds_down:
+    sequence:
+    - service: cover.close_cover
+      data:
+        entity_id: cover.blinds_living_room
+    - delay: 3
+    - service: cover.stop_cover
+      data:
+        entity_id: cover.blinds_living_room
+
+###################################################
+# playlists / podcasts
+###################################################
   playlist_easy_on_the_ears:
     sequence:
       - service: script.turn_on

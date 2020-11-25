@@ -28,3 +28,8 @@ alexa:
     filter:
       exclude_domains:
         - media_player
+
+tuya:
+  username: !secret tuya_username
+  password: !secret tuya_pw
+  country_code: !secret tuya_code
