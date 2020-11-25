@@ -2,5 +2,5 @@
 - refactor to packages?
 - dynamic getting of screensaver pics
 - setup monitoring
-- alexa intents: https://www.home-assistant.io/integrations/intent_script
+- alexa intents: https://www.home-assistant.io/integrations/intent_script (i think this only speaks)
 - nginx directories on NAS
