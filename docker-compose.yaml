@@ -139,7 +139,7 @@ services:
       - /mnt/ext_T7/media:/downloads
     restart: unless-stopped
     ports:
-      - 8081:8081
+      - 8085:8081
     networks:
       - docker-network
 
