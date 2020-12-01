@@ -135,7 +135,7 @@ services:
       - PGID=1003
       - TZ=Europe/Zurich
     volumes:
-      - /mnt/nas_pi/sickchill_storage/config:/config
+      - /mnt/ext_T7/sickchill_storage/config:/config
       - /mnt/ext_T7/media:/downloads
     restart: unless-stopped
     ports:
