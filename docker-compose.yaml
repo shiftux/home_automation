@@ -83,6 +83,78 @@ services:
       - "8082:80"
     restart: unless-stopped
 
+  transmission:
+    image: linuxserver/transmission
+    container_name: transmission
+    environment:
+      - PUID=1003
+      - PGID=1003
+      - TZ=Europe/Zurich
+      - FILE__USER=/home/user
+      - FILE__PASS=/home/pass
+    volumes:
+      - /mnt/nas_pi/transmission_storage/config:/config
+      - /mnt/ext_T7/media:/downloads
+      - /mnt/nas_pi/transmission_storage/watch:/watch
+      - ./secret_transmission_pw:/home/pass
+      - ./secret_transmission_user:/home/user
+    ports:
+      - 9091:9091
+    restart: unless-stopped
+    networks:
+      - docker-network
+
+  plex:
+    image: plexinc/pms-docker
+    container_name: plex
+    volumes:
+      - /mnt/nas_pi/plex_storage/config:/config
+      - /mnt/ext_T7/plex_transcode:/transcode
+      - /mnt/ext_T7/media:/data
+    environment:
+      - PLEX_UID=1003
+      - PLEX_GID=1003
+      - TZ=Europe/Zurich
+    restart: unless-stopped
+    expose:
+      - 32400
+    networks:
+      - docker-network
+
+  sickchill:
+    image: linuxserver/sickchill
+    container_name: sickchill
+    environment:
+      - PUID=1003
+      - PGID=1003
+      - TZ=Europe/Zurich
+    volumes:
+      - /mnt/nas_pi/sickchill_storage/config:/config
+      - /mnt/ext_T7/media:/downloads
+    restart: unless-stopped
+    ports:
+      - 8081:8081
+    networks:
+      - docker-network
+
+  couchpotato:
+    image: linuxserver/couchpotato
+    container_name: couchpotato
+    environment:
+      - PUID=1003
+      - PGID=1003
+      - TZ=Europe/Zurich
+      - UMASK_SET=022
+    volumes:
+      - /mnt/nas_pi/couchpotato_storage/config:/config
+      - /mnt/ext_T7/media:/downloads
+      - /mnt/ext_T7/media/movies:/movies
+    restart: unless-stopped
+    ports:
+      - 5050:5050
+    networks:
+      - docker-network
+
 networks:
   docker-network:
     driver: bridge
