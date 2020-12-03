@@ -104,28 +104,27 @@ services:
     networks:
       - docker-network
 
-        #  using infuse on the apple tv + samba shares
-        #  plex:
-        #    image: plexinc/pms-docker:latest-arm64
-        #    container_name: plex
-        #    volumes:
-        #      - /tmp/plex_config:/config
-        #      - /tmp/plex_transcode:/transcode
-        #      - /mnt/ext_T7/media/movies:/movies
-        #      - /mnt/ext_T7/media/tv_shows:/tv
-        #    environment:
-        #      - PUID=1003
-        #      - PGID=1003
-        #      - VERSION=docker
-        #      - PLEX_CLAIM=/home/plex_claim
-        #      - TZ=Europe/Zurich
-        #    restart: unless-stopped
-        #    ports:
-        #      - 32400:32400
-        #    expose:
-        #      - 32400
-        #    networks:
-        #      - docker-network
+  plex:
+    image: plexinc/pms-docker:latest-arm64
+    container_name: plex
+    volumes:
+      - /tmp/plex_config:/config
+      - /tmp/plex_transcode:/transcode
+      - /mnt/ext_T7/media/movies:/movies
+      - /mnt/ext_T7/media/tv_shows:/tv
+    environment:
+      - PUID=1003
+      - PGID=1003
+      - VERSION=docker
+      - PLEX_CLAIM=/home/plex_claim
+      - TZ=Europe/Zurich
+    restart: unless-stopped
+    ports:
+      - 32400:32400
+    expose:
+      - 32400
+    networks:
+      - docker-network
 
   sickchill:
     image: linuxserver/sickchill
