@@ -1,33 +1,25 @@
 #script:
-  turn_tv_off:
+  projector_off:
     sequence:
-      - condition: state
-        entity_id: binary_sensor.tv_status
-        state: 'on'
       - service: homeassistant.turn_off
         data:
-          entity_id: switch.tv_samsung
-
-  turn_tv_on:
-    sequence:
-      - condition: state
-        entity_id: binary_sensor.tv_status
-        state: 'off'
-      - service: homeassistant.turn_on
+          entity_id: switch.projector
+      - delay: 3
+      - service: homeassistant.turn_off
         data:
-          entity_id: switch.tv_samsung
+          entity_id: switch.projector
 
   watch_tv:
     sequence:
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.projector
       - service: homeassistant.turn_on
         data:
           entity_id: switch.nad_receiver_power
       - service: homeassistant.turn_on
         data:
           entity_id: switch.nad_receiver_select_opt2
-      - service: script.turn_on
-        data:
-          entity_id: script.turn_tv_on
       - service: media_player.media_pause
         data:
           entity_id: media_player.picorelivingroom
@@ -52,9 +44,6 @@
       - service: homeassistant.turn_on
         data:
           entity_id: switch.nad_receiver_select_opt1
-      - service: script.turn_on
-        data:
-          entity_id: script.turn_tv_off
       - service: media_player.volume_set
         data:
           entity_id: media_player.picorelivingroom
@@ -80,6 +69,9 @@
       - service: script.turn_on
         data:
           entity_id: script.raise_living_room_blinds
+      - service: script.turn_on
+        data:
+          entity_id: script.projector_off
 
   shower:
     sequence:
@@ -105,7 +97,7 @@
           entity_id: switch.nad_receiver_power
       - service: script.turn_on
         data:
-          entity_id: script.turn_tv_off
+          entity_id: script.projector_off
       - service: media_player.media_pause
         data:
           entity_id: media_player.picorelivingroom

@@ -1,28 +1,4 @@
-#automation: 
-  - alias: "TV turned on"
-    trigger:
-      platform: state
-      entity_id: "switch.tv_samsung"
-      to: 'on'
-    action:
-      - service: python_script.set_state
-        data_template:
-          entity_id: binary_sensor.tv_status
-          allow_create: False
-          state: 'on'
-
-  - alias: "TV turned off"
-    trigger:
-      platform: state
-      entity_id: "switch.tv_samsung"
-      to: 'off'
-    action:
-      - service: python_script.set_state
-        data_template:
-          entity_id: binary_sensor.tv_status
-          allow_create: False
-          state: 'off'
-
+#automation:
   - alias: "LMS switched shuffle off"
     trigger:
       platform: state

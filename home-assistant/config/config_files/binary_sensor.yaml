@@ -1,9 +1,4 @@
 #binary_sensor:
-  - platform: ping
-    name: "tv_status"
-    host: 192.168.0.19
-    scan_interval: 10
-
   - platform: template
     sensors:
       lms_shuffle:
