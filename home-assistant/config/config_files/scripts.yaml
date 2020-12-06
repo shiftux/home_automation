@@ -66,6 +66,9 @@
         data:
           entity_id: media_player.soundtouch_dining_room
           source: AUX
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.nad_receiver_power
       - service: script.turn_on
         data:
           entity_id: script.raise_living_room_blinds
