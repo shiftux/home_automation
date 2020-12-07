@@ -16,6 +16,9 @@
           entity_id: switch.projector
       - service: homeassistant.turn_on
         data:
+          entity_id: switch.hdmi_switcher_1
+      - service: homeassistant.turn_on
+        data:
           entity_id: switch.nad_receiver_power
       - service: homeassistant.turn_on
         data:

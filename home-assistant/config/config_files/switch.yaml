@@ -23,6 +23,16 @@
     mac: !secret broadlink_mac
     timeout: 15
     switches:
+      hdmi_switcher_1:
+        friendly_name: "HDMI Switcher 1"
+        command_on: 'JgBKAAkQAAEbmBMVERUTFBQUEhYRFhIVEzgSORM5EjkTORQ4EjkTORIVEjkSFhEWEhYRFhIWEhQTFhEVEjoROxI4EzoROhM6ETkTAA0FAAAAAAAAAAAAAAAAAAA='
+        command_off: 'JgBKAAkQAAEbmBMVERUTFBQUEhYRFhIVEzgSORM5EjkTORQ4EjkTORIVEjkSFhEWEhYRFhIWEhQTFhEVEjoROxI4EzoROhM6ETkTAA0FAAAAAAAAAAAAAAAAAAA='
+
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: !secret broadlink_mac
+    timeout: 15
+    switches:
       nad_receiver_vol_up:
         friendly_name: "Volume Up"
         command_on: 'JgBQAAABKJIUNRQ1FDYUERQRFBEUERQ1FBITEhQ1FDUUNhQ1FDUUEhMSExITEhQ1FBEUERQRFDYUNRQ1FDYUERQ1FDUUNhQRFAAE8wABKEgUAA0FAAAAAAAAAAA='
