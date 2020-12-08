@@ -4,10 +4,20 @@
       - service: homeassistant.turn_off
         data:
           entity_id: switch.projector
-      - delay: 2
+      - delay: 3
       - service: homeassistant.turn_off
         data:
           entity_id: switch.projector
+
+  start_apple_tv:
+    sequence:
+      # the media player living room is the apple tv
+      - service: media_player.turn_on
+        data:
+          entity_id: media_player.living_room
+      - service: media_player.media_play_pause
+        data:
+          entity_id: media_player.living_room
 
   watch_tv:
     sequence:
@@ -17,13 +27,9 @@
       - service: homeassistant.turn_on
         data:
           entity_id: switch.hdmi_switcher_1
-      # the media player living room is the apple tv
-      - service: media_player.turn_on
+      - service: script.turn_on
         data:
-          entity_id: media_player.living_room
-      - service: media_player.media_play_pause
-        data:
-          entity_id: media_player.living_room
+          entity_id: script.start_apple_tv
       - service: homeassistant.turn_on
         data:
           entity_id: switch.hdmi_switcher_1
