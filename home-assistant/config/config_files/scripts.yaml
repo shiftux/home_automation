@@ -18,6 +18,9 @@
         data:
           entity_id: switch.hdmi_switcher_1
       # the media player living room is the apple tv
+      - service: media_player.turn_on
+        data:
+          entity_id: media_player.living_room
       - service: media_player.media_play_pause
         data:
           entity_id: media_player.living_room
