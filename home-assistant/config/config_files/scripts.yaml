@@ -10,6 +10,7 @@
           entity_id: switch.projector
 
   start_apple_tv:
+    # this needs to be called twice
     sequence:
       # the media player living room is the apple tv
       - service: media_player.turn_on
@@ -60,6 +61,9 @@
       - service: script.turn_on
         data:
           entity_id: script.lower_living_room_blinds
+      - service: script.turn_on
+        data:
+          entity_id: script.start_apple_tv
 
   listen_music:
     sequence:
