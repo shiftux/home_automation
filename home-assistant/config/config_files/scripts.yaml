@@ -4,18 +4,16 @@
       - service: homeassistant.turn_off
         data:
           entity_id: switch.projector
-      - delay: 3
+      - delay: 1
       - service: homeassistant.turn_off
         data:
           entity_id: switch.projector
-          num_repeats: 2
 
   watch_tv:
     sequence:
       - service: homeassistant.turn_on
         data:
           entity_id: switch.projector
-          num_repeats: 2
       - service: media_player.media_play_pause
         data:
                 # the media player living room is the apple tv
@@ -23,17 +21,21 @@
       - service: homeassistant.turn_on
         data:
           entity_id: switch.hdmi_switcher_1
-          num_repeats: 3
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.projector
       - service: homeassistant.turn_on
         data:
           entity_id: switch.nad_receiver_power
-          num_repeats: 3
       - service: homeassistant.turn_on
         data:
           entity_id: switch.nad_receiver_select_opt2
       - service: media_player.media_pause
         data:
           entity_id: media_player.picorelivingroom
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.nad_receiver_power
       - service: light.turn_off
         data:
           entity_id: light.entry
@@ -52,11 +54,9 @@
       - service: homeassistant.turn_on
         data:
           entity_id: switch.nad_receiver_power
-          num_repeats: 2
       - service: homeassistant.turn_on
         data:
           entity_id: switch.nad_receiver_select_opt1
-          num_repeats: 2
       - service: media_player.volume_set
         data:
           entity_id: media_player.picorelivingroom
@@ -111,7 +111,6 @@
       - service: homeassistant.turn_off
         data:
           entity_id: switch.nad_receiver_power
-          num_repeats: 2
       - service: script.turn_on
         data:
           entity_id: script.projector_off
