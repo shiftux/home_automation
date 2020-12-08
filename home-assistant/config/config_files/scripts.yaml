@@ -10,7 +10,6 @@
           entity_id: switch.projector
           num_repeats: 2
 
-
   watch_tv:
     sequence:
       - service: homeassistant.turn_on

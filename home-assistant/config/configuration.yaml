@@ -18,7 +18,6 @@ sensor: !include config_files/sensor.yaml
 switch: !include config_files/switch.yaml
 binary_sensor: !include config_files/binary_sensor.yaml
 logger: !include config_files/logger.yaml
-# apple_tv: !include config_files/apple_tv.yaml
 
 python_script:
 
