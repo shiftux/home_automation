@@ -17,6 +17,10 @@
         data:
           entity_id: switch.projector
           num_repeats: 2
+      - service: media_player.media_play_pause
+        data:
+                # the media player living room is the apple tv
+          entity_id: media_player.living_room
       - service: homeassistant.turn_on
         data:
           entity_id: switch.hdmi_switcher_1

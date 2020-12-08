@@ -8,6 +8,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "36013:36013"
     volumes:
       - /opt/nginx-certbot/nginx.conf:/etc/nginx/conf.d/default.conf
       - /opt/nginx-certbot/letsencrypt-site:/usr/share/nginx/html
