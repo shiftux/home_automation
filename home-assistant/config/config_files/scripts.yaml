@@ -60,9 +60,6 @@
           entity_id: light.dining_room
       - service: script.turn_on
         data:
-          entity_id: script.lower_living_room_blinds
-      - service: script.turn_on
-        data:
           entity_id: script.start_apple_tv
 
   listen_music:
