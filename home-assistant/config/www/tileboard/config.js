@@ -9,7 +9,7 @@
 function loadJS(url) {
    var xhttp = new XMLHttpRequest();
    var script = document.createElement("script");
-   xhttp.open("GET", url + suffix, false);
+   xhttp.open("GET", url, false);
    xhttp.send();
    script.text = xhttp.responseText;
    document.head.appendChild(script).parentNode.removeChild(script);
