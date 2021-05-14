@@ -25,30 +25,24 @@
       - service: homeassistant.turn_on
         data:
           entity_id: switch.projector
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.hdmi_switcher_1
       - service: script.turn_on
         data:
           entity_id: script.start_apple_tv
       - service: homeassistant.turn_on
         data:
-          entity_id: switch.hdmi_switcher_1
-      - service: homeassistant.turn_on
-        data:
           entity_id: switch.projector
       - service: homeassistant.turn_on
         data:
-          entity_id: switch.nad_receiver_power
+          entity_id: switch.nad_power
       - service: homeassistant.turn_on
         data:
-          entity_id: switch.nad_receiver_select_opt2
+          entity_id: switch.dac_video_input
       - service: media_player.media_pause
         data:
           entity_id: media_player.picorelivingroom
       - service: homeassistant.turn_on
         data:
-          entity_id: switch.nad_receiver_power
+          entity_id: switch.nad_power
       - service: light.turn_off
         data:
           entity_id: light.entry
@@ -66,10 +60,10 @@
     sequence:
       - service: homeassistant.turn_on
         data:
-          entity_id: switch.nad_receiver_power
+          entity_id: switch.nad_power
       - service: homeassistant.turn_on
         data:
-          entity_id: switch.nad_receiver_select_opt1
+          entity_id: switch.dac_music_input
       - service: media_player.volume_set
         data:
           entity_id: media_player.picorelivingroom
@@ -94,10 +88,7 @@
           source: AUX
       - service: homeassistant.turn_on
         data:
-          entity_id: switch.nad_receiver_power
-      - service: script.turn_on
-        data:
-          entity_id: script.raise_living_room_blinds
+          entity_id: switch.nad_power
       - service: script.turn_on
         data:
           entity_id: script.projector_off
@@ -126,7 +117,7 @@
     sequence:
       - service: homeassistant.turn_off
         data:
-          entity_id: switch.nad_receiver_power
+          entity_id: switch.nad_power
       - service: script.turn_on
         data:
           entity_id: script.projector_off
@@ -172,7 +163,7 @@
     sequence:
       - service: homeassistant.turn_on
         data:
-          entity_id: switch.nad_receiver_vol_up
+          entity_id: switch.nad_volume_up
       - service: media_player.volume_up
         data:
           entity_id: media_player.soundtouch_dining_room
@@ -187,7 +178,7 @@
     sequence:
       - service: homeassistant.turn_on
         data:
-          entity_id: switch.nad_receiver_vol_down
+          entity_id: switch.nad_volume_down
       - service: media_player.volume_down
         data:
           entity_id: media_player.soundtouch_dining_room

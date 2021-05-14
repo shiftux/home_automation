@@ -1,72 +1,77 @@
-  - platform: broadlink
-    host: !secret broadlink_ip
-    mac: !secret broadlink_mac
-    timeout: 15
-    switches:
-      projector:
-        friendly_name: "Projector"
-        command_on: 'JgAgAQABKZIVNhQ2FBEUERQSFBEUERQ2FDYUEhQ2FBEUNhQSFDYUERQRFBEUEhQRFDYUERQRFDcUNhQ2FDYVNhQRFDYUNhQSFAAFQQABKpIVNRQ2FBEUEhQRFBEUERQ2FDcUERQ2FBEUNxQRFDYUERQRFBIUERQRFDYUERQSFDYUNhQ2FDcUNhQRFDYUNhQSFAAFQQABKpIVNRQ2FBIUERQRFBEUEhQ2FDYUERQ2FBIUNhQRFDYUEhQRFBEUERQRFDcUERQRFDYUNxQ2FDYUNhQSEzcUNhQRFAAFQgABKpEVNhQ2FBEUERQSFBEUERQ2FDYUEhQ2FBEUNhQSFDYUERQRFBEUEhQRFDYUERQSEzcUNhQ2FDYUNxQRFDYUNhQSFAANBQAAAAAAAAAA='
-        command_off: 'JgAgAQABK5EVNRU2FBEUERUQFREUERQ2FTUVERQ2FBEVNRURFDYUERU1FREUERQRFTUVEBURFDYUERU1FTYUNhQRFTUVNhQRFAAFQgABKpEVNhQ2FBEVEBUQFREUERU1FTUVERQ2FBEVNRURFDYUERU1FRAVERQRFTUVEBURFDYUERU1FTUVNhQRFTUVNRURFAAFQQABKpIVNRQ2FBIUERQRFBEUEhQ2FDYUERQ2FBIUNhQRFDYUEhQ2FBEUERQSFDYUERQRFDYUEhQ2FDYUNhQSFDYUNhQRFAAFQgABKpIVNRQ3FBEUERQRFBEUEhQ2FDYUERQ3FBEUNhQRFDcUERQ2FBEUEhQRFDYUERQSEzcUERQ2FDYUNxQRFDYUNhQSFAANBQAAAAAAAAAA='
+  - platform: mqtt
+    name: "Projector"
+    command_topic: "remotes/ir_blaster/cmnd/irsend"
+    availability_topic: "remotes/ir_blaster/LWT"
+    qos: 1
+    payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xC1AA09F6"}'
+    payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xC1AA8976"}'
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
 
-  - platform: broadlink
-    host: !secret broadlink_ip
-    mac: !secret broadlink_mac
-    timeout: 15
-    switches:
-      nad_receiver_power:
-        friendly_name: "NAD Receiver"
-        command_on: 'JgBIAAABKI4XNhQ1FDYTEhMSFBEUERQ1FBEUEhM2FDUUNRQ2FDUUERQ2ExITNhQRFBEUNhMSExIUERQ1FBEUNhM2FBEUNRQ2EwANBQ=='
-        command_off: 'JgBQAAABKJEUNhQ1FDUUEhMSExIUERQ1FBEUERQ2FDUUNRQ2FDUUERQRFBEUERQ2FBEUERQ1FDYTNhQ1FDYTEhQ1FDUUERQSEwAE9QABKEgUAA0FAAAAAAAAAAA='
+  - platform: mqtt
+    name: "Projector HDMI1"
+    command_topic: "remotes/ir_blaster/cmnd/irsend"
+    availability_topic: "remotes/ir_blaster/LWT"
+    qos: 1
+    payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xC1AACE31"}'
+    payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xC1AACE31"}'
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
 
-  - platform: broadlink
-    host: !secret broadlink_ip
-    mac: !secret broadlink_mac
-    timeout: 15
-    switches:
-      hdmi_switcher_1:
-        friendly_name: "HDMI Switcher 1"
-        command_on: 'JgBKAAkQAAEbmBMVERUTFBQUEhYRFhIVEzgSORM5EjkTORQ4EjkTORIVEjkSFhEWEhYRFhIWEhQTFhEVEjoROxI4EzoROhM6ETkTAA0FAAAAAAAAAAAAAAAAAAA='
-        command_off: 'JgBKAAkQAAEbmBMVERUTFBQUEhYRFhIVEzgSORM5EjkTORQ4EjkTORIVEjkSFhEWEhYRFhIWEhQTFhEVEjoROxI4EzoROhM6ETkTAA0FAAAAAAAAAAAAAAAAAAA='
+  - platform: mqtt
+    name: "NAD Power"
+    command_topic: "remotes/ir_blaster/cmnd/irsend"
+    availability_topic: "remotes/ir_blaster/LWT"
+    qos: 1
+    payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13EA45B"}'
+    payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E13EC"}'
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
 
-  - platform: broadlink
-    host: !secret broadlink_ip
-    mac: !secret broadlink_mac
-    timeout: 15
-    switches:
-      nad_receiver_vol_up:
-        friendly_name: "Volume Up"
-        command_on: 'JgBQAAABKJIUNRQ1FDYUERQRFBEUERQ1FBITEhQ1FDUUNhQ1FDUUEhMSExITEhQ1FBEUERQRFDYUNRQ1FDYUERQ1FDUUNhQRFAAE8wABKEgUAA0FAAAAAAAAAAA='
-        command_off: 'JgBQAAABKJIUNRQ1FDYUERQRFBEUERQ1FBITEhQ1FDUUNhQ1FDUUEhMSExITEhQ1FBEUERQRFDYUNRQ1FDYUERQ1FDUUNhQRFAAE8wABKEgUAA0FAAAAAAAAAAA='
+  - platform: mqtt
+    name: "NAD volume up"
+    command_topic: "remotes/ir_blaster/cmnd/irsend"
+    availability_topic: "remotes/ir_blaster/LWT"
+    qos: 1
+    payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E11EE"}'
+    payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E11EE"}'
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
 
-  - platform: broadlink
-    host: !secret broadlink_ip
-    mac: !secret broadlink_mac
-    timeout: 15
-    switches:
-      nad_receiver_vol_down:
-        friendly_name: "Volume Down"
-        command_on: 'JgBIAAABKJIUNRQ1FDYUERQRFBEUERQ1FBITEhM2FDUUNhM2FDUUERQRFBITNhQ1FBEUERQSEzYUNRQ1FBITEhQ1FDUUNhQRFAANBQ=='
-        command_off: 'JgBIAAABKJIUNRQ1FDYUERQRFBEUERQ1FBITEhM2FDUUNhM2FDUUERQRFBITNhQ1FBEUERQSEzYUNRQ1FBITEhQ1FDUUNhQRFAANBQ=='
+  - platform: mqtt
+    name: "NAD volume down"
+    command_topic: "remotes/ir_blaster/cmnd/irsend"
+    availability_topic: "remotes/ir_blaster/LWT"
+    qos: 1
+    payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E31CE"}'
+    payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E31CE"}'
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
 
-  - platform: broadlink
-    host: !secret broadlink_ip
-    mac: !secret broadlink_mac
-    timeout: 15
-    switches:
-      nad_receiver_select_opt1:
-        friendly_name: "Music input"
-        command_on: 'JgAwAB4cPDkeHTs5Hh07HR0dHhweHR4cHgALph0dOzoeHTs5Hh07HB4dHhweHR4cHgANBQAAAAAAAAAA'
-        command_off: 'JgAwAB4cPDkeHTs5Hh07HR0dHhweHR4cHgALph0dOzoeHTs5Hh07HB4dHhweHR4cHgANBQAAAAAAAAAA'
+  - platform: mqtt
+    name: "DAC Music Input"
+    command_topic: "remotes/ir_blaster/cmnd/irsend"
+    availability_topic: "remotes/ir_blaster/LWT"
+    qos: 1
+    payload_on: '{ "Protocol":"RC5","Bits":12,"Data":"0x6C0" }'
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
 
-  - platform: broadlink
-    host: !secret broadlink_ip
-    mac: !secret broadlink_mac
-    timeout: 15
-    switches:
-      nad_receiver_select_opt2:
-        friendly_name: "TV input"
-        command_on: 'JgAYAB4dHR0eHB4dOzodHTsdHhweHR06OwANBQ=='
-        command_off: 'JgAYAB4dHR0eHB4dOzodHTsdHhweHR06OwANBQ=='
+  - platform: mqtt
+    name: "DAC Music Input"
+    command_topic: "remotes/ir_blaster/cmnd/irsend"
+    availability_topic: "remotes/ir_blaster/LWT"
+    qos: 1
+    payload_on: '{ "Protocol":"RC5","Bits":12,"Data":"0xEC2" }'
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
 
   - platform: template
     switches:
