@@ -34,13 +34,13 @@
     availability_topic: 'light/sonoff-4ch/tele/LWT'
     command_on_template: >-
       {% if is_state('sensor.light_sensor_livingRoom', 'OFF') %}
-        "TOGGLE"
+        TOGGLE
       {% else %}
         ""
       {% endif %}
     command_off_template: >-
       {% if is_state('sensor.light_sensor_livingRoom', 'ON') %}
-        "TOGGLE"
+        TOGGLE
       {% else %}
         ""
       {% endif %}
@@ -58,13 +58,13 @@
     availability_topic: "light/sonoff-4ch/tele/LWT"
     command_on_template: >-
       {% if is_state('sensor.light_sensor_diningroom', 'OFF') %}
-        "TOGGLE"
+        TOGGLE
       {% else %}
         ""
       {% endif %}
     command_off_template: >-
       {% if is_state('sensor.light_sensor_diningroom', 'ON') %}
-        "TOGGLE"
+        TOGGLE
       {% else %}
         ""
       {% endif %}
