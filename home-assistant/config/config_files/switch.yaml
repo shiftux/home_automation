@@ -1,7 +1,7 @@
   - platform: mqtt
     name: "Projector"
     command_topic: "remotes/ir_blaster/cmnd/irsend"
-    availability_topic: "remotes/ir_blaster/LWT"
+    availability_topic: "remotes/ir_blaster/tele/LWT"
     qos: 1
     payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xC1AA09F6"}'
     payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xC1AA8976"}'
@@ -12,7 +12,7 @@
   - platform: mqtt
     name: "Projector HDMI1"
     command_topic: "remotes/ir_blaster/cmnd/irsend"
-    availability_topic: "remotes/ir_blaster/LWT"
+    availability_topic: "remotes/ir_blaster/tele/LWT"
     qos: 1
     payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xC1AACE31"}'
     payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xC1AACE31"}'
@@ -23,7 +23,7 @@
   - platform: mqtt
     name: "NAD Power"
     command_topic: "remotes/ir_blaster/cmnd/irsend"
-    availability_topic: "remotes/ir_blaster/LWT"
+    availability_topic: "remotes/ir_blaster/tele/LWT"
     qos: 1
     payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13EA45B"}'
     payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E13EC"}'
@@ -34,7 +34,7 @@
   - platform: mqtt
     name: "NAD volume up"
     command_topic: "remotes/ir_blaster/cmnd/irsend"
-    availability_topic: "remotes/ir_blaster/LWT"
+    availability_topic: "remotes/ir_blaster/tele/LWT"
     qos: 1
     payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E11EE"}'
     payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E11EE"}'
@@ -45,7 +45,7 @@
   - platform: mqtt
     name: "NAD volume down"
     command_topic: "remotes/ir_blaster/cmnd/irsend"
-    availability_topic: "remotes/ir_blaster/LWT"
+    availability_topic: "remotes/ir_blaster/tele/LWT"
     qos: 1
     payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E31CE"}'
     payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E31CE"}'
@@ -56,7 +56,7 @@
   - platform: mqtt
     name: "DAC Music Input"
     command_topic: "remotes/ir_blaster/cmnd/irsend"
-    availability_topic: "remotes/ir_blaster/LWT"
+    availability_topic: "remotes/ir_blaster/tele/LWT"
     qos: 1
     payload_on: '{ "Protocol":"RC5","Bits":12,"Data":"0x6C0" }'
     payload_available: "Online"
@@ -64,9 +64,9 @@
     retain: false
 
   - platform: mqtt
-    name: "DAC Music Input"
+    name: "DAC Video Input"
     command_topic: "remotes/ir_blaster/cmnd/irsend"
-    availability_topic: "remotes/ir_blaster/LWT"
+    availability_topic: "remotes/ir_blaster/tele/LWT"
     qos: 1
     payload_on: '{ "Protocol":"RC5","Bits":12,"Data":"0xEC2" }'
     payload_available: "Online"
