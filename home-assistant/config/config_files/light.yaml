@@ -31,8 +31,8 @@
     state_topic: "sensor/light/livingRoom"
     # state_value_template: "{{value_json.POWER1}}"
     availability_topic: "light/sonoff-4ch/tele/LWT"
-    payload_on: "ON"
-    payload_off: "OFF"
+    payload_on: "TOGGLE"
+    payload_off: "TOGGLE"
     payload_available: "Online"
     payload_not_available: "Offline"
     qos: 1
@@ -44,8 +44,8 @@
     state_topic: "sensor/light/diningRoom"
     # state_value_template: "{{value_json.POWER3}}"
     availability_topic: "light/sonoff-4ch/tele/LWT"
-    payload_on: "ON"
-    payload_off: "OFF"
+    payload_on: "TOGGLE"
+    payload_off: "TOGGLE"
     payload_available: "Online"
     payload_not_available: "Offline"
     qos: 1

@@ -23,7 +23,7 @@ void connectMQTT() {
   client.setServer(mqttServer, mqttPort);
     while (!client.connected()) {
     Serial.println("Connecting to MQTT");
-    // if (client.connect("ESP32_DiningRoom", mqttUser, mqttPassword )) {
+    // if (client.connect("ESP32_DiningRoom", mqttUser, mqttPassword )) { // also change the payload !!
     if (client.connect("ESP32_LivingRoom", mqttUser, mqttPassword )) {
       Serial.println("connected");
     } else {
