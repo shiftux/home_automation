@@ -26,26 +26,48 @@
     retain: true
 
   - platform: mqtt
-    name: "Living Room"
-    command_topic: "light/sonoff-4ch/cmnd/POWER1"
-    state_topic: "sensor/light/livingRoom"
-    # state_value_template: "{{value_json.POWER1}}"
-    availability_topic: "light/sonoff-4ch/tele/LWT"
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    schema: template
+    name: "living room"
+    command_topic: 'light/sonoff-4ch/cmnd/POWER1'
+    state_topic: 'sensor/light/livingRoom'
+    state_template: '{{ value | lower }}'
+    availability_topic: 'light/sonoff-4ch/tele/LWT'
+    command_on_template: >-
+      {% if is_state('sensor.light_sensor_livingRoom', 'OFF') %}
+        TOGGLE
+      {% else %}
+        ""
+      {% endif %}
+    command_off_template: >-
+      {% if is_state('sensor.light_sensor_livingRoom', 'ON') %}
+        TOGGLE
+      {% else %}
+        ""
+      {% endif %}
+    payload_available: 'Online'
+    payload_not_available: 'Offline'
     qos: 1
     retain: true
 
   - platform: mqtt
-    name: "Dining Room"
+    schema: template
+    name: "dining room"
     command_topic: "light/sonoff-4ch/cmnd/POWER3"
     state_topic: "sensor/light/diningRoom"
-    # state_value_template: "{{value_json.POWER3}}"
+    state_template: '{{ value | lower }}'
     availability_topic: "light/sonoff-4ch/tele/LWT"
-    payload_on: "ON"
-    payload_off: "OFF"
+    command_on_template: >-
+      {% if is_state('sensor.light_sensor_diningroom', 'OFF') %}
+        TOGGLE
+      {% else %}
+        ""
+      {% endif %}
+    command_off_template: >-
+      {% if is_state('sensor.light_sensor_diningroom', 'ON') %}
+        TOGGLE
+      {% else %}
+        ""
+      {% endif %}
     payload_available: "Online"
     payload_not_available: "Offline"
     qos: 1

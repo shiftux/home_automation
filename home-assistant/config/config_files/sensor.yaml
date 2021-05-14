@@ -58,3 +58,11 @@
     method: GET
     name: !secret river_rest_endpoint_temp_flow_text_name
     value_template: !secret river_rest_endpoint_temp_flow_text_json
+
+  - platform: mqtt
+    name: light_sensor_livingRoom
+    state_topic: "sensor/light/livingRoom"
+
+  - platform: mqtt
+    name: light_sensor_diningRoom
+    state_topic: "sensor/light/diningRoom"
