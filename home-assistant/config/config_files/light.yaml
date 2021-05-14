@@ -30,7 +30,7 @@
     name: "living room"
     command_topic: 'light/sonoff-4ch/cmnd/POWER1'
     state_topic: 'sensor/light/livingRoom'
-    # state_value_template: '{{value_json.POWER1}}'
+    state_template: '{{ value | lower }}'
     availability_topic: 'light/sonoff-4ch/tele/LWT'
     command_on_template: >-
       {% if is_state('sensor.light_sensor_livingRoom', 'OFF') %}
