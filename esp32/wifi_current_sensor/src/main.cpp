@@ -59,7 +59,7 @@ String getOnOff() {
     sum += analogRead(currentInput);
     delay(10);
   }
-  if (sum > 500) {status = "ON";};
+  if (sum > 350) {status = "ON";};
   return status;
 }
 
