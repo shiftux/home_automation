@@ -16,7 +16,7 @@ const weatherPage = {
           title: 'Forecast Bern',
           type: TYPES.IFRAME,
           id: {}, // using empty object for an unknown id
-          url: "http://192.168.0.28:8080/"
+          url: "http://192.168.50.28:8080/"
           // url: "http://192.168.0.28:30880/"
         },
         {
@@ -27,7 +27,7 @@ const weatherPage = {
           title: 'Daily Graph',
           type: TYPES.IFRAME,
           id: {}, // using empty object for an unknown id
-          url: "http://192.168.0.28:8082/"
+          url: "http://192.168.50.28:8082/"
           // url: "http://192.168.0.28:30882/"
         }
       ]
@@ -45,7 +45,7 @@ const weatherPage = {
           title: 'Radar',
           type: TYPES.IFRAME,
           id: {}, // using empty object for an unknown id
-          url: "http://192.168.0.28:8081/"
+          url: "http://192.168.50.28:8081/"
           // url: "http://192.168.0.28:30881/"
         }
       ]

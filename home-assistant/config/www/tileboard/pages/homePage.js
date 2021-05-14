@@ -16,7 +16,7 @@ const homePage = {
           title: 'Weather Bern',
           type: TYPES.IFRAME,
           id: {}, // using empty object for an unknown id
-          url: "http://192.168.0.28:8082/"
+          url: "http://192.168.50.28:8082/"
           // url: "http://192.168.0.28:30880/"
         },
         {

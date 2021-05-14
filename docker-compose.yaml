@@ -119,6 +119,7 @@ services:
       - VERSION=docker
       - PLEX_CLAIM=/home/plex_claim
       - TZ=Europe/Zurich
+      - PLEX_CLAIM=claim-sYjv4dxwod4Kjzof-3tA
     restart: unless-stopped
     ports:
       - 32400:32400
