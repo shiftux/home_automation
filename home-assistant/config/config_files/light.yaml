@@ -28,7 +28,6 @@
   - platform: template
     lights:
       living_room:
-        name: 'Living Room'
         command_topic: 'light/sonoff-4ch/cmnd/POWER1'
         state_topic: 'sensor/light/livingRoom'
         # state_value_template: '{{value_json.POWER1}}'
@@ -52,27 +51,27 @@
 
   - platform: template
     lights:
-      name: "Dining Room"
-      command_topic: "light/sonoff-4ch/cmnd/POWER3"
-      state_topic: "sensor/light/diningRoom"
-      # state_value_template: "{{value_json.POWER3}}"
-      availability_topic: "light/sonoff-4ch/tele/LWT"
-      payload_on_template: >-
-        {% if is_state('sensor.light_sensor_diningroom', 'OFF') %}
-          "TOGGLE"
-        {% else %}
-          ""
-        {% endif %}
-      payload_off_template: >-
-        {% if is_state('sensor.light_sensor_diningroom', 'ON') %}
-          "TOGGLE"
-        {% else %}
-          ""
-        {% endif %}
-      payload_available: "Online"
-      payload_not_available: "Offline"
-      qos: 1
-      retain: true
+      dining_room:
+        command_topic: "light/sonoff-4ch/cmnd/POWER3"
+        state_topic: "sensor/light/diningRoom"
+        # state_value_template: "{{value_json.POWER3}}"
+        availability_topic: "light/sonoff-4ch/tele/LWT"
+        payload_on_template: >-
+          {% if is_state('sensor.light_sensor_diningroom', 'OFF') %}
+            "TOGGLE"
+          {% else %}
+            ""
+          {% endif %}
+        payload_off_template: >-
+          {% if is_state('sensor.light_sensor_diningroom', 'ON') %}
+            "TOGGLE"
+          {% else %}
+            ""
+          {% endif %}
+        payload_available: "Online"
+        payload_not_available: "Offline"
+        qos: 1
+        retain: true
 
   - platform: group
     name: All Lights
