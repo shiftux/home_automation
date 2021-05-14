@@ -26,7 +26,7 @@
     availability_topic: "remotes/ir_blaster/tele/LWT"
     qos: 1
     payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13EA45B"}'
-    payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E13EC"}'
+    payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E13EC"}'
     payload_available: "Online"
     payload_not_available: "Offline"
     retain: false
@@ -37,7 +37,7 @@
     availability_topic: "remotes/ir_blaster/tele/LWT"
     qos: 1
     payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E11EE"}'
-    payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E11EE"}'
+    payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E11EE"}'
     payload_available: "Online"
     payload_not_available: "Offline"
     retain: false
@@ -48,7 +48,7 @@
     availability_topic: "remotes/ir_blaster/tele/LWT"
     qos: 1
     payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E31CE"}'
-    payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E31CE"}'
+    payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E31CE"}'
     payload_available: "Online"
     payload_not_available: "Offline"
     retain: false
@@ -59,6 +59,7 @@
     availability_topic: "remotes/ir_blaster/tele/LWT"
     qos: 1
     payload_on: '{ "Protocol":"RC5","Bits":12,"Data":"0x6C0" }'
+    payload_off: '{ "Protocol":"RC5","Bits":12,"Data":"0x6C0" }'
     payload_available: "Online"
     payload_not_available: "Offline"
     retain: false
@@ -69,6 +70,7 @@
     availability_topic: "remotes/ir_blaster/tele/LWT"
     qos: 1
     payload_on: '{ "Protocol":"RC5","Bits":12,"Data":"0xEC2" }'
+    payload_off: '{ "Protocol":"RC5","Bits":12,"Data":"0xEC2" }'
     payload_available: "Online"
     payload_not_available: "Offline"
     retain: false
