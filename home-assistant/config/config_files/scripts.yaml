@@ -43,6 +43,9 @@
       - service: homeassistant.turn_on
         data:
           entity_id: switch.nad_power
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.dac_video_input
       - service: light.turn_off
         data:
           entity_id: light.entry
@@ -55,6 +58,12 @@
       - service: script.turn_on
         data:
           entity_id: script.start_apple_tv
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.nad_power
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.dac_video_input
 
   listen_music:
     sequence:
@@ -76,6 +85,12 @@
         data:
           entity_id: media_player.picorebathroom
           volume_level: 0.8
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.nad_power
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.dac_music_input
       - service: media_player.media_play
         data:
           entity_id: media_player.picorelivingroom
@@ -89,9 +104,18 @@
       - service: homeassistant.turn_on
         data:
           entity_id: switch.nad_power
+      - service: homeassistant.turn_on
+        data:
+          entity_id: switch.dac_music_input
       - service: script.turn_on
         data:
           entity_id: script.projector_off
+
+  music:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.listen_music
 
   shower:
     sequence:
@@ -136,6 +160,12 @@
       - service: script.turn_on
         data:
           entity_id: script.raise_living_room_blinds
+
+  media:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.media_off
 
   all_off:
     alias: All off
