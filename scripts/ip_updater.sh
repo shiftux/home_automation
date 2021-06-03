@@ -21,10 +21,23 @@ if [ "$gdip" != "$myip" -a "$myip" != "" ]; then
   echo "IP has changed!! Updating on GoDaddy"
   curl -s -X PUT "https://api.godaddy.com/v1/domains/${mydomain}/records/A/${myhostname}" -H "Authorization: sso-key ${gd_apikey}" -H "Content-Type: application/json" -d "[{\"data\": \"${myip}\"}]"
   echo "Changed IP on ${hostname}.${mydomain} from ${gdip} to ${myip}"
+  echo "waiting for changes to propagate"
+  sleep 5
 else
   echo "nothing to do"
 fi
 
+new_dnsdata=`curl -s -X GET -H "Authorization: sso-key ${gd_apikey}" "https://api.godaddy.com/v1/domains/${mydomain}/records/A/${myhostname}"`
+new_gdip=`echo $new_dnsdata | cut -d ',' -f 1 | tr -d '"' | cut -d ":" -f 2`
+if [ "$new_gdip" != "$myip" -a "$myip" != "" ]; then
+  echo "Failed to update GoDaddy. Terminating"
+  exit 1
+else
+  echo "IPs are matching. Exiting"
+  exit 0
+fi
+
+: <<'END'
 ###########
 # update ingress
 ###########
@@ -57,3 +70,4 @@ if [ "$helm_extip" != "$myip" ] || [ "$svcPortCorrect" -ne 0 ]; then
 else
   echo "helm is up to date"
 fi
+END
