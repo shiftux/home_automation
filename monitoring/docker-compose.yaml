@@ -23,6 +23,8 @@ services:
     image: prom/node-exporter
     ports:
       - '9100:9100'
+    networks:
+      - monitor-net
 
   cadvisor:
     image: google/cadvisor:latest
@@ -33,6 +35,8 @@ services:
       - /var/run:/var/run:rw
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+      - monitor-net
 
   grafana:
     image: grafana/grafana
@@ -45,3 +49,9 @@ services:
       - prometheus
     ports:
       - '3000:3000'
+    networks:
+      - monitor-net
+
+networks:
+  monitor-net:
+    driver: bridge
