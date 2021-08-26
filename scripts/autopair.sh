@@ -1,4 +1,5 @@
 #!/bin/bash
+# https://unix.stackexchange.com/a/373583
 echo "######################################"
 date
 pulseaudio --start
