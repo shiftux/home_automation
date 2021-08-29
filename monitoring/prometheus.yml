@@ -22,7 +22,7 @@ scrape_configs:
     static_configs:
       - targets: ['192.168.50.43:80']
         labels:
-          instance: 'irrigation-north'
+          instance: 'sonoff-irrigation-north'
       - targets: ['192.168.50.42:80']
         labels:
           instance: 'sonoff-entry'
@@ -34,4 +34,4 @@ scrape_configs:
           instance: 'sonoff-4CH'
       - targets: ['192.168.50.44:80']
         labels:
-          instance: 'sonoff-IRPuck'
+          instance: 'tasmota-IR-puck'
