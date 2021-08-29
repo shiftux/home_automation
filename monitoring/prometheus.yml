@@ -6,12 +6,26 @@ scrape_configs:
   - job_name: 'prometheus'
     static_configs:
       - targets: ['192.168.50.28:9090'] 
-  - job_name: 'node-exporter'
+  - job_name: 'hass node-exporter'
     static_configs:
       - targets: ['192.168.50.28:9100']
   - job_name: 'cAdvisor'
     static_configs:
       - targets: ['192.168.50.28:8090']
-  - job_name: 'tasmota_irrigation_north'
+  - job_name: 'tasmota devices'
     static_configs:
       - targets: ['192.168.50.43:80']
+        labels:
+          instance: 'irrigation-north'
+      - targets: ['192.168.50.42:80']
+        labels:
+          instance: 'sonoff-entry'
+      - targets: ['192.168.50.41:80']
+        labels:
+          instance: 'sonoff-kitchen'
+      - targets: ['192.168.50.40:80']
+        labels:
+          instance: 'sonoff-4CH'
+      - targets: ['192.168.50.44:80']
+        labels:
+          instance: 'sonoff-IRPuck'
