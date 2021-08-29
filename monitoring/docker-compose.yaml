@@ -1,8 +1,9 @@
 version: '3'
 services:
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus-linux-arm64
     container_name: prometheus
+    user: root
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - ./prometheus_db:/var/lib/prometheus
@@ -20,6 +21,7 @@ services:
       - monitor-net
 
   node-exporter:
+    container_name: node-exporter
     image: prom/node-exporter
     ports:
       - '9100:9100'
@@ -27,7 +29,8 @@ services:
       - monitor-net
 
   cadvisor:
-    image: google/cadvisor:latest
+    image: budry/cadvisor-arm:latest
+    container_name: cadvisor
     ports:
       - '8090:8080'
     volumes:
@@ -35,12 +38,16 @@ services:
       - /var/run:/var/run:rw
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
+    command:
+      - '-docker_only=true'
+      - '-housekeeping_interval=20s'
+      - '-disable_metrics=disk'
     networks:
       - monitor-net
 
   grafana:
-    image: grafana/grafana
-    user: "1000"
+    image: grafana/grafana:latest-ubuntu
+    container_name: grafana
     # environment:
     #   - GF_SECURITY_ADMIN_PASSWORD=secure_pass
     volumes:
