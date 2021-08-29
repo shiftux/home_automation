@@ -6,12 +6,18 @@ scrape_configs:
   - job_name: 'prometheus'
     static_configs:
       - targets: ['192.168.50.28:9090'] 
+        labels:
+          instance: 'prometheus'
   - job_name: 'hass node-exporter'
     static_configs:
       - targets: ['192.168.50.28:9100']
+        labels:
+          instance: 'hass'
   - job_name: 'cAdvisor'
     static_configs:
       - targets: ['192.168.50.28:8090']
+        labels:
+          instance: 'cadvisor'
   - job_name: 'tasmota devices'
     static_configs:
       - targets: ['192.168.50.43:80']
