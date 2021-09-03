@@ -38,3 +38,7 @@ scrape_configs:
       - targets: ['192.168.50.45:80']
         labels:
           instance: 'shelly-office'
+    # metrics_path: "/metrics"
+    # basic_auth:
+    #   username: 'admin'
+    #   password: 'cfgqvzjbhnwcomplicatedpasswordwjnqmd'

@@ -73,6 +73,19 @@
     qos: 1
     retain: true
 
+  - platform: mqtt
+    name: "Office"
+    command_topic: "light/shelly-office/cmnd/POWER"
+    state_topic: "light/shelly-office/stat/RESULT"
+    state_value_template: "{{value_json.POWER}}"
+    availability_topic: "light/shelly-office/tele/LWT"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: true
+
   - platform: group
     name: All Lights
     entities:
