@@ -27,7 +27,7 @@ services:
     ports:
       - '9093:9093'
     volumes:
-      - ./alertmanager.yml:/alertmanager.yml
+      - ./alertmanager.yml.secret:/alertmanager.yml
     command:
       - '--config.file=/alertmanager.yml'
     restart: unless-stopped
