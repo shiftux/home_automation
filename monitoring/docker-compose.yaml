@@ -27,7 +27,8 @@ services:
     ports:
       - '9093:9093'
     volumes:
-      - ./alertmanager.yml.secret:/alertmanager.yml
+      - ./alertmanager.yml:/alertmanager.yml
+      - ./slack_api_url.secret:/slack_api_url.secret
     command:
       - '--config.file=/alertmanager.yml'
     restart: unless-stopped
