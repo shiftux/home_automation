@@ -28,6 +28,7 @@ services:
       - '9093:9093'
     volumes:
       - ./alertmanager.yml.secret:/alertmanager.yml
+      - ./notifications.tmpl:/notifications.tmpl
     command:
       - '--config.file=/alertmanager.yml'
     restart: unless-stopped
