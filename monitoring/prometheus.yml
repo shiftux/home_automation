@@ -51,6 +51,17 @@ scrape_configs:
   - job_name: 'pihole'
     static_configs:
       - targets: ['192.168.50.93:9617']
+  - job_name: 'piCore players'
+    static_configs:
+      - targets: ['192.168.50.51:9100']
+        labels:
+          instance: 'picore-living-room'
+      - targets: ['192.168.50.52:9100']
+        labels:
+          instance: 'picore-dining-room'
+      - targets: ['192.168.50.53:9100']
+        labels:
+          instance: 'picore-bathroom'
     # metrics_path: "/metrics"
     # basic_auth:
     #   username: 'admin'
