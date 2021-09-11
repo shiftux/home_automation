@@ -190,16 +190,6 @@ groups:
       summary: Host node overtemperature alarm (instance {{ $labels.instance }})
       description: "Physical node temperature alarm triggered\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
-  - alert: HostKernelVersionDeviations
-    expr: count(sum(label_replace(node_uname_info, "kernel", "$1", "release", "([0-9]+.[0-9]+.[0-9]+).*")) by (kernel)) > 1
-    for: 6h
-    labels:
-      severity: warning
-    annotations:
-      identifier: '{{ $labels.instance }}'
-      summary: Host kernel version deviations (instance {{ $labels.instance }})
-      description: "Different kernel versions are running\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-
   - alert: HostNetworkInterfaceSaturated
     expr: (rate(node_network_receive_bytes_total{device!~"^tap.*"}[1m]) + rate(node_network_transmit_bytes_total{device!~"^tap.*"}[1m])) / node_network_speed_bytes{device!~"^tap.*"} > 0.8 < 10000
     for: 1m
