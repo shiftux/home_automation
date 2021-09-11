@@ -47,6 +47,7 @@ services:
   cadvisor:
     image: budry/cadvisor-arm:latest
     container_name: cadvisor
+    restart: unless-stopped
     ports:
       - '8090:8080'
     volumes:
@@ -64,6 +65,7 @@ services:
   grafana:
     image: grafana/grafana:latest-ubuntu
     container_name: grafana
+    restart: unless-stopped
     # environment:
     #   - GF_SECURITY_ADMIN_PASSWORD=secure_pass
     volumes:
