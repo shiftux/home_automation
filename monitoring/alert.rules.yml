@@ -38,8 +38,6 @@ groups:
       summary: Container killed (instance {{ $labels.instance }})
       description: "A container has disappeared\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
-- name: 'home-assistant down'
-  rules:
   - alert: ContainerDown
     expr: absent(container_last_seen{name="home-assistant"})
     for: 0m
@@ -50,8 +48,6 @@ groups:
       summary: Container Down (instance {{ $labels.instance }})
       description: "Home Assistant container not running \n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
-- name: 'mosquitto down'
-  rules:
   - alert: ContainerDown
     expr: absent(container_last_seen{name="mosquitto"})
     for: 0m
@@ -62,8 +58,6 @@ groups:
       summary: Container Down (instance {{ $labels.instance }})
       description: "Mosquitto container not running \n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
-- name: 'nginx down'
-  rules:
   - alert: ContainerDown
     expr: absent(container_last_seen{name="home-assistant"})
     for: 0m
