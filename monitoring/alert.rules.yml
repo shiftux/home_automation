@@ -38,6 +38,42 @@ groups:
       summary: Container killed (instance {{ $labels.instance }})
       description: "A container has disappeared\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
+- name: 'home-assistant down'
+  rules:
+  - alert: ContainerDown
+    expr: absent(container_last_seen{name="home-assistant"})
+    for: 0m
+    labels:
+      severity: critical
+    annotations:
+      identifier: '{{ $labels.instance }}'
+      summary: Container Down (instance {{ $labels.instance }})
+      description: "Home Assistant container not running \n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+- name: 'mosquitto down'
+  rules:
+  - alert: ContainerDown
+    expr: absent(container_last_seen{name="mosquitto"})
+    for: 0m
+    labels:
+      severity: critical
+    annotations:
+      identifier: '{{ $labels.instance }}'
+      summary: Container Down (instance {{ $labels.instance }})
+      description: "Mosquitto container not running \n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+- name: 'nginx down'
+  rules:
+  - alert: ContainerDown
+    expr: absent(container_last_seen{name="home-assistant"})
+    for: 0m
+    labels:
+      severity: critical
+    annotations:
+      identifier: '{{ $labels.instance }}'
+      summary: Container Down (instance {{ $labels.instance }})
+      description: "Nginx container not running \n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
   # cAdvisor can sometimes consume a lot of CPU, so this alert will fire constantly.
   # If you want to exclude it from this alert, exclude the serie having an empty name: container_cpu_usage_seconds_total{name!=""}
   - alert: ContainerCpuUsage
