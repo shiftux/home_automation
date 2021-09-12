@@ -86,6 +86,19 @@
     qos: 1
     retain: true
 
+  - platform: mqtt
+    name: "Bedroom"
+    command_topic: "light/shelly-bedroom/cmnd/POWER"
+    state_topic: "light/shelly-bedroom/stat/RESULT"
+    state_value_template: "{{value_json.POWER}}"
+    availability_topic: "light/shelly-bedroom/tele/LWT"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: true
+
   - platform: group
     name: All Lights
     entities:
@@ -94,3 +107,4 @@
       - light.dining_room
       - light.living_room
       - light.office
+      - light.bedroom
