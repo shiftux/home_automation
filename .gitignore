@@ -3,7 +3,7 @@
 *.log
 **/tasmota.bin
 .metals/*
-**/secret*
+**/*secret*
 **/.vscode
 node_modules
 yarn.lock

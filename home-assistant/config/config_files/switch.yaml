@@ -111,4 +111,4 @@
     payload_available: "Online"
     payload_not_available: "Offline"
     qos: 1
-    retain: true
+    retain: false

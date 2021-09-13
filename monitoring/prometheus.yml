@@ -1,0 +1,71 @@
+global:
+  scrape_interval: 5s
+  external_labels:
+    monitor: 'prometheus-hass'
+
+
+rule_files:
+  - alert.rules.yml
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - 'alertmanager:9093'
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['192.168.50.28:9090'] 
+        labels:
+          instance: 'prometheus'
+  - job_name: 'hass node-exporter'
+    static_configs:
+      - targets: ['192.168.50.28:9100']
+        labels:
+          instance: 'hass'
+  - job_name: 'cAdvisor'
+    static_configs:
+      - targets: ['192.168.50.28:8090']
+        labels:
+          instance: 'cadvisor'
+  - job_name: 'tasmota devices'
+    static_configs:
+      - targets: ['192.168.50.43:80']
+        labels:
+          instance: 'sonoff-irrigation-north'
+      - targets: ['192.168.50.42:80']
+        labels:
+          instance: 'sonoff-entry'
+      - targets: ['192.168.50.41:80']
+        labels:
+          instance: 'sonoff-kitchen'
+      - targets: ['192.168.50.40:80']
+        labels:
+          instance: 'sonoff-4CH'
+      - targets: ['192.168.50.44:80']
+        labels:
+          instance: 'tasmota-IR-puck'
+      - targets: ['192.168.50.45:80']
+        labels:
+          instance: 'shelly-office'
+      - targets: ['192.168.50.46:80']
+        labels:
+          instance: 'shelly-bedroom'
+  - job_name: 'pihole'
+    static_configs:
+      - targets: ['192.168.50.93:9617']
+  - job_name: 'piCore players'
+    static_configs:
+      - targets: ['192.168.50.51:9100']
+        labels:
+          instance: 'picore-living-room'
+      - targets: ['192.168.50.52:9100']
+        labels:
+          instance: 'picore-dining-room'
+      - targets: ['192.168.50.53:9100']
+        labels:
+          instance: 'picore-bathroom'
+    # metrics_path: "/metrics"
+    # basic_auth:
+    #   username: 'admin'
+    #   password: 'cfgqvzjbhnwcomplicatedpasswordwjnqmd'
