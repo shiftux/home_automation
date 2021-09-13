@@ -2,95 +2,100 @@
 
 WiFiClient espClient;
 PubSubClient client(espClient);
-const int currentInput = 34;
+HardwareSerial PzemSerial2(2);      // Use hwserial UART2 at pins configured for uart2 IO-16 (RX2) and IO-17 (TX2)
+PZEM004T pzem(&PzemSerial2);
+const int baudRate = 115200;
+IPAddress ip2(192,168,1,22);          // this is not really an ip, but an address for the uart devices
 
 void connectWifi() {
   // Serial.print("Connecting to WiFi");
   WiFi.begin(ssid, wifiPw);
   while (WiFi.status() != WL_CONNECTED) {
       delay(500);
-      // Serial.print(".");
+      Serial.print(".");
   }
-  // Serial.println("WiFi connected.");
-  // Serial.println("IP address: ");
-  // Serial.println(WiFi.localIP());
-  // Serial.println(WiFi.macAddress());
+  Serial.println("WiFi connected.");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+  Serial.println(WiFi.macAddress());
   delay(1000);
 }
 
 void connectMQTT() {
-  // Serial.println("Connect MQTT");
+  Serial.println("Connect MQTT");
   client.setServer(mqttServer, mqttPort);
     while (!client.connected()) {
-    // Serial.println("Connecting to MQTT");
+    Serial.println("Connecting to MQTT");
     if (client.connect("ESP32_LivingRoom", mqttUser, mqttPassword )) {
-      // Serial.println("connected");
+      Serial.println("connected");
     } else {
-      // Serial.print("failed with state ");
-      // Serial.print(client.state());
+      Serial.print("failed with state ");
+      Serial.print(client.state());
       delay(2000);
     }
   }
 }
 
+void initPZEM(){
+   while (true) {
+      Serial.println("Connecting to PZEM...");
+      if(pzem.setAddress(ip2))
+        break;
+      delay(1000);
+   }
+}
+
 void setup() {
-  // Serial.begin(9600); // open the serial port at 9600 bps
-  pinMode(currentInput,INPUT);
-  // Serial.println("Starting Setup");
+  Serial.begin(baudRate); // open the serial port at baudrate
+  Serial.println("Starting Setup");
   // Set WiFi to station mode and disconnect from an AP if it was previously connected
-  // Serial.println("Stopping WiFi");
+  Serial.println("Stopping WiFi");
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
   delay(100);
 
+  initPZEM();
   connectWifi();
   connectMQTT();
-  // Serial.println("Setup done");
+  Serial.println("Setup done");
 }
 
 String getOnOff() {
-  int sum = 0;
-  long now = 0;
-  String status = "OFF";
-  long start = millis();
-  while (now - start < 1100) {
-    now = millis();
-    sum += analogRead(currentInput);
-    delay(10);
+  String status = "NOSTAT";
+  float v = pzem.voltage(ip2);
+  if (v < 0.0) {
+    v = 0.0;
+    status = "OFF";
+  } else if (v > 50) {
+    status = "ON";
+  } else {
+    status = "UNDEF";
   }
-  if (sum > 350) {status = "ON";};
+  Serial.print(v);Serial.print("V; ");
+  Serial.print("status: ");Serial.print(status);
   return status;
 }
 
-// long lastMsg = 0;
-// int currentValue;
-// String currentString;
-// char currentChar[5];
-long lastStatus = 0;
+long lastStatusTime = 0;
+String lastStatus = "init";
 char currentStatus[5];
 void loop() {
-  // long nowSerial = millis();
+  String status;
   long now = millis();
-  // if (nowSerial - lastMsg > 100) {
-  //   lastMsg = nowSerial;
-  //   currentValue = analogRead(currentInput);
-  //   currentString = (String)currentValue;
-  //   currentString.toCharArray(currentChar, 5);
-  //   Serial.println(currentChar);
-  //   client.publish("esp32/test", currentChar);
-  // }
-  if (now - lastStatus > 1200) {
-    lastStatus = now;
+  if (now - lastStatusTime > 500) {
+    lastStatusTime = now;
     if (WiFi.status() != WL_CONNECTED) { connectWifi(); }
     else {
       bool loop = client.loop();
       if (!loop) { connectMQTT(); }
       else {
-        String status = getOnOff();
-        // Serial.println(status);
-        status.toCharArray(currentStatus, 5);
-        client.publish("sensor/light/livingRoom", currentStatus);
+        status = getOnOff();
+        if (status != lastStatus) {
+          status.toCharArray(currentStatus, 7);
+          client.publish("sensor/light/livingRoom", currentStatus);
+        }
       }
     }
+    lastStatus = status;
   }
 }
