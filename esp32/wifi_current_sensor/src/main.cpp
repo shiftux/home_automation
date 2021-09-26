@@ -2,79 +2,99 @@
 
 WiFiClient espClient;
 PubSubClient client(espClient);
-HardwareSerial PzemSerial2(2);      // Use hwserial UART2 at pins configured for uart2 IO-16 (RX2) and IO-17 (TX2)
-PZEM004T pzem(&PzemSerial2);
 const int baudRate = 115200;
-IPAddress ip2(192,168,1,22);          // this is not really an ip, but an address for the uart devices
+
+bool debug = false;
+
+/************** 
+* PZEM init
+**************/
+#if !defined(PZEM_RX_PIN) && !defined(PZEM_TX_PIN)
+#define PZEM_RX_PIN 16
+#define PZEM_TX_PIN 17
+#endif
+
+#if !defined(PZEM_SERIAL)
+#define PZEM_SERIAL Serial2
+#endif
+
+PZEM004Tv30 pzem(PZEM_SERIAL, PZEM_RX_PIN, PZEM_TX_PIN);
+
+/************** 
+* helper functions
+**************/
 
 void connectWifi() {
-  // Serial.print("Connecting to WiFi");
+  if(debug){ Serial.print("Connecting to WiFi"); }
   WiFi.begin(ssid, wifiPw);
   while (WiFi.status() != WL_CONNECTED) {
       delay(500);
       Serial.print(".");
   }
-  Serial.println("WiFi connected.");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
-  Serial.println(WiFi.macAddress());
+  if(debug){
+    Serial.println("WiFi connected.");
+    Serial.println("IP address: ");
+    Serial.println(WiFi.localIP());
+    Serial.println(WiFi.macAddress());
+  }
   delay(1000);
 }
 
 void connectMQTT() {
-  Serial.println("Connect MQTT");
   client.setServer(mqttServer, mqttPort);
     while (!client.connected()) {
-    Serial.println("Connecting to MQTT");
-    if (client.connect("ESP32_LivingRoom", mqttUser, mqttPassword )) {
-      Serial.println("connected");
-    } else {
-      Serial.print("failed with state ");
-      Serial.print(client.state());
+      if(debug){ Serial.println("Connecting to MQTT"); }
+      if (client.connect("ESP32_LivingRoom", mqttUser, mqttPassword )) {
+        if(debug){ Serial.println("connected"); }
+      } else {
+        if(debug){
+          Serial.print("failed with state ");
+          Serial.print(client.state());
+      }
       delay(2000);
     }
   }
 }
 
-void initPZEM(){
-   while (true) {
-      Serial.println("Connecting to PZEM...");
-      if(pzem.setAddress(ip2))
-        break;
-      delay(1000);
-   }
-}
-
 void setup() {
-  Serial.begin(baudRate); // open the serial port at baudrate
-  Serial.println("Starting Setup");
+  if(debug){ 
+    Serial.begin(baudRate); // open the serial port at baudrate
+    Serial.println("Starting Setup");
+    Serial.println("Stopping WiFi");
+  }
   // Set WiFi to station mode and disconnect from an AP if it was previously connected
-  Serial.println("Stopping WiFi");
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
   delay(100);
 
-  initPZEM();
   connectWifi();
   connectMQTT();
-  Serial.println("Setup done");
+  if(debug){ Serial.println("Setup done"); }
 }
 
 String getOnOff() {
   String status = "NOSTAT";
-  float v = pzem.voltage(ip2);
-  if (v < 0.0) {
+  float v = pzem.voltage();
+  if(isnan(v)){
+    status = "OFF";
+  } else if (v < 0.0) {
     v = 0.0;
     status = "OFF";
-  } else if (v > 50) {
+  } else if (v > 30) {
     status = "ON";
   } else {
     status = "UNDEF";
   }
-  Serial.print(v);Serial.print("V; ");
-  Serial.print("status: ");Serial.print(status);
+  if(debug){ 
+    Serial.print("Read voltage: ");Serial.print(v);Serial.println("V; ");
+    Serial.print("status: ");Serial.println(status);
+  }
   return status;
 }
+
+/************** 
+* main loop
+**************/
 
 long lastStatusTime = 0;
 String lastStatus = "init";
@@ -86,16 +106,20 @@ void loop() {
     lastStatusTime = now;
     if (WiFi.status() != WL_CONNECTED) { connectWifi(); }
     else {
-      bool loop = client.loop();
-      if (!loop) { connectMQTT(); }
-      else {
-        status = getOnOff();
-        if (status != lastStatus) {
-          status.toCharArray(currentStatus, 7);
-          client.publish("sensor/light/livingRoom", currentStatus);
+      status = getOnOff();
+      if (status != lastStatus) {
+        bool loop = client.loop();
+        if (!loop) { connectMQTT(); }
+        if(debug){ 
+          Serial.print("status: ");Serial.println(status);
+          Serial.print("last status: ");Serial.println(lastStatus);
         }
+        status.toCharArray(currentStatus, 7);
+        client.publish("sensor/light/livingRoom", currentStatus);
+      } else {
+        if(debug){ Serial.println("no update");}
       }
+      lastStatus = status;
     }
-    lastStatus = status;
   }
 }

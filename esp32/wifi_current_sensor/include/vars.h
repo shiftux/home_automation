@@ -3,8 +3,7 @@
 #include <SPI.h>
 #include <PubSubClient.h>
 #include <string.h>
-#include <HardwareSerial.h>
-#include <PZEM004T.h>
+#include <PZEM004Tv30.h>
 
 extern const char ssid[10];
 extern const char wifiPw[31];
