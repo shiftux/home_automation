@@ -5,7 +5,7 @@ services:
     container_name: prometheus
     user: root
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml.secret:/etc/prometheus/prometheus.yml
       - ./prometheus_db:/var/lib/prometheus
       - ./prometheus_db:/prometheus
       - ./prometheus_db:/etc/prometheus
@@ -31,6 +31,19 @@ services:
       - ./notifications.tmpl:/notifications.tmpl
     command:
       - '--config.file=/alertmanager.yml'
+    restart: unless-stopped
+    networks: 
+      - monitor-net
+
+  blackbox_exporter:
+    image: prom/alertmanager
+    container_name: blackbox_exporter
+    ports:
+      - '9115:9115'
+    volumes:
+      - ./blackbox.yml.secret:/config/blackbox.yml
+    command:
+      - '--config.file=/config/blackbox.yml'
     restart: unless-stopped
     networks: 
       - monitor-net
