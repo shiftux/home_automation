@@ -36,7 +36,7 @@ services:
       - monitor-net
 
   blackbox_exporter:
-    image: prom/alertmanager
+    image: prom/blackbox-exporter
     container_name: blackbox_exporter
     ports:
       - '9115:9115'
