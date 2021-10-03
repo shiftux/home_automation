@@ -6,7 +6,11 @@ const int baudRate = 115200;
 
 bool debug = false;
 
-/************** 
+/*!!!!!!!!!!!!!!!!!!!!!!
+! Be sure to set the right MQTT topic!
+!!!!!!!!!!!!!!!!!!!!!!*/
+
+/**************
 * PZEM init
 **************/
 #if !defined(PZEM_RX_PIN) && !defined(PZEM_TX_PIN)
@@ -20,7 +24,7 @@ bool debug = false;
 
 PZEM004Tv30 pzem(PZEM_SERIAL, PZEM_RX_PIN, PZEM_TX_PIN);
 
-/************** 
+/**************
 * helper functions
 **************/
 
@@ -57,7 +61,7 @@ void connectMQTT() {
 }
 
 void setup() {
-  if(debug){ 
+  if(debug){
     Serial.begin(baudRate); // open the serial port at baudrate
     Serial.println("Starting Setup");
     Serial.println("Stopping WiFi");
@@ -85,14 +89,14 @@ String getOnOff() {
   } else {
     status = "UNDEF";
   }
-  if(debug){ 
+  if(debug){
     Serial.print("Read voltage: ");Serial.print(v);Serial.println("V; ");
     Serial.print("status: ");Serial.println(status);
   }
   return status;
 }
 
-/************** 
+/**************
 * main loop
 **************/
 
@@ -110,12 +114,12 @@ void loop() {
       if (status != lastStatus) {
         bool loop = client.loop();
         if (!loop) { connectMQTT(); }
-        if(debug){ 
+        if(debug){
           Serial.print("status: ");Serial.println(status);
           Serial.print("last status: ");Serial.println(lastStatus);
         }
         status.toCharArray(currentStatus, 7);
-        client.publish("sensor/light/livingRoom", currentStatus);
+        client.publish("sensor/light/diningRoom", currentStatus);
       } else {
         if(debug){ Serial.println("no update");}
       }
