@@ -32,7 +32,7 @@ services:
     command:
       - '--config.file=/alertmanager.yml'
     restart: unless-stopped
-    networks: 
+    networks:
       - monitor-net
 
   blackbox_exporter:
@@ -45,7 +45,7 @@ services:
     command:
       - '--config.file=/config/blackbox.yml'
     restart: unless-stopped
-    networks: 
+    networks:
       - monitor-net
 
 # installed native
