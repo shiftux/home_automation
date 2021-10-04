@@ -30,9 +30,9 @@
   - alias: "Sync kitchen light with kitchen led"
     trigger:
       platform: mqtt
-      topic: "light/sonoff-kitchen/cmnd/POWER"
+      topic: "light/sonoff-kitchen/stat/POWER"
     action:
       - service_template: mqtt.publish
         data_template:
-          topic: "light/shelly-kitchen-led/stat/POWER"
+          topic: "light/shelly-kitchen-led/cmnd/POWER"
           payload: '{{ trigger.payload }}'
