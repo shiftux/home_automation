@@ -26,3 +26,13 @@
         data_template:
           topic: "light/sonoff-4ch/cmnd/POWER4"
           payload: '{{ trigger.payload }}'
+
+  - alias: "Sync kitchen light with kitchen led"
+    trigger:
+      platform: mqtt
+      topic: "light/sonoff-kitchen/cmnd/POWER"
+    action:
+      - service_template: mqtt.publish
+        data_template:
+          topic: "light/sonoff-kitchen-led/cmnd/POWER"
+          payload: '{{ trigger.payload }}'

@@ -99,6 +99,19 @@
     qos: 1
     retain: true
 
+  - platform: mqtt
+    name: "Kitchen_led"
+    command_topic: "light/shelly-kitchen-led/cmnd/POWER"
+    state_topic: "light/shelly-kitchen-led/stat/RESULT"
+    state_value_template: "{{value_json.POWER}}"
+    availability_topic: "light/shelly-kitchen-led/tele/LWT"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: true
+
   - platform: group
     name: All Lights
     entities:
@@ -108,3 +121,4 @@
       - light.living_room
       - light.office
       - light.bedroom
+      - light.kitchen_led
