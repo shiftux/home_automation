@@ -32,7 +32,7 @@ services:
     command:
       - '--config.file=/alertmanager.yml'
     restart: unless-stopped
-    networks: 
+    networks:
       - monitor-net
 
 # installed native
