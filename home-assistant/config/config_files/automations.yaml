@@ -34,5 +34,5 @@
     action:
       - service_template: mqtt.publish
         data_template:
-          topic: "light/sonoff-kitchen-led/cmnd/POWER"
+          topic: "light/shelly-kitchen-led/cmnd/POWER"
           payload: '{{ trigger.payload }}'
