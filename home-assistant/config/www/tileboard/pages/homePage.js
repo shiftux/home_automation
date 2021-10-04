@@ -80,9 +80,9 @@ const homePage = {
         {
           type: TYPES.LIGHT,
           position: [1, 0],
-          title: 'Living Room',
+          title: 'Kitchen',
           // subtitle: 'Lounge',
-          id: 'light.living_room',
+          id: 'light.kitchen',
           state: false,
           states: {
             on: "On",
@@ -96,9 +96,9 @@ const homePage = {
         {
           type: TYPES.LIGHT,
           position: [2, 0],
-          title: 'Kitchen',
+          title: 'Kitchen LED',
           // subtitle: 'Lounge',
-          id: 'light.kitchen',
+          id: 'light.kitchen_led',
           state: false,
           states: {
             on: "On",
@@ -115,6 +115,22 @@ const homePage = {
           title: 'Dining Room',
           // subtitle: 'Lounge',
           id: 'light.dining_room',
+          state: false,
+          states: {
+            on: "On",
+            off: "Off"
+          },
+          icons: {
+            on: "mdi-lightbulb-on",
+            off: "mdi-lightbulb",
+          },
+        },
+        {
+          type: TYPES.LIGHT,
+          position: [1, 1],
+          title: 'Living Room',
+          // subtitle: 'Lounge',
+          id: 'light.living_room',
           state: false,
           states: {
             on: "On",
