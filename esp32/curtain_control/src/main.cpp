@@ -28,46 +28,8 @@ void my_init(){
   pinMode(MOTOR_OUT_CLOSE, OUTPUT);
 }
 
-void connectWifi() {
-  if(debug){ Serial.print("Connecting to WiFi"); }
-  WiFi.begin(ssid, wifiPw);
-  while (WiFi.status() != WL_CONNECTED) {
-      delay(500);
-      Serial.print(".");
-  }
-  if(debug){
-    Serial.println("WiFi connected.");
-    Serial.println("IP address: ");
-    Serial.println(WiFi.localIP());
-    Serial.println(WiFi.macAddress());
-  }
-  delay(1000);
-}
-
-void connectMQTT() {
-  client.setServer(mqttServer, mqttPort);
-    while (!client.connected()) {
-      if(debug){ Serial.println("Connecting to MQTT"); }
-      /*!!!!!!!!!!!!!!!!!!!!!!
-      ! adapt
-      !!!!!!!!!!!!!!!!!!!!!!*/
-      if (client.connect("ESP32_curtain_south", mqttUser, mqttPassword )) {
-        if(debug){ Serial.println("connected"); }
-      } else {
-        if(debug){
-          Serial.print("failed with state ");
-          Serial.print(client.state());
-      }
-      delay(2000);
-    }
-    /*!!!!!!!!!!!!!!!!!!!!!!
-    ! adapt
-    !!!!!!!!!!!!!!!!!!!!!!*/
-    client.subscribe("curtains/south");
-  }
-}
-
 bool isAtOpenEndSwitch() {
+  if(debug){Serial.print("poen end switch reporting: ");Serial.println(digitalRead(OPEN_HALL_SENSOR) == 0);}
   if (digitalRead(OPEN_HALL_SENSOR) == 0){ // hall sensor is 0 when magnet is present
     return true;
   }
@@ -77,6 +39,7 @@ bool isAtOpenEndSwitch() {
 }
 
 bool isAtClosedEndSwitch() {
+  if(debug){Serial.print("closed end switch reporting: ");Serial.println(digitalRead(CLOSED_HALL_SENSOR) == 0);}
   if (digitalRead(CLOSED_HALL_SENSOR) == 0){ // hall sensor is 0 when magnet is present
     return true;
   }
@@ -112,7 +75,7 @@ void motorOpen() {
   motorStop();
 }
 
-void callback(char* topic, byte* payload, unsigned int length) {
+void mqttCallback(char* topic, byte* payload, unsigned int length) {
   char message[7];
   for (int i = 0; i < length; i++) {
     message[i] = (char)payload[i];
@@ -121,19 +84,60 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if(debug){
     Serial.print("Message arrived in topic: ");
     Serial.println(topic);
-    Serial.print("Message:");
+    Serial.print("Message: ");
     Serial.println(message);
     Serial.println("-----------------------");
   }
 
-  if((strcmp(message, "OPEN") == 0) || (strcmp(message, "open") == 0)) {
+  if((message[0]=='o')&&(message[1]=='p')&&(message[2]=='e')&&(message[3]=='n')) {
+    if(debug){Serial.println("got motor opening message");}
     motorOpen();
-  } else if((strcmp(message, "CLOSE") == 0) || (strcmp(message, "close") == 0)) {
+  } else if((message[0]=='c')&&(message[1]=='l')&&(message[2]=='o')&&(message[3]=='s')&&(message[4]=='e')) {
+    if(debug){Serial.println("got motor closing message");}
     motorClose();
   } else {
     motorStop();
   }
+}
 
+void connectWifi() {
+  if(debug){ Serial.print("Connecting to WiFi"); }
+  WiFi.begin(ssid, wifiPw);
+  while (WiFi.status() != WL_CONNECTED) {
+      delay(500);
+      Serial.print(".");
+  }
+  if(debug){
+    Serial.println("WiFi connected.");
+    Serial.println("IP address: ");
+    Serial.println(WiFi.localIP());
+    Serial.println(WiFi.macAddress());
+  }
+  delay(1000);
+}
+
+void connectMQTT() {
+  client.setServer(mqttServer, mqttPort);
+  client.setCallback(mqttCallback);
+    while (!client.connected()) {
+      if(debug){ Serial.println("Connecting to MQTT"); }
+      /*!!!!!!!!!!!!!!!!!!!!!!
+      ! adapt
+      !!!!!!!!!!!!!!!!!!!!!!*/
+      if (client.connect("ESP32_curtain_south", mqttUser, mqttPassword )) {
+        if(debug){ Serial.println("connected"); }
+      } else {
+        if(debug){
+          Serial.print("failed with state ");
+          Serial.print(client.state());
+      }
+      delay(2000);
+    }
+    /*!!!!!!!!!!!!!!!!!!!!!!
+    ! adapt
+    !!!!!!!!!!!!!!!!!!!!!!*/
+    client.subscribe("curtains/south");
+  }
 }
 
 void setup() {
