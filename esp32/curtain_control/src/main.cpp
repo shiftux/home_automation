@@ -29,8 +29,15 @@ void my_init(){
 }
 
 bool isAtOpenEndSwitch() {
-  if(debug){Serial.print("poen end switch reporting: ");Serial.println(digitalRead(OPEN_HALL_SENSOR) == 0);}
+  char position[7];
+  String pos = "open";
   if (digitalRead(OPEN_HALL_SENSOR) == 0){ // hall sensor is 0 when magnet is present
+    if(debug){Serial.print("poen end switch reporting: ");Serial.println(digitalRead(OPEN_HALL_SENSOR) == 0);}
+    pos.toCharArray(position, 7);
+    /*!!!!!!!!!!!!!!!!!!!!!!
+    ! adapt
+    !!!!!!!!!!!!!!!!!!!!!!*/
+    client.publish("curtains/south/stat/POSITION", position);
     return true;
   }
   else {
@@ -38,9 +45,17 @@ bool isAtOpenEndSwitch() {
   }
 }
 
+
 bool isAtClosedEndSwitch() {
-  if(debug){Serial.print("closed end switch reporting: ");Serial.println(digitalRead(CLOSED_HALL_SENSOR) == 0);}
+  char position[7];
+  String pos = "closed";
   if (digitalRead(CLOSED_HALL_SENSOR) == 0){ // hall sensor is 0 when magnet is present
+    if(debug){Serial.print("closed end switch reporting: ");Serial.println(digitalRead(CLOSED_HALL_SENSOR) == 0);}
+    pos.toCharArray(position, 7);
+    /*!!!!!!!!!!!!!!!!!!!!!!
+    ! adapt
+    !!!!!!!!!!!!!!!!!!!!!!*/
+    client.publish("curtains/south/stat/POSITION", position);
     return true;
   }
   else {
@@ -51,26 +66,26 @@ bool isAtClosedEndSwitch() {
 void motorStop() {
   if(debug){Serial.println("motor stopped");}
   // TODO: run motor stop code
-  digitalWrite(MOTOR_OUT_OPEN, LOW);
-  digitalWrite(MOTOR_OUT_CLOSE, LOW);
+  digitalWrite(MOTOR_OUT_OPEN, 0);
+  digitalWrite(MOTOR_OUT_CLOSE, 0);
 }
 
 void motorClose() {
   long start = millis();
+  if(debug){Serial.println("motor closing curtains");}
   while ((!isAtClosedEndSwitch()) && (millis() - start < motorTimeout)){
-    if(debug){Serial.println("motor closing curtains");}
     // TODO: run motor close code
-    digitalWrite(MOTOR_OUT_CLOSE, HIGH);
+    digitalWrite(MOTOR_OUT_CLOSE, 1);
   }
   motorStop();
 }
 
 void motorOpen() {
   long start = millis();
+  if(debug){Serial.println("motor opening curtains");}
   while ((!isAtOpenEndSwitch()) && (millis() - start < motorTimeout)){
-    if(debug){Serial.println("motor opening curtains");}
     // TODO: run motor open code
-    digitalWrite(MOTOR_OUT_OPEN, HIGH);
+    digitalWrite(MOTOR_OUT_OPEN, 1);
   }
   motorStop();
 }
@@ -136,7 +151,7 @@ void connectMQTT() {
     /*!!!!!!!!!!!!!!!!!!!!!!
     ! adapt
     !!!!!!!!!!!!!!!!!!!!!!*/
-    client.subscribe("curtains/south");
+    client.subscribe("curtains/south/cmnd/POSITION");
   }
 }
 
@@ -156,8 +171,6 @@ void setup() {
   connectMQTT();
   if(debug){ Serial.println("Setup done"); }
 }
-
-
 
 /**************
 * main loop
