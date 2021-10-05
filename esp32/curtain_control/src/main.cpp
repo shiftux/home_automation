@@ -7,8 +7,10 @@ const int motorTimeout = 5000;
 
 bool debug = true;
 
-#define OPEN_HALL_SENSOR 14
-#define CLOSED_HALL_SENSOR 15
+#define OPEN_HALL_SENSOR 34
+#define CLOSED_HALL_SENSOR 35
+#define MOTOR_OUT_OPEN 25
+#define MOTOR_OUT_CLOSE 26
 
 /*!!!!!!!!!!!!!!!!!!!!!!
 ! Be sure to set the right MQTT topic!
@@ -22,10 +24,8 @@ bool debug = true;
 void my_init(){
   pinMode(OPEN_HALL_SENSOR, INPUT);
   pinMode(CLOSED_HALL_SENSOR, INPUT);
-  // pinMode(RELAIS_1, OUTPUT);
-  // pinMode(RELAIS_2, OUTPUT);
-  // pinMode(RELAIS_3, OUTPUT);
-  // pinMode(RELAIS_4, OUTPUT);
+  pinMode(MOTOR_OUT_OPEN, OUTPUT);
+  pinMode(MOTOR_OUT_CLOSE, OUTPUT);
 }
 
 void connectWifi() {
@@ -67,29 +67,6 @@ void connectMQTT() {
   }
 }
 
-void motorStop() {
-  if(debug){Serial.println("motor stopped");}
-  // TODO: run motor stop code
-}
-
-void motorClose() {
-  long start = millis();
-  while ((!isAtClosedEndSwitch()) && (millis() - start < motorTimeout)){
-    if(debug){Serial.println("motor closing curtains");}
-    // TODO: run motor close code
-  }
-  motorStop();
-}
-
-void motorOpen() {
-  long start = millis();
-  while ((!isAtOpenEndSwitch()) && (millis() - start < motorTimeout)){
-    if(debug){Serial.println("motor opening curtains");}
-    // TODO: run motor open code
-  }
-  motorStop();
-}
-
 bool isAtOpenEndSwitch() {
   if (digitalRead(OPEN_HALL_SENSOR) == 0){ // hall sensor is 0 when magnet is present
     return true;
@@ -108,6 +85,33 @@ bool isAtClosedEndSwitch() {
   }
 }
 
+void motorStop() {
+  if(debug){Serial.println("motor stopped");}
+  // TODO: run motor stop code
+  digitalWrite(MOTOR_OUT_OPEN, LOW);
+  digitalWrite(MOTOR_OUT_CLOSE, LOW);
+}
+
+void motorClose() {
+  long start = millis();
+  while ((!isAtClosedEndSwitch()) && (millis() - start < motorTimeout)){
+    if(debug){Serial.println("motor closing curtains");}
+    // TODO: run motor close code
+    digitalWrite(MOTOR_OUT_CLOSE, HIGH);
+  }
+  motorStop();
+}
+
+void motorOpen() {
+  long start = millis();
+  while ((!isAtOpenEndSwitch()) && (millis() - start < motorTimeout)){
+    if(debug){Serial.println("motor opening curtains");}
+    // TODO: run motor open code
+    digitalWrite(MOTOR_OUT_OPEN, HIGH);
+  }
+  motorStop();
+}
+
 void callback(char* topic, byte* payload, unsigned int length) {
   char message[7];
   for (int i = 0; i < length; i++) {
@@ -122,9 +126,9 @@ void callback(char* topic, byte* payload, unsigned int length) {
     Serial.println("-----------------------");
   }
 
-  if((strcmp(message, "OPEN") == 0) || strcmp(message, "open") == 0)) {
+  if((strcmp(message, "OPEN") == 0) || (strcmp(message, "open") == 0)) {
     motorOpen();
-  } else if((strcmp(message, "CLOSE") == 0) || strcmp(message, "close") == 0)) {
+  } else if((strcmp(message, "CLOSE") == 0) || (strcmp(message, "close") == 0)) {
     motorClose();
   } else {
     motorStop();
