@@ -4,13 +4,21 @@ WiFiClient espClient;
 PubSubClient client(espClient);
 const int baudRate = 115200;
 const int motorTimeout = 5000;
+const int stepsPerRevolution = 200;  // change this to fit the number of steps per revolution
+const int stepper_motor_speed = 80;  // rpm
+const int blocking_steps = 4;
 
 bool debug = true;
 
 #define OPEN_HALL_SENSOR 34
 #define CLOSED_HALL_SENSOR 35
-#define MOTOR_OUT_OPEN 25
-#define MOTOR_OUT_CLOSE 26
+#define MOTOR_OUT1 33
+#define MOTOR_OUT2 25
+#define MOTOR_OUT3 26
+#define MOTOR_OUT4 27
+
+// initialize the stepper library
+Stepper motor(stepsPerRevolution, IN1, IN3, IN2, IN4);
 
 /*!!!!!!!!!!!!!!!!!!!!!!
 ! Be sure to set the right MQTT topic!
@@ -24,15 +32,17 @@ bool debug = true;
 void my_init(){
   pinMode(OPEN_HALL_SENSOR, INPUT);
   pinMode(CLOSED_HALL_SENSOR, INPUT);
-  pinMode(MOTOR_OUT_OPEN, OUTPUT);
-  pinMode(MOTOR_OUT_CLOSE, OUTPUT);
+  pinMode(MOTOR_OUT1, OUTPUT);
+  pinMode(MOTOR_OUT2, OUTPUT);
+  pinMode(MOTOR_OUT3, OUTPUT);
+  pinMode(MOTOR_OUT4, OUTPUT);
 }
 
 bool isAtOpenEndSwitch() {
   char position[7];
   String pos = "open";
   if (digitalRead(OPEN_HALL_SENSOR) == 0){ // hall sensor is 0 when magnet is present
-    if(debug){Serial.print("poen end switch reporting: ");Serial.println(digitalRead(OPEN_HALL_SENSOR) == 0);}
+    if(debug){Serial.print("open end switch reporting: ");Serial.println(digitalRead(OPEN_HALL_SENSOR) == 0);}
     pos.toCharArray(position, 7);
     /*!!!!!!!!!!!!!!!!!!!!!!
     ! adapt
@@ -74,8 +84,7 @@ void motorClose() {
   long start = millis();
   if(debug){Serial.println("motor closing curtains");}
   while ((!isAtClosedEndSwitch()) && (millis() - start < motorTimeout)){
-    // TODO: run motor close code
-    digitalWrite(MOTOR_OUT_CLOSE, 1);
+    motor.steps(blocking_steps);
   }
   motorStop();
 }
@@ -84,8 +93,7 @@ void motorOpen() {
   long start = millis();
   if(debug){Serial.println("motor opening curtains");}
   while ((!isAtOpenEndSwitch()) && (millis() - start < motorTimeout)){
-    // TODO: run motor open code
-    digitalWrite(MOTOR_OUT_OPEN, 1);
+    motor.steps(-blocking_steps);
   }
   motorStop();
 }
@@ -169,6 +177,7 @@ void setup() {
 
   connectWifi();
   connectMQTT();
+  motor.setSpeed(stepper_motor_speed);
   if(debug){ Serial.println("Setup done"); }
 }
 
