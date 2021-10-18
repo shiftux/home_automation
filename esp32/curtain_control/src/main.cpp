@@ -12,6 +12,7 @@ bool debug = true;
 
 #define OPEN_HALL_SENSOR 34
 #define CLOSED_HALL_SENSOR 35
+#define MOTOR_ENABLE 12
 #define MOTOR_OUT1 33
 #define MOTOR_OUT2 25
 #define MOTOR_OUT3 26
@@ -32,10 +33,13 @@ Stepper motor(stepsPerRevolution, MOTOR_OUT1, MOTOR_OUT3, MOTOR_OUT2, MOTOR_OUT4
 void my_init(){
   pinMode(OPEN_HALL_SENSOR, INPUT);
   pinMode(CLOSED_HALL_SENSOR, INPUT);
+  pinMode(MOTOR_ENABLE, OUTPUT);
   pinMode(MOTOR_OUT1, OUTPUT);
   pinMode(MOTOR_OUT2, OUTPUT);
   pinMode(MOTOR_OUT3, OUTPUT);
   pinMode(MOTOR_OUT4, OUTPUT);
+
+  digitalWrite(MOTOR_ENABLE, 0);
 }
 
 bool isAtOpenEndSwitch() {
@@ -85,12 +89,14 @@ void motorStop() {
   if(debug){Serial.println("motor stopped");}
   // TODO: run motor stop code
   motor.step(0);
+  digitalWrite(MOTOR_ENABLE, 0);
 }
 
 void motorClose() {
   long start = millis();
   if(debug){Serial.println("motor closing curtains");}
   while ((!isAtClosedEndSwitch()) && (!timedOut(start))){
+    digitalWrite(MOTOR_ENABLE, 1);
     motor.step(blocking_steps);
   }
   motorStop();
@@ -100,6 +106,7 @@ void motorOpen() {
   long start = millis();
   if(debug){Serial.println("motor opening curtains");}
   while ((!isAtOpenEndSwitch()) && (!timedOut(start))){
+    digitalWrite(MOTOR_ENABLE, 1);
     motor.step(-blocking_steps);
   }
   motorStop();
@@ -172,7 +179,7 @@ void connectMQTT() {
 
 void setup() {
   if(debug){
-    Serial.begin(baudRate); // open the serial port at baudrate
+    Serial.begin(baudRate);
     Serial.println("Starting Setup");
     Serial.println("Stopping WiFi");
   }
