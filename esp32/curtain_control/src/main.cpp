@@ -1,22 +1,22 @@
 #include "vars.h"
 
+bool debug = false;
+
 WiFiClient espClient;
 PubSubClient client(espClient);
-const int baudRate = 115200;
-const int motorTimeout = 15000;      // ms
-const int stepsPerRevolution = 200;  // change this to fit the number of steps per revolution
-const int stepper_motor_speed = 80;  // rpm
-const int blocking_steps = 4;
+const int baudRate            = 115200;
+const int motorTimeout        = 15000;    // ms
+const int stepsPerRevolution  = 200;      // change this to fit the number of steps per revolution
+const int stepper_motor_speed = 80;       // rpm
+const int blocking_steps      = 4;
 
-bool debug = true;
-
-#define OPEN_HALL_SENSOR 34
-#define CLOSED_HALL_SENSOR 35
-#define MOTOR_ENABLE 12
-#define MOTOR_OUT1 33
-#define MOTOR_OUT2 25
-#define MOTOR_OUT3 26
-#define MOTOR_OUT4 27
+#define OPEN_HALL_SENSOR    34
+#define CLOSED_HALL_SENSOR  35
+#define MOTOR_ENABLE        12
+#define MOTOR_OUT1          33
+#define MOTOR_OUT2          25
+#define MOTOR_OUT3          26
+#define MOTOR_OUT4          27
 
 // initialize the stepper library
 Stepper motor(stepsPerRevolution, MOTOR_OUT1, MOTOR_OUT3, MOTOR_OUT2, MOTOR_OUT4);
