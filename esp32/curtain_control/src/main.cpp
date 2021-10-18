@@ -3,7 +3,7 @@
 WiFiClient espClient;
 PubSubClient client(espClient);
 const int baudRate = 115200;
-const int motorTimeout = 5000;
+const int motorTimeout = 15000;      // ms
 const int stepsPerRevolution = 200;  // change this to fit the number of steps per revolution
 const int stepper_motor_speed = 80;  // rpm
 const int blocking_steps = 4;
@@ -73,17 +73,24 @@ bool isAtClosedEndSwitch() {
   }
 }
 
+bool timedOut(long start) {
+  if(millis() - start < motorTimeout) { return false; }
+  else { 
+    if(debug){Serial.println("timed out");}
+    return true; 
+  }
+}
+
 void motorStop() {
   if(debug){Serial.println("motor stopped");}
   // TODO: run motor stop code
-  motor.setSpeed(0);
+  motor.step(0);
 }
 
 void motorClose() {
   long start = millis();
   if(debug){Serial.println("motor closing curtains");}
-  while ((!isAtClosedEndSwitch()) && (millis() - start < motorTimeout)){
-    motor.setSpeed(stepper_motor_speed);
+  while ((!isAtClosedEndSwitch()) && (!timedOut(start))){
     motor.step(blocking_steps);
   }
   motorStop();
@@ -92,8 +99,7 @@ void motorClose() {
 void motorOpen() {
   long start = millis();
   if(debug){Serial.println("motor opening curtains");}
-  while ((!isAtOpenEndSwitch()) && (millis() - start < motorTimeout)){
-    motor.setSpeed(stepper_motor_speed);
+  while ((!isAtOpenEndSwitch()) && (!timedOut(start))){
     motor.step(-blocking_steps);
   }
   motorStop();
@@ -178,7 +184,7 @@ void setup() {
 
   connectWifi();
   connectMQTT();
-  motor.setSpeed(0);
+  motor.setSpeed(stepper_motor_speed);
   if(debug){ Serial.println("Setup done"); }
 }
 
