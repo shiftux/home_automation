@@ -18,7 +18,7 @@ bool debug = true;
 #define MOTOR_OUT4 27
 
 // initialize the stepper library
-Stepper motor(stepsPerRevolution, IN1, IN3, IN2, IN4);
+Stepper motor(stepsPerRevolution, MOTOR_OUT1, MOTOR_OUT3, MOTOR_OUT2, MOTOR_OUT4);
 
 /*!!!!!!!!!!!!!!!!!!!!!!
 ! Be sure to set the right MQTT topic!
@@ -76,15 +76,15 @@ bool isAtClosedEndSwitch() {
 void motorStop() {
   if(debug){Serial.println("motor stopped");}
   // TODO: run motor stop code
-  digitalWrite(MOTOR_OUT_OPEN, 0);
-  digitalWrite(MOTOR_OUT_CLOSE, 0);
+  motor.setSpeed(0);
 }
 
 void motorClose() {
   long start = millis();
   if(debug){Serial.println("motor closing curtains");}
   while ((!isAtClosedEndSwitch()) && (millis() - start < motorTimeout)){
-    motor.steps(blocking_steps);
+    motor.setSpeed(stepper_motor_speed);
+    motor.step(blocking_steps);
   }
   motorStop();
 }
@@ -93,7 +93,8 @@ void motorOpen() {
   long start = millis();
   if(debug){Serial.println("motor opening curtains");}
   while ((!isAtOpenEndSwitch()) && (millis() - start < motorTimeout)){
-    motor.steps(-blocking_steps);
+    motor.setSpeed(stepper_motor_speed);
+    motor.step(-blocking_steps);
   }
   motorStop();
 }
@@ -177,7 +178,7 @@ void setup() {
 
   connectWifi();
   connectMQTT();
-  motor.setSpeed(stepper_motor_speed);
+  motor.setSpeed(0);
   if(debug){ Serial.println("Setup done"); }
 }
 
