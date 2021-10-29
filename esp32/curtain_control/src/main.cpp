@@ -79,9 +79,9 @@ bool isAtClosedEndSwitch() {
 
 bool timedOut(long start) {
   if(millis() - start < motorTimeout) { return false; }
-  else { 
+  else {
     if(debug){Serial.println("timed out");}
-    return true; 
+    return true;
   }
 }
 
@@ -97,7 +97,7 @@ void motorClose() {
   if(debug){Serial.println("motor closing curtains");}
   while ((!isAtClosedEndSwitch()) && (!timedOut(start))){
     digitalWrite(MOTOR_ENABLE, 1);
-    motor.step(blocking_steps);
+    motor.step(-blocking_steps);
   }
   motorStop();
 }
@@ -107,7 +107,7 @@ void motorOpen() {
   if(debug){Serial.println("motor opening curtains");}
   while ((!isAtOpenEndSwitch()) && (!timedOut(start))){
     digitalWrite(MOTOR_ENABLE, 1);
-    motor.step(-blocking_steps);
+    motor.step(blocking_steps);
   }
   motorStop();
 }
