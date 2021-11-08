@@ -70,7 +70,7 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
     command:
       - '-docker_only=true'
-      - '-housekeeping_interval=20s'
+      - '-housekeeping_interval=25s'
       - '-disable_metrics=disk'
     networks:
       - monitor-net
