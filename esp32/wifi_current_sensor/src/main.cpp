@@ -48,6 +48,9 @@ void connectMQTT() {
   client.setServer(mqttServer, mqttPort);
     while (!client.connected()) {
       if(debug){ Serial.println("Connecting to MQTT"); }
+      /*!!!!!!!!!!!!!!!!!!!!!!
+      ! adapt
+      !!!!!!!!!!!!!!!!!!!!!!*/
       if (client.connect("ESP32_LivingRoom", mqttUser, mqttPassword )) {
         if(debug){ Serial.println("connected"); }
       } else {
@@ -119,7 +122,10 @@ void loop() {
           Serial.print("last status: ");Serial.println(lastStatus);
         }
         status.toCharArray(currentStatus, 7);
-        client.publish("sensor/light/diningRoom", currentStatus);
+      /*!!!!!!!!!!!!!!!!!!!!!!
+      ! adapt
+      !!!!!!!!!!!!!!!!!!!!!!*/
+       client.publish("sensor/light/diningRoom", currentStatus);
       } else {
         if(debug){ Serial.println("no update");}
       }
