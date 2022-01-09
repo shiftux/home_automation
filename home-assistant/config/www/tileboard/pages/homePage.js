@@ -23,7 +23,7 @@ const homePage = {
           position: [0, 2],
           width: 2,
           height: 2,
-          id: 'media_player.picorelivingroom',
+          id: 'media_player.picorelivingroom_2',
           type: TYPES.MEDIA_PLAYER_CUSTOM,
           hideSource: false,
           hideMuteButton: false,
@@ -161,7 +161,7 @@ const homePage = {
           position: [0, 2],
           type: TYPES.SCRIPT,
           id: 'script.listen_music',
-          customStyles: {'background-color':'#00a896'},
+          customStyles: { 'background-color': '#00a896' },
           icons: {
             on: "mdi-music",
             off: "mdi-music"
@@ -172,7 +172,7 @@ const homePage = {
           position: [1, 2],
           type: TYPES.SCRIPT,
           title: 'Watch TV',
-          customStyles: {'background-color':'#00a896'},
+          customStyles: { 'background-color': '#00a896' },
           id: 'script.watch_tv',
           icons: {
             on: "mdi-movie-open",
@@ -184,7 +184,7 @@ const homePage = {
           position: [2, 2],
           type: TYPES.SCRIPT,
           title: 'Shower',
-          customStyles: {'background-color':'#00a896'},
+          customStyles: { 'background-color': '#00a896' },
           id: 'script.shower',
           icons: {
             on: "mdi-shower",
@@ -197,7 +197,7 @@ const homePage = {
           type: TYPES.SCRIPT,
           id: 'script.media_off',
           title: 'Media Off',
-          customStyles: {'background-color':'#e63946'},
+          customStyles: { 'background-color': '#e63946' },
           icons: {
             on: "mdi-stop",
             off: "mdi-stop"

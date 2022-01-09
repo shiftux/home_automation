@@ -1,226 +1,226 @@
 #script:
-  projector_off:
-    sequence:
-      - service: homeassistant.turn_off
-        data:
-          entity_id: switch.projector
-      - delay: 3
-      - service: homeassistant.turn_off
-        data:
-          entity_id: switch.projector
+projector_off:
+  sequence:
+    - service: homeassistant.turn_off
+      data:
+        entity_id: switch.projector
+    - delay: 3
+    - service: homeassistant.turn_off
+      data:
+        entity_id: switch.projector
 
-  start_apple_tv:
-    # this needs to be called twice
-    sequence:
-      # the media player living room is the apple tv
-      - service: media_player.turn_on
-        data:
-          entity_id: media_player.living_room
-      - service: media_player.media_play_pause
-        data:
-          entity_id: media_player.living_room
+start_apple_tv:
+  # this needs to be called twice
+  sequence:
+    # the media player living room is the apple tv
+    - service: media_player.turn_on
+      data:
+        entity_id: media_player.living_room
+    - service: media_player.media_play_pause
+      data:
+        entity_id: media_player.living_room
 
-  watch_tv:
-    sequence:
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.projector
-      - service: script.turn_on
-        data:
-          entity_id: script.start_apple_tv
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.projector
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.nad_power
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.dac_video_input
-      - service: media_player.media_pause
-        data:
-          entity_id: media_player.picorelivingroom
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.nad_power
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.dac_video_input
-      - service: light.turn_off
-        data:
-          entity_id: light.entry
-      - service: light.turn_off
-        data:
-          entity_id: light.kitchen
-      - service: light.turn_off
-        data:
-          entity_id: light.dining_room
-      - service: script.turn_on
-        data:
-          entity_id: script.start_apple_tv
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.nad_power
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.dac_video_input
+watch_tv:
+  sequence:
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.projector
+    - service: script.turn_on
+      data:
+        entity_id: script.start_apple_tv
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.projector
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.nad_power
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.dac_video_input
+    - service: media_player.media_pause
+      data:
+        entity_id: media_player.picorelivingroom_2
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.nad_power
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.dac_video_input
+    - service: light.turn_off
+      data:
+        entity_id: light.entry
+    - service: light.turn_off
+      data:
+        entity_id: light.kitchen
+    - service: light.turn_off
+      data:
+        entity_id: light.dining_room
+    - service: script.turn_on
+      data:
+        entity_id: script.start_apple_tv
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.nad_power
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.dac_video_input
 
-  listen_music:
-    sequence:
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.nad_power
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.dac_music_input
-      - service: media_player.volume_set
-        data:
-          entity_id: media_player.picorelivingroom
-          volume_level: 0.8
-      - service: media_player.volume_set
-        data:
-          entity_id: media_player.picorebedroom
-          volume_level: 0.8
-      - service: media_player.volume_set
-        data:
-          entity_id: media_player.picorebathroom
-          volume_level: 0.8
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.nad_power
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.dac_music_input
-      - service: media_player.media_play
-        data:
-          entity_id: media_player.picorelivingroom
-      - service: media_player.turn_on
-        data:
-          entity_id: media_player.soundtouch_dining_room
-      - service: media_player.select_source
-        data:
-          entity_id: media_player.soundtouch_dining_room
-          source: AUX
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.nad_power
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.dac_music_input
-      - service: script.turn_on
-        data:
-          entity_id: script.projector_off
+listen_music:
+  sequence:
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.nad_power
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.dac_music_input
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.picorelivingroom_2
+        volume_level: 0.8
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.picorebedroom
+        volume_level: 0.8
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.picorebathroom
+        volume_level: 0.8
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.nad_power
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.dac_music_input
+    - service: media_player.media_play
+      data:
+        entity_id: media_player.picorelivingroom_2
+    - service: media_player.turn_on
+      data:
+        entity_id: media_player.soundtouch_dining_room
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.soundtouch_dining_room
+        source: AUX
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.nad_power
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.dac_music_input
+    - service: script.turn_on
+      data:
+        entity_id: script.projector_off
 
-  music:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.listen_music
+music:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.listen_music
 
-  shower:
-    sequence:
-      - service: media_player.media_play
-        data:
-          entity_id: media_player.picorelivingroom
-      - service: media_player.turn_on
-        data:
-          entity_id: media_player.picorebathroom
-      - service: media_player.turn_on
-        data:
-          entity_id: media_player.soundtouch_bathroom
-      - service: media_player.select_source
-        data:
-          entity_id: media_player.soundtouch_bathroom
-          source: AUX
-      - service: media_player.volume_set
-        data:
-          entity_id: media_player.soundtouch_bathroom
-          volume_level: 0.7
+shower:
+  sequence:
+    - service: media_player.media_play
+      data:
+        entity_id: media_player.picorelivingroom_2
+    - service: media_player.turn_on
+      data:
+        entity_id: media_player.picorebathroom
+    - service: media_player.turn_on
+      data:
+        entity_id: media_player.soundtouch_bathroom
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.soundtouch_bathroom
+        source: AUX
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.soundtouch_bathroom
+        volume_level: 0.7
 
-  media_off:
-    sequence:
-      - service: homeassistant.turn_off
-        data:
-          entity_id: switch.nad_power
-      - service: script.turn_on
-        data:
-          entity_id: script.projector_off
-      - service: media_player.turn_off
-        data:
-          entity_id: media_player.picorebathroom
-      - service: media_player.media_pause
-        data:
-          entity_id: media_player.picorelivingroom
-      - service: media_player.turn_off
-        data:
-          entity_id: media_player.soundtouch_dining_room
-      - service: media_player.turn_off
-        data:
-          entity_id: media_player.soundtouch_bathroom
-      - service: script.turn_on
-        data:
-          entity_id: script.raise_living_room_blinds
+media_off:
+  sequence:
+    - service: homeassistant.turn_off
+      data:
+        entity_id: switch.nad_power
+    - service: script.turn_on
+      data:
+        entity_id: script.projector_off
+    - service: media_player.turn_off
+      data:
+        entity_id: media_player.picorebathroom
+    - service: media_player.media_pause
+      data:
+        entity_id: media_player.picorelivingroom_2
+    - service: media_player.turn_off
+      data:
+        entity_id: media_player.soundtouch_dining_room
+    - service: media_player.turn_off
+      data:
+        entity_id: media_player.soundtouch_bathroom
+    - service: script.turn_on
+      data:
+        entity_id: script.raise_living_room_blinds
 
-  media:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.media_off
+media:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.media_off
 
-  all_off:
-    alias: All off
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.media_off
-      - service: light.turn_off
-        data:
-          entity_id: light.all_lights
+all_off:
+  alias: All off
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.media_off
+    - service: light.turn_off
+      data:
+        entity_id: light.all_lights
 
-  next_track:
-    sequence:
-      - service: media_player.media_next_track
-        data:
-          entity_id: media_player.picorelivingroom
+next_track:
+  sequence:
+    - service: media_player.media_next_track
+      data:
+        entity_id: media_player.picorelivingroom_2
 
-  previous_track:
-    sequence:
-      - service: media_player.media_previous_track
-        data:
-          entity_id: media_player.picorelivingroom
+previous_track:
+  sequence:
+    - service: media_player.media_previous_track
+      data:
+        entity_id: media_player.picorelivingroom_2
 
-  volume_up:
-    sequence:
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.nad_volume_up
-      - service: media_player.volume_up
-        data:
-          entity_id: media_player.soundtouch_dining_room
-      - service: media_player.volume_up
-        data:
-          entity_id: media_player.soundtouch_dining_room
-      - service: media_player.volume_up
-        data:
-          entity_id: media_player.soundtouch_dining_room
+volume_up:
+  sequence:
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.nad_volume_up
+    - service: media_player.volume_up
+      data:
+        entity_id: media_player.soundtouch_dining_room
+    - service: media_player.volume_up
+      data:
+        entity_id: media_player.soundtouch_dining_room
+    - service: media_player.volume_up
+      data:
+        entity_id: media_player.soundtouch_dining_room
 
-  volume_down:
-    sequence:
-      - service: homeassistant.turn_on
-        data:
-          entity_id: switch.nad_volume_down
-      - service: media_player.volume_down
-        data:
-          entity_id: media_player.soundtouch_dining_room
-      - service: media_player.volume_down
-        data:
-          entity_id: media_player.soundtouch_dining_room
-      - service: media_player.volume_down
-        data:
-          entity_id: media_player.soundtouch_dining_room
+volume_down:
+  sequence:
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.nad_volume_down
+    - service: media_player.volume_down
+      data:
+        entity_id: media_player.soundtouch_dining_room
+    - service: media_player.volume_down
+      data:
+        entity_id: media_player.soundtouch_dining_room
+    - service: media_player.volume_down
+      data:
+        entity_id: media_player.soundtouch_dining_room
 
-  lower_living_room_blinds:
-    sequence:
+lower_living_room_blinds:
+  sequence:
     - service: cover.open_cover
       data:
         entity_id: cover.blinds_living_room
@@ -229,8 +229,8 @@
       data:
         entity_id: cover.blinds_living_room
 
-  raise_living_room_blinds:
-    sequence:
+raise_living_room_blinds:
+  sequence:
     - service: cover.close_cover
       data:
         entity_id: cover.blinds_living_room
@@ -242,256 +242,266 @@
 ###################################################
 # playlists / podcasts
 ###################################################
-  playlist_easy_on_the_ears:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.listen_music
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["shuffle","1"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["play","spotify:user:shiftux:playlist:7r0UpOkMuDWIMobO1HDEjh"]
+playlist_easy_on_the_ears:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.listen_music
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["shuffle", "1"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters:
+          ["play", "spotify:user:shiftux:playlist:7r0UpOkMuDWIMobO1HDEjh"]
 
-  playlist_discover_weekly:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.listen_music
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["shuffle","1"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["play","spotify:user:shiftux:playlist:37i9dQZEVXcSlMQNVajogn"]
+playlist_discover_weekly:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.listen_music
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["shuffle", "1"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters:
+          ["play", "spotify:user:shiftux:playlist:37i9dQZEVXcSlMQNVajogn"]
 
-  playlist_discover_weekly_saves:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.listen_music
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["shuffle","1"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["play","spotify:user:shiftux:playlist:3jsoStJkZ2N97oh1bJBCdF"]
+playlist_discover_weekly_saves:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.listen_music
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["shuffle", "1"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters:
+          ["play", "spotify:user:shiftux:playlist:3jsoStJkZ2N97oh1bJBCdF"]
 
-  playlist_starred:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.listen_music
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["shuffle","1"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["play","spotify:user:shiftux:playlist:3yCTHjJl9xBLqukdvQqYon"]
+playlist_starred:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.listen_music
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["shuffle", "1"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters:
+          ["play", "spotify:user:shiftux:playlist:3yCTHjJl9xBLqukdvQqYon"]
 
-  playlist_funky:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.listen_music
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["shuffle","1"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["play","spotify:user:shiftux:playlist:38vMaIdHyEKUllTPqC2lzu"]
+playlist_funky:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.listen_music
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["shuffle", "1"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters:
+          ["play", "spotify:user:shiftux:playlist:38vMaIdHyEKUllTPqC2lzu"]
 
-  playlist_no_isi:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.listen_music
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["shuffle","1"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["play","spotify:user:shiftux:playlist:7Mm1cpwJTIYEcZnnOA9ONa"]
+playlist_no_isi:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.listen_music
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["shuffle", "1"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters:
+          ["play", "spotify:user:shiftux:playlist:7Mm1cpwJTIYEcZnnOA9ONa"]
 
-  playlist_discoveries:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.listen_music
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["shuffle","1"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["play","spotify:user:shiftux:playlist:2NpsOCEnbmMkYYJFLprN6z"]
+playlist_discoveries:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.listen_music
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["shuffle", "1"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters:
+          ["play", "spotify:user:shiftux:playlist:2NpsOCEnbmMkYYJFLprN6z"]
 
-  playlist_grrif_style:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.listen_music
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["shuffle","1"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["play","spotify:user:shiftux:playlist:5tnNlKZiGL8Piuoesvp6XV"]
+playlist_grrif_style:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.listen_music
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["shuffle", "1"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters:
+          ["play", "spotify:user:shiftux:playlist:5tnNlKZiGL8Piuoesvp6XV"]
 
-  playlist_new_isi:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.listen_music
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["shuffle","1"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["play","spotify:user:shiftux:playlist:6SKAjeSmHZXBAvnwsDylnb"]
+playlist_new_isi:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.listen_music
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["shuffle", "1"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters:
+          ["play", "spotify:user:shiftux:playlist:6SKAjeSmHZXBAvnwsDylnb"]
 
-  playlist_organica_deep_house:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.listen_music
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["shuffle","1"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["play","spotify:playlist:1ulmdUuvDGT0tRhbEKbA2M"]
+playlist_organica_deep_house:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.listen_music
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["shuffle", "1"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["play", "spotify:playlist:1ulmdUuvDGT0tRhbEKbA2M"]
 
-  playlist_workout:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.listen_music
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["shuffle","1"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["play","spotify:user:shiftux:playlist:6ws8F7hkTTOMFm8QnumZ04"]
+playlist_workout:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.listen_music
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["shuffle", "1"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters:
+          ["play", "spotify:user:shiftux:playlist:6ws8F7hkTTOMFm8QnumZ04"]
 
-  # Heute Morgen https://www.srf.ch/feed/podcast/sd/179ababb-4b36-40b2-951d-92d5c207fe9f.xml
-  podcast_heute_morgen:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.listen_music
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["play","spotify:show:2yltdfmAGQsU8UnsTBjWwV"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["shuffle","0"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["jump","0"]
+# Heute Morgen https://www.srf.ch/feed/podcast/sd/179ababb-4b36-40b2-951d-92d5c207fe9f.xml
+podcast_heute_morgen:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.listen_music
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["play", "spotify:show:2yltdfmAGQsU8UnsTBjWwV"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["shuffle", "0"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["jump", "0"]
 
-  # Echo der Zeit https://www.srf.ch/feed/podcast/sd/28549e81-c453-4671-92ad-cb28796d06a8.xml
-  podcast_echo_der_zeit:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.listen_music
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["play","spotify:show:2ZSmqyt0bE5RXbhJZVBTaD"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["shuffle","0"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["jump","0"]
+# Echo der Zeit https://www.srf.ch/feed/podcast/sd/28549e81-c453-4671-92ad-cb28796d06a8.xml
+podcast_echo_der_zeit:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.listen_music
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["play", "spotify:show:2ZSmqyt0bE5RXbhJZVBTaD"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["shuffle", "0"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["jump", "0"]
 
-  # Info 3 https://www.srf.ch/feed/podcast/sd/fc20e6ad-9e5f-40a9-b3c3-61765e927edc.xml
-  podcast_info3:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.listen_music
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["play","spotify:show:46QFreBLhnaGrl5svL3FWP"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["shuffle","0"]
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "playlist"
-          parameters: ["jump","0"]
+# Info 3 https://www.srf.ch/feed/podcast/sd/fc20e6ad-9e5f-40a9-b3c3-61765e927edc.xml
+podcast_info3:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.listen_music
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["play", "spotify:show:46QFreBLhnaGrl5svL3FWP"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["shuffle", "0"]
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "playlist"
+        parameters: ["jump", "0"]
 
-  # La Matinale https://www.rts.ch/la-1ere/programmes/la-matinale/podcast/?flux=rss
-  podcast_la_matinale:
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id: script.listen_music
-      - service:  squeezebox.call_method
-        data:
-          entity_id: "media_player.picorelivingroom"
-          command: "podcasts"
-          parameters: ["playlist","play","item_id:2.0"]
+# La Matinale https://www.rts.ch/la-1ere/programmes/la-matinale/podcast/?flux=rss
+podcast_la_matinale:
+  sequence:
+    - service: script.turn_on
+      data:
+        entity_id: script.listen_music
+    - service: squeezebox.call_method
+      data:
+        entity_id: "media_player.picorelivingroom_2"
+        command: "podcasts"
+        parameters: ["playlist", "play", "item_id:2.0"]

@@ -1,114 +1,114 @@
-  - platform: mqtt
-    name: "Projector"
-    command_topic: "remotes/ir_blaster/cmnd/irsend"
-    availability_topic: "remotes/ir_blaster/tele/LWT"
-    qos: 1
-    payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xC1AA09F6"}'
-    payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xC1AA8976"}'
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    retain: false
+- platform: mqtt
+  name: "Projector"
+  command_topic: "remotes/ir_blaster/cmnd/irsend"
+  availability_topic: "remotes/ir_blaster/tele/LWT"
+  qos: 1
+  payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xC1AA09F6"}'
+  payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xC1AA8976"}'
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
 
-  - platform: mqtt
-    name: "Projector HDMI1"
-    command_topic: "remotes/ir_blaster/cmnd/irsend"
-    availability_topic: "remotes/ir_blaster/tele/LWT"
-    qos: 1
-    payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xC1AACE31"}'
-    payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xC1AACE31"}'
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    retain: false
+- platform: mqtt
+  name: "Projector HDMI1"
+  command_topic: "remotes/ir_blaster/cmnd/irsend"
+  availability_topic: "remotes/ir_blaster/tele/LWT"
+  qos: 1
+  payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xC1AACE31"}'
+  payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xC1AACE31"}'
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
 
-  - platform: mqtt
-    name: "NAD Power"
-    command_topic: "remotes/ir_blaster/cmnd/irsend"
-    availability_topic: "remotes/ir_blaster/tele/LWT"
-    qos: 1
-    payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13EA45B"}'
-    payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E13EC"}'
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    retain: false
+- platform: mqtt
+  name: "NAD Power"
+  command_topic: "remotes/ir_blaster/cmnd/irsend"
+  availability_topic: "remotes/ir_blaster/tele/LWT"
+  qos: 1
+  payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13EA45B"}'
+  payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E13EC"}'
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
 
-  - platform: mqtt
-    name: "NAD volume up"
-    command_topic: "remotes/ir_blaster/cmnd/irsend"
-    availability_topic: "remotes/ir_blaster/tele/LWT"
-    qos: 1
-    payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E11EE"}'
-    payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E11EE"}'
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    retain: false
+- platform: mqtt
+  name: "NAD volume up"
+  command_topic: "remotes/ir_blaster/cmnd/irsend"
+  availability_topic: "remotes/ir_blaster/tele/LWT"
+  qos: 1
+  payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E11EE"}'
+  payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E11EE"}'
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
 
-  - platform: mqtt
-    name: "NAD volume down"
-    command_topic: "remotes/ir_blaster/cmnd/irsend"
-    availability_topic: "remotes/ir_blaster/tele/LWT"
-    qos: 1
-    payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E31CE"}'
-    payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E31CE"}'
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    retain: false
+- platform: mqtt
+  name: "NAD volume down"
+  command_topic: "remotes/ir_blaster/cmnd/irsend"
+  availability_topic: "remotes/ir_blaster/tele/LWT"
+  qos: 1
+  payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E31CE"}'
+  payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E31CE"}'
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
 
-  - platform: mqtt
-    name: "DAC Music Input"
-    command_topic: "remotes/ir_blaster/cmnd/irsend"
-    availability_topic: "remotes/ir_blaster/tele/LWT"
-    qos: 1
-    payload_on: '{ "Protocol":"RC5","Bits":12,"Data":"0x6C0" }'
-    payload_off: '{ "Protocol":"RC5","Bits":12,"Data":"0x6C0" }'
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    retain: false
+- platform: mqtt
+  name: "DAC Music Input"
+  command_topic: "remotes/ir_blaster/cmnd/irsend"
+  availability_topic: "remotes/ir_blaster/tele/LWT"
+  qos: 1
+  payload_on: '{ "Protocol":"RC5","Bits":12,"Data":"0x6C0" }'
+  payload_off: '{ "Protocol":"RC5","Bits":12,"Data":"0x6C0" }'
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
 
-  - platform: mqtt
-    name: "DAC Video Input"
-    command_topic: "remotes/ir_blaster/cmnd/irsend"
-    availability_topic: "remotes/ir_blaster/tele/LWT"
-    qos: 1
-    payload_on: '{ "Protocol":"RC5","Bits":12,"Data":"0xEC2" }'
-    payload_off: '{ "Protocol":"RC5","Bits":12,"Data":"0xEC2" }'
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    retain: false
+- platform: mqtt
+  name: "DAC Video Input"
+  command_topic: "remotes/ir_blaster/cmnd/irsend"
+  availability_topic: "remotes/ir_blaster/tele/LWT"
+  qos: 1
+  payload_on: '{ "Protocol":"RC5","Bits":12,"Data":"0xEC2" }'
+  payload_off: '{ "Protocol":"RC5","Bits":12,"Data":"0xEC2" }'
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
 
-  - platform: template
-    switches:
-      lms_shuffle:
-        friendly_name: "Shuffle"
-        value_template: "{{ is_state_attr('media_player.picorelivingroom', 'shuffle', 'song') }}"
-        turn_on:
-          service:  squeezebox.call_method
-          data:
-            entity_id: "media_player.picorelivingroom"
-            command: "playlist"
-            parameters: ["shuffle","1"]
-        turn_off:
-          service:  squeezebox.call_method
-          data:
-            entity_id: "media_player.picorelivingroom"
-            command: "playlist"
-            parameters: ["shuffle","0"]
-        icon_template: >-
-          {% if is_state_attr('media_player.picorelivingroom', 'shuffle', 'song')%}
-            mdi:shuffle-variant
-          {% else %}
-            mdi:shuffle-disabled
-          {% endif %}
+- platform: template
+  switches:
+    lms_shuffle:
+      friendly_name: "Shuffle"
+      value_template: "{{ is_state_attr('media_player.picorelivingroom_2', 'shuffle', 'song') }}"
+      turn_on:
+        service: squeezebox.call_method
+        data:
+          entity_id: "media_player.picorelivingroom_2"
+          command: "playlist"
+          parameters: ["shuffle", "1"]
+      turn_off:
+        service: squeezebox.call_method
+        data:
+          entity_id: "media_player.picorelivingroom_2"
+          command: "playlist"
+          parameters: ["shuffle", "0"]
+      icon_template: >-
+        {% if is_state_attr('media_player.picorelivingroom_2', 'shuffle', 'song')%}
+          mdi:shuffle-variant
+        {% else %}
+          mdi:shuffle-disabled
+        {% endif %}
 
-  - platform: mqtt
-    unique_id: irrigation_balcony_north_switch
-    name: "Irrigation Balcony North"
-    command_topic: "irrigation/balcony_north/cmnd/POWER"
-    state_topic: "irrigation/balcony_north/stat/RESULT"
-    value_template: "{{value_json.POWER}}"
-    availability_topic: "irrigation/balcony_north/tele/LWT"
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    qos: 1
-    retain: false
+- platform: mqtt
+  unique_id: irrigation_balcony_north_switch
+  name: "Irrigation Balcony North"
+  command_topic: "irrigation/balcony_north/cmnd/POWER"
+  state_topic: "irrigation/balcony_north/stat/RESULT"
+  value_template: "{{value_json.POWER}}"
+  availability_topic: "irrigation/balcony_north/tele/LWT"
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  qos: 1
+  retain: false

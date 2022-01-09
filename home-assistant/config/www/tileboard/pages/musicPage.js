@@ -12,7 +12,7 @@ const musicPage = {
           position: [0, 0],
           width: 2,
           height: 2,
-          id: 'media_player.picorelivingroom',
+          id: 'media_player.picorelivingroom_2',
           type: TYPES.MEDIA_PLAYER_CUSTOM,
           hideSource: false,
           hideMuteButton: false,
