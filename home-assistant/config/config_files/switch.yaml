@@ -22,36 +22,67 @@
 
 - platform: mqtt
   name: "NAD Power"
-  command_topic: "remotes/ir_blaster/cmnd/irsend"
-  availability_topic: "remotes/ir_blaster/tele/LWT"
+  command_topic: "NAD/C375/LivingRoom/Commands"
   qos: 1
-  payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13EA45B"}'
-  payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E13EC"}'
+  payload_on: 'Main.Power=On'
+  payload_off: 'Main.Power=Off'
   payload_available: "Online"
   payload_not_available: "Offline"
   retain: false
 
 - platform: mqtt
   name: "NAD volume up"
-  command_topic: "remotes/ir_blaster/cmnd/irsend"
-  availability_topic: "remotes/ir_blaster/tele/LWT"
+  command_topic: "NAD/C375/LivingRoom/Commands"
   qos: 1
-  payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E11EE"}'
-  payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E11EE"}'
+  payload_on: 'Main.Volume+'
+  payload_off: 'Main.Volume+'
   payload_available: "Online"
   payload_not_available: "Offline"
   retain: false
 
 - platform: mqtt
   name: "NAD volume down"
-  command_topic: "remotes/ir_blaster/cmnd/irsend"
-  availability_topic: "remotes/ir_blaster/tele/LWT"
+  command_topic: "NAD/C375/LivingRoom/Commands"
   qos: 1
-  payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E31CE"}'
-  payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E31CE"}'
+  payload_on: 'Main.Volume-'
+  payload_off: 'Main.Volume-'
   payload_available: "Online"
   payload_not_available: "Offline"
   retain: false
+
+# NAD commands via IR
+# - platform: mqtt
+#   name: "NAD Power"
+#   command_topic: "remotes/ir_blaster/cmnd/irsend"
+#   availability_topic: "remotes/ir_blaster/tele/LWT"
+#   qos: 1
+#   payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13EA45B"}'
+#   payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E13EC"}'
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+#   retain: false
+
+# - platform: mqtt
+#   name: "NAD volume up"
+#   command_topic: "remotes/ir_blaster/cmnd/irsend"
+#   availability_topic: "remotes/ir_blaster/tele/LWT"
+#   qos: 1
+#   payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E11EE"}'
+#   payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E11EE"}'
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+#   retain: false
+
+# - platform: mqtt
+#   name: "NAD volume down"
+#   command_topic: "remotes/ir_blaster/cmnd/irsend"
+#   availability_topic: "remotes/ir_blaster/tele/LWT"
+#   qos: 1
+#   payload_on: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E31CE"}'
+#   payload_off: '{"Protocol":"NEC","Bits":32,"Data":"0xE13E31CE"}'
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+#   retain: false
 
 - platform: mqtt
   name: "DAC Music Input"
