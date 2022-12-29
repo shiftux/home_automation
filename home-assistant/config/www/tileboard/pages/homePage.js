@@ -23,7 +23,7 @@ const homePage = {
           position: [0, 2],
           width: 2,
           height: 2,
-          id: 'media_player.picorelivingroom_2',
+          id: 'media_player.picorelivingroom',
           type: TYPES.MEDIA_PLAYER_CUSTOM,
           hideSource: false,
           hideMuteButton: false,
